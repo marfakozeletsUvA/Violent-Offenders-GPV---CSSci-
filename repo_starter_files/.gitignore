@@ -1,0 +1,41 @@
+# Data files (too large / not ours to share)
+data/raw/
+*.csv
+*.xlsx
+*.xls
+*.dta
+*.sav
+
+# Keep processed data readme
+!data/README.md
+!data/processed/.gitkeep
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+venv/
+env/
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Output files (regenerable)
+outputs/*.png
+outputs/*.pdf
+
+# Keep output folder structure
+!outputs/.gitkeep

@@ -1,12 +1,12 @@
 # Violence Against Journalists: Network Prediction Project
 
-> GPV: VIOLENT OFFENDERS YAY
+> GPV: Unequal Machines Grand Challenge
 
 ## Research Question
 
 Does Global North military intervention destabilize countries in ways that increase violence against journalists—and does the international community then treat that violence as "expected", leading to systematic impunity?
 
-## Project Idea
+## Project Overview
 
 This project uses **network analysis** combined with **machine learning** to predict impunity outcomes for violence against journalists. We construct networks capturing military intervention ties, colonial history, and conflict spillover to examine how a country's position in global power structures affects whether perpetrators face justice.
 
@@ -38,11 +38,7 @@ This project uses **network analysis** combined with **machine learning** to pre
 
 ## Team
 
-- Marfa Kozelets
-- Vanessa
-- Julia
-- Sophie
-- Kiavash
+- [Team member names here]
 
 ## Timeline
 
