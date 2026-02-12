@@ -1,10 +1,10 @@
 # Data files (too large / not ours to share)
-data/raw/
-*.csv
-*.xlsx
-*.xls
-*.dta
-*.sav
+#data/raw/
+#*.csv
+#*.xlsx
+#*.xls
+#*.dta
+#*.sav
 
 # Keep processed data readme
 !data/README.md
