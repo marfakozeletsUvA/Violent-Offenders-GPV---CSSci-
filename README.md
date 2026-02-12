@@ -1,18 +1,18 @@
-# Violence Against Journalists: Network Prediction Project
+# Violence Against Journalists
 
 > GPV: Unequal Machines Grand Challenge
 
-## Research Question
+## Potential RQ
 
 Does Global North military intervention destabilize countries in ways that increase violence against journalists—and does the international community then treat that violence as "expected", leading to systematic impunity?
 
-## Project Overview
+## Project Overview (draft of idea - Marfa)
 
 This project uses **network analysis** combined with **machine learning** to predict impunity outcomes for violence against journalists. We construct networks capturing military intervention ties, colonial history, and conflict spillover to examine how a country's position in global power structures affects whether perpetrators face justice.
 
 ### Two Phases
-1. **Mindless Machine** — Build a predictive algorithm optimizing for performance
-2. **Auditor Phase** — Critical bias audit using postcolonial theory
+1. **Mindless Machine** — Build a predictive algorithm optimizing for performance (using SNA)
+2. **Auditor Phase** — Critical bias audit using postcolonial theory (post-colonialism ties nicely)
 
 ## Repository Structure
 ```
@@ -67,18 +67,12 @@ git push
 
 ## Team
 
-- [Team member names here]
+- Marfa
+- Kiavash
+- Vanessa
+- Julia
+- Sophie
 
-## Timeline
-
-| Week | Goal |
-|------|------|
-| 1-2  | Data exploration, research question formulation |
-| 3    | Literature review (status quo theory) |
-| 4-5  | Method exploration, synthesis |
-| 6-8  | Critical theory application, bias audit |
-
-**Final deadline:** June 2, 2025
 
 ## Quick Links
 
