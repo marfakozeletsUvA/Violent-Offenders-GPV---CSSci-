@@ -4,7 +4,7 @@
 
 ---
 
-## 📰 Core Datasets: Journalist Violence
+## Core Datasets: Journalist Violence
 
 ### RSF Press Freedom Barometer
 - **URL:** https://rsf.org/en/barometer
@@ -28,7 +28,7 @@
 
 ---
 
-## 🔫 Conflict & Intervention Datasets
+## Conflict & Intervention Datasets
 
 ### UCDP/PRIO Armed Conflict Dataset
 - **URL:** https://ucdp.uu.se/downloads/index.html#armedconflict
@@ -36,7 +36,7 @@
 - **Contains:** Conflict-year data where at least one party is a state government
 - **Format:** CSV, Excel, Stata, R
 - **Citation:** Gleditsch et al. (2002); Davies et al. (2025)
-- **Notes:** ⭐ Start here — cleanest country-year conflict data
+- **Notes:** Start here — cleanest country-year conflict data
 
 ### UCDP External Support Dataset
 - **URL:** https://ucdp.uu.se/downloads/index.html (scroll to ESD)
@@ -44,7 +44,7 @@
 - **Contains:** External support to warring parties (who supports whom)
 - **Format:** Excel, Stata
 - **Citation:** Meier et al. (2022)
-- **Notes:** ⭐ Gold for network construction — tracks triad relationships (supporter → recipient → opponent)
+- **Notes:** Gold for network construction — tracks triad relationships (supporter → recipient → opponent)
 
 ### UCDP One-sided Violence Dataset
 - **URL:** https://ucdp.uu.se/downloads/index.html#onesided
@@ -68,7 +68,7 @@
 
 ---
 
-## 🌍 Colonial & Trade Ties
+## Colonial & Trade Ties
 
 ### CEPII Colonial/Geographic Data
 - **URL:** http://www.cepii.fr/CEPII/en/bdd_modele/bdd_modele.asp
@@ -83,7 +83,7 @@
 
 ---
 
-## 📊 Country-Level Indicators
+## Country-Level Indicators
 
 ### Fragile States Index
 - **URL:** https://fragilestatesindex.org/excel/
@@ -108,7 +108,7 @@
 
 ---
 
-## 📚 Key Papers
+## Key Papers
 
 ### On Violence Against Journalists
 - Relly & González de Bustamante (2017). "Global and Domestic Networks Advancing Prospects for Institutional and Social Change: The Collective Action Response to Violence Against Journalists." *Journalism & Communication Monographs* 19(2): 84-152.
@@ -122,7 +122,7 @@
 
 ---
 
-## 📝 To Do
+## To Do
 
 - [ ] Download RSF Barometer data
 - [ ] Get course CSV (Mapping Media Freedom?) from instructors
