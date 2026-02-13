@@ -106,7 +106,7 @@ Codebook: https://ucdp.uu.se/downloads/extsup/ESD/ucdp-esd-181.pdf
 - **What**: Aggregated colonial relationships from multiple sources
 - **Coverage**: Historical (European colonial empires)
 - **Unit**: Colony-colonizer
-- **Access**: Download
+- **Access**: Download (got it here)
 - **Links**:
   - Harvard Dataverse: https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/T9SDEW
 

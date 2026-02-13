@@ -1,0 +1,162 @@
+colony,colonizer,col_start,col_end
+Burundi,belgium,1923.0,1962.0
+Congo - Kinshasa,belgium,1885.0,1960.0
+Rwanda,belgium,1922.0,1962.0
+Antigua & Barbuda,britain,1632.0,1981.0
+Australia,britain,1829.0,1919.0
+Bahamas,britain,1783.0,1973.0
+Bahrain,britain,1861.0,1971.0
+Bangladesh,britain,1857.0,1947.0
+Barbados,britain,1627.0,1966.0
+Belize,britain,1798.0,1981.0
+Bhutan,britain,1910.0,1949.0
+Botswana,britain,1895.0,1966.0
+Brunei,britain,1888.0,1984.0
+Canada,britain,1763.0,1919.0
+Cyprus,britain,1914.0,1960.0
+Dominica,britain,1805.0,1978.0
+Egypt,britain,1882.0,1935.0
+Equatorial Guinea,britain,1827.0,1857.0
+Eritrea,britain,1941.0,1951.0
+Eswatini,britain,1903.0,1968.0
+Fiji,britain,1874.0,1970.0
+Gambia,britain,1888.0,1965.0
+Ghana,britain,1874.0,1957.0
+Grenada,britain,1762.0,1974.0
+Guyana,britain,1814.0,1966.0
+India,britain,1857.0,1947.0
+Iraq,britain,1920.0,1932.0
+Israel,britain,1923.0,1948.0
+Jamaica,britain,1655.0,1962.0
+Jordan,britain,1923.0,1946.0
+Kenya,britain,1895.0,1963.0
+Kiribati,britain,1892.0,1979.0
+Kuwait,britain,1914.0,1961.0
+Lesotho,britain,1884.0,1966.0
+Libya,britain,1946.0,1952.0
+Malawi,britain,1891.0,1964.0
+Malaysia,britain,1888.0,1963.0
+Maldives,britain,1887.0,1965.0
+Mauritius,britain,1810.0,1968.0
+Myanmar (Burma),britain,1886.0,1948.0
+Namibia,britain,1915.0,1920.0
+Nauru,britain,1914.0,1968.0
+New Zealand,britain,1840.0,1920.0
+Nigeria,britain,1899.0,1960.0
+Pakistan,britain,1857.0,1947.0
+Papua New Guinea,britain,1884.0,1920.0
+Qatar,britain,1916.0,1971.0
+Samoa,britain,1914.0,1920.0
+Senegal,britain,1693.0,1817.0
+Seychelles,britain,1814.0,1976.0
+Sierra Leone,britain,1896.0,1961.0
+Singapore,britain,1826.0,1963.0
+Solomon Islands,britain,1893.0,1978.0
+Somalia,britain,1888.0,1960.0
+South Africa,britain,1814.0,1920.0
+Sri Lanka,britain,1798.0,1948.0
+St. Kitts & Nevis,britain,1623.0,1983.0
+St. Lucia,britain,1814.0,1979.0
+St. Vincent & Grenadines,britain,1762.0,1979.0
+Sudan,britain,1898.0,1956.0
+Tanzania,britain,1918.0,1963.0
+Tonga,britain,1900.0,1970.0
+Trinidad & Tobago,britain,1797.0,1962.0
+Tuvalu,britain,1892.0,1979.0
+Uganda,britain,1894.0,1962.0
+United Arab Emirates,britain,1892.0,1971.0
+United States,britain,1607.0,1783.0
+Vanuatu,britain,1906.0,1980.0
+Yemen,britain,1959.0,1967.0
+Zambia,britain,1923.0,1964.0
+Zimbabwe,britain,1923.0,1980.0
+Algeria,france,1848.0,1962.0
+Benin,france,1894.0,1960.0
+Burkina Faso,france,1895.0,1960.0
+Cambodia,france,1884.0,1953.0
+Cameroon,france,1922.0,1960.0
+Canada,france,1608.0,1763.0
+Central African Republic,france,1906.0,1960.0
+Chad,france,1910.0,1960.0
+Comoros,france,1914.0,1975.0
+Congo - Brazzaville,france,1882.0,1960.0
+Côte d’Ivoire,france,1889.0,1960.0
+Djibouti,france,1884.0,1977.0
+Dominica,france,1632.0,1763.0
+Gabon,france,1886.0,1960.0
+Grenada,france,1650.0,1762.0
+Guinea,france,1881.0,1958.0
+Haiti,france,1665.0,1804.0
+Laos,france,1893.0,1954.0
+Lebanon,france,1923.0,1946.0
+Madagascar,france,1895.0,1960.0
+Mali,france,1904.0,1960.0
+Mauritania,france,1903.0,1960.0
+Mauritius,france,1715.0,1810.0
+Morocco,france,1912.0,1956.0
+Niger,france,1922.0,1960.0
+Senegal,france,1854.0,1960.0
+Seychelles,france,1756.0,1794.0
+St. Lucia,france,1650.0,1814.0
+Syria,france,1923.0,1946.0
+Togo,france,1922.0,1960.0
+Tunisia,france,1881.0,1956.0
+Vanuatu,france,1887.0,1980.0
+Vietnam,france,1887.0,1954.0
+Burundi,germany,1899.0,1922.0
+Cameroon,germany,1884.0,1916.0
+Ghana,germany,1884.0,1916.0
+Marshall Islands,germany,1885.0,1914.0
+Namibia,germany,1885.0,1915.0
+Nauru,germany,1888.0,1914.0
+Palau,germany,1885.0,1914.0
+Rwanda,germany,1899.0,1915.0
+Samoa,germany,1900.0,1914.0
+Solomon Islands,germany,1885.0,1918.0
+Tanzania,germany,1891.0,1917.0
+Togo,germany,1885.0,1916.0
+Guyana,netherlands,1580.0,1815.0
+Indonesia,netherlands,1623.0,1962.0
+South Africa,netherlands,1652.0,1806.0
+Suriname,netherlands,1667.0,1974.0
+Angola,portugal,1576.0,1975.0
+Brazil,portugal,1533.0,1822.0
+Cape Verde,portugal,1462.0,1975.0
+Equatorial Guinea,portugal,1778.0,1778.0
+Ghana,portugal,1482.0,1823.0
+Guinea-Bissau,portugal,1879.0,1974.0
+Malaysia,portugal,1511.0,1641.0
+Mozambique,portugal,1885.0,1975.0
+São Tomé & Príncipe,portugal,1522.0,1975.0
+Sri Lanka,portugal,1619.0,1656.0
+Timor-Leste,portugal,1642.0,1975.0
+Uruguay,portugal,1680.0,1822.0
+Argentina,spain,1580.0,1819.0
+Belize,spain,1524.0,1862.0
+Bolivia,spain,1559.0,1825.0
+Chile,spain,1541.0,1818.0
+Colombia,spain,1525.0,1820.0
+Costa Rica,spain,1524.0,1821.0
+Cuba,spain,1511.0,1899.0
+Dominican Republic,spain,1495.0,1865.0
+Ecuador,spain,1535.0,1829.0
+El Salvador,spain,1528.0,1821.0
+Equatorial Guinea,spain,1858.0,1968.0
+Guatemala,spain,1524.0,1821.0
+Honduras,spain,1524.0,1821.0
+Jamaica,spain,1509.0,1655.0
+Mexico,spain,1521.0,1821.0
+Micronesia (Federated States of),spain,1650.0,1899.0
+Morocco,spain,1884.0,1975.0
+Nicaragua,spain,1524.0,1821.0
+Palau,spain,1886.0,1899.0
+Panama,spain,1519.0,1821.0
+Paraguay,spain,1537.0,1811.0
+Peru,spain,1533.0,1824.0
+Philippines,spain,1565.0,1898.0
+Trinidad & Tobago,spain,1592.0,1797.0
+Uruguay,spain,1625.0,1828.0
+Venezuela,spain,1556.0,1821.0
+Eritrea,italy,1890.0,1941.0
+Libya,italy,1912.0,1942.0
+Somalia,italy,1905.0,1936.0
