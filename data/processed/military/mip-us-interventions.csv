@@ -1,0 +1,152 @@
+target_country,start_year,end_year,intervention_type,objective,hostility_level
+CUB,1990,1990.0,,,19.0
+IRQ,1990,1991.0,,,12.0
+KUW,1990,1991.0,,,12.0
+LBR,1990,1991.0,1.0,"Social Protection, ProtOwn",11.0
+SAU,1990,1991.0,2.0,Maintain/Build Foreign Regime Authority,12.0
+CAN,1991,1991.0,1.0,Acquire/Defend Territory,17.0
+DRC,1991,1991.0,2.0,Protect Own Military/Diplomatic Interests,11.0
+IRN,1991,1991.0,1.0,Protect Own Military/Diplomatic Interests,19.0
+IRQ,1991,2003.0,,,22.0
+IRQ,1991,2003.0,3.0,"Defend Territory, Policy Change, Social Protection, and Humanitarian Objective",19.0
+IRQ,1991,1991.0,2.0,"Remove Foreign Regime, Build/Maintain foreign regime authority, defend territory, and economic protection",19.0
+SOM,1991,1991.0,1.0,"Protect own Military and/or Diplomatic Interests, Humanitarian Intervention ",11.0
+PER,1992,1992.0,1.0,Maintain/Build Foreign Regime Authority,9.0
+SIE,1992,1992.0,1.0,Protect own Diplomatic Interests,11.0
+SOM,1992,1993.0,3.0,Humanitarian Intervention,12.0
+SOM,1992,1992.0,3.0,Humanitarian Intervention,11.0
+YUG,1992,1996.0,2.0,humanitarian intervention,18.0
+BOS,1993,2004.0,2.0,Social Protection & Order; Social Protection; Humanitarian Intervention,19.0
+IRQ,1993,1993.0,3.0,"Defend Territory, Policy Change, Social Protection, and Humanitarian Objective",19.0
+IRQ,1993,1993.0,1.0,"Defend Territory, Policy Change, Social Protection, and Humanitarian Objective, Protect own Military and/or Diplomatic Interests",19.0
+MAC,1993,1999.0,3.0,"Maintain/Build Foreign Regime Authority;        Social Protection; 
+",12.0
+PRK,1993,1999.0,4.0,"Maintain/Build Foreign Regime Authority
+",13.0
+PRK,1993,1993.0,4.0,Maintain/Build regime; Protect own Military and Diplomatic Interests,13.0
+SOM,1993,1994.0,,,
+SOM,1993,1995.0,3.0,Humanitarian Intervention,19.0
+CHN,1994,1994.0,,,1.0
+DRC,1994,1994.0,1.0,humanitarian intervention,11.0
+HAI,1994,1995.0,3.0,Remove Foreign Regime,15.0
+IRQ,1994,1995.0,3.0,"Defend Territory, Policy Change, Social Protection, and Humanitarian Objective",13.0
+MAC,1994,1994.0,,,13.0
+RWA,1994,1994.0,1.0,Humanitarian Intervention,12.0
+CHN,1995,1996.0,2.0,Maintain Foreign Regime Authority,8.0
+CEN,1996,1996.0,2.0,Protect own military/diplomatc interests,11.0
+CUB,1996,1996.0,,,1.0
+IRQ,1996,1996.0,1.0,"Defend Territory, Policy Change, Social Protection, and Humanitarian Objective",19.0
+LBR,1996,1996.0,1.0,Protect Own Military/Diplomatic Interests,18.0
+SYR,1996,1996.0,,,2.0
+ALB,1997,1997.0,1.0,Protect Own Military/Diplomatic Interests,11.0
+CAM,1997,1997.0,1.0,Social Protection,11.0
+CAN,1997,1997.0,,,1.0
+DRC,1997,1997.0,2.0,Protect own diplomatic interests,11.0
+IRN,1997,1997.0,1.0,Policy change; social protection and order,8.0
+IRQ,1997,2003.0,2.0,"Defend Territory, Policy Change, Social Protection, and Humanitarian Objective",19.0
+RUS,1997,1997.0,,,17.0
+SIE,1997,1997.0,1.0,Protect own military/diplomatic interests,11.0
+AFG,1998,1998.0,1.0,Remove foreign regime; Protect own military/diplomatic interests.,19.0
+GNB,1998,1998.0,1.0,Protect own military/diplomatic interests,11.0
+"KEN, TAZ",1998,1998.0,1.0,Protect own Military and/or Diplomatic Interests; Humanitarian Intervention,11.0
+LBR,1998,1998.0,1.0,Protect own military/diplomatic interests,11.0
+SUD,1998,1998.0,1.0,Protect own military/diplomatic interests,19.0
+CHN,1999,2000.0,1.0,Maintain Empire,8.0
+ETM,1999,2002.0,3.0,Maintain/Build Foreign Regime Authority; Humanitarian Intervention,12.0
+PRK,1999,1999.0,1.0,Protect own military/diplomatic interests,8.0
+RUS,1999,1999.0,,,1.0
+VEN,1999,2000.0,1.0,Social Protection & Order; Humanitarian Intervention,11.0
+YUG,1999,1999.0,2.0,Social Protection & Order; Humanitarian Intervention,19.0
+ERI,2000,2008.0,3.0,Social protection and order,12.0
+PRK,2000,2000.0,,,1.0
+RUS,2000,2000.0,,,7.0
+RUS,2000,2000.0,3.0,Policy change; Economic Protection; Protect own military and/or diplomatic interests,17.0
+RUS,2000,2001.0,2.0,Territory; Protect own military/diplomatic interests,10.0
+SIE,2000,2001.0,3.0,Social Protection & Order,8.0
+YEM,2000,2000.0,1.0,Protect own Military and/or Diplomatic Interests,12.0
+YUG,2000,2000.0,,,1.0
+YUG,2000,2000.0,2.0,Social Protection & Order,7.0
+YUG,2000,2000.0,4.0,Maintain Empire,8.0
+AFG,2001,2003.0,4.0,Remove Foreign Regime ,22.0
+AFG,2001,2022.0,4.0,"Remove Foreign Regime, Maintain/Build Foreign Regime, Maintain Empire",22.0
+CHN,2001,2001.0,1.0,Protect own Military and/or Diplomatic Interests; Maintain Empire,9.0
+CHN,2001,2001.0,,,1.0
+CHN,2001,2001.0,4.0,"Protect own Military and/or Diplomatic Interests, Maintain Empire",8.0
+MAC,2001,2002.0,,,
+CDI,2002,2002.0,2.0,Protect own Military and/or Diplomatic Interests,11.0
+CHN,2002,2002.0,,,1.0
+COL   ,2002,2005.0,1.0,Maintain/Build Foreign Regime Authority; Economic Protection,9.0
+DJI,2002,2006.0,2.0,Maintain/Build Foreign Regime Authority; Economic Protection,19.0
+PAK,2002,2005.0,1.0,Maintain/Build Foreign Regime Authority,13.0
+PHI,2002,2002.0,4.0,Maintain/Build Foreign Regime Authority,19.0
+PRK,2002,2002.0,,,17.0
+ETH,2003,2015.0,1.0,Maintain/Build Foreign Regime,12.0
+INS,2003,2003.0,1.0,Policy Change,9.0
+IRN,2003,2003.0,1.0,Protect own Military and/or Diplomatic Interests,14.0
+IRQ,2003,2011.0,2.0,Remove Foreign Regime/Authority,22.0
+LBR,2003,2003.0,3.0,Humanitarian Intervention; Remove Foreign Regime,12.0
+PRK,2003,2003.0,2.0,Empire; Policy Change; Protect own Military and/or Diplomatic Interests,9.0
+TUR,2003,2003.0,1.0,Maintain/Build Foreign Regime Authority; Maintain Empire; Protect own Military and/or Diplomatic Interests.,17.0
+CDI,2004,2004.0,,,1.0
+HAI,2004,2004.0,3.0,Humanitarian Intervention,12.0
+IRN,2004,2011.0,4.0,Maintain/Build Foreign Regime Authority; Protect own Military and/or Diplomatic Interests.,13.0
+IRN,2004,2005.0,1.0,Maintain/Build Foreign Regime Authority; Protect own Military and/or Diplomatic Interests.,14.0
+KEN,2004,,1.0,Maintain/Build Foreign Regime,11.0
+PRK,2004,2004.0,4.0,Aquire/Defend Terriroty,13.0
+SYR,2004,2004.0,1.0,Protect own military,18.0
+PAK,2005,2006.0,1.0,Humanitarian Intervention,11.0
+PAK,2005,2006.0,4.0,Protect own Military and/or Diplomatic Interests,19.0
+PAK,2005,2005.0,1.0,Protect own Military and/or Diplomatic Interests,19.0
+SYR,2005,2005.0,1.0,Build foreign regime; Policy Change,19.0
+YEM,2005,,1.0,Maintain/Build Foreign Regime Authority; Social Protection & Order;,19.0
+LEB,2006,2006.0,1.0,Social Protection; Protect own Military and/or Diplomatic Interests,11.0
+PAK,2006,2010.0,1.0,Protect own Military/Diplomatic Interests,19.0
+SOM,2006,2008.0,4.0,Remove foreign regime,19.0
+IRN,2007,2007.0,1.0,Maintain/build foreign regime authority; acquire or defend territory; intervention    to protect own military and/or diplomatic interests,17.0
+IRN,2007,2007.0,1.0,Maintain Empire,17.0
+IRN,2008,2008.0,,,1.0
+PAK,2008,2009.0,1.0,Protect own Military and/or Diplomatic Interests,19.0
+PAK,2008,2008.0,4.0,Maintain/Build Foreign Regime Authority,19.0
+SOM,2008,2008.0,1.0,Remove Foreign Regime,19.0
+SYR,2008,2008.0,1.0,Protect own Military and/or Diplomatic Interests,19.0
+CHN,2009,2009.0,1.0,"Protect own Military and/or Diplomatic Interests, Maintain Empire",8.0
+IRN,2009,2009.0,1.0,Maintain/Build Foreign Regime,19.0
+PRK,2009,2010.0,4.0,"Protect own Military and/or Diplomatic Interests, Maintain Empire",8.0
+YEM,2009,2009.0,4.0,"Maintain/Build Foreign Regime Authority; Protect own Military and/or Diplomatic Interests
+",19.0
+PAK,2010,2010.0,2.0,Protect own Military and/or Diplomatic Interests,18.0
+VEN,2010,2010.0,1.0,Maintain Empire,9.0
+DRC,2011,,2.0,Humanitarian Intervention,19.0
+LIB,2011,2011.0,3.0,Social Protection and Order,19.0
+SSD,2011,,,,
+SYR,2011,,,,
+UGA,2011,2017.0,2.0," Maintain/Build Foreign Regime Authority; Humanitarian Intervention
+
+",11.0
+CEN,2012,,,,
+PHI,2012,2012.0,1.0,Humanitarian Intervention,11.0
+SOM,2012,2012.0,1.0,Social Protection; Protect Own Military/Diplomatic Interests,19.0
+CEN,2013,2013.0,2.0,"Humanitarian Intervention, Build Foreign Regime Authority",11.0
+JOR,2013,,2.0,Maintain/Build Foreign Regime Authority,11.0
+NIR,2013,,2.0,Maintain/Build Foreign Regime Authority; Acquire/Defend Territory; Social Protection & Order;,19.0
+"IRQ, SYR",2014,,2.0,"Remove Foreign Regime, Build Foreign Regime Authority",19.0
+LBR,2014,2015.0,2.0,Humanitarian Intervention,11.0
+SYR,2014,2019.0,1.0,Humanitarian Intervention/Social Protection,19.0
+UKR,2014,,2.0,Maintain/Build Foreign Regime Authority,13.0
+AFG,2015,,4.0,Maintain/Build Foreign Regime Authority ,19.0
+CAO,2015,,2.0,Maintain/Build Foreign Regime Authority ,11.0
+"AFG, IRQ, SYR, TUR, SOM, YEM, DJI, LBY, CUB, Central Africa, EGY, JOR",2016,,,,
+HAI,2016,2016.0,1.0,Humanitarian Intervention,11.0
+YEM,2016,2016.0,1.0,Protect own Military and/or Diplomatic Interests,19.0
+DMA,2017,2017.0,1.0,Humanitarian Intervention,11.0
+"Dominica,  St. Martin, ",2017,2017.0,1.0,Humanitarian Intervention,11.0
+"GUA, HON, COL",2017,2017.0,1.0,Humanitarian Intervention,11.0
+LKA,2017,2017.0,2.0,Humanitarian Intervention,11.0
+PER,2017,2017.0,4.0,Humanitarian Intervention,11.0
+URU,2017,2017.0,1.0,Humanitarian Intervention,11.0
+ECU,2018,2018.0,1.0,Humanitarian Intervention,8.0
+HON,2018,2018.0,1.0,Humanitarian Intervention,8.0
+ICE,2018,2018.0,,,
+THI,2018,2018.0,2.0,Humanitarian Intervention,9.0
+IRQ,2019,2020.0,2.0,Protect own Military and/or Diplomatic interests,13.0
+SAU,2019,,2.0,"Social Protection & Order, Economic Protection, Protect own Military and/or Diplomatic Interests",12.0

@@ -12,7 +12,7 @@ This document contains all datasets used in the Neo-Colonial Networks and Journa
 - **Unit**: Incident-level (aggregate to country-year)
 - **Access**: API + download
 - **Links**:
-  - Database: https://cpj.org/data/
+  - Database: https://cpj.org/data/ (got it here)
   - API documentation: https://cpj.org/data-api/
   - Methodology: https://cpj.org/data-methodology/
 
@@ -26,7 +26,7 @@ This document contains all datasets used in the Neo-Colonial Networks and Journa
 - **Unit**: Supplier-recipient-year (USD TIV values)
 - **Access**: Download
 - **Links**:
-  - Database: https://armstransfers.sipri.org/
+  - Database: https://armstransfers.sipri.org/ (got it here)
   - Overview: https://www.sipri.org/databases/armstransfers
   - Also via World Bank: https://data.worldbank.org/indicator/MS.MIL.XPRT.KD
 
@@ -36,7 +36,7 @@ This document contains all datasets used in the Neo-Colonial Networks and Journa
 - **Unit**: Intervention-level (200+ variables)
 - **Access**: Download
 - **Links**:
-  - Tufts CSS: https://sites.tufts.edu/css/?page_id=682
+  - Tufts CSS: https://sites.tufts.edu/css/?page_id=682 (got it here)
   - Kaggle mirror: https://www.kaggle.com/datasets/konradb/us-military-interventions
   - Paper: https://journals.sagepub.com/doi/10.1177/00220027221117546
 
