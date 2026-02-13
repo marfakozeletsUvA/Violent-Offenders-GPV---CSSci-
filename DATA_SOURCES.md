@@ -48,6 +48,17 @@ This document contains all datasets used in the Neo-Colonial Networks and Journa
 - **Links**:
   - Data: https://plsullivan.web.unc.edu/data/
 
+UCDP External Support Dataset (ESD)
+
+What: External support (troops, weapons, training, funding) to conflict parties from state and non-state actors
+Coverage: Global, 1975–2017
+Unit: Triad-year (supporter–recipient–opponent–year)
+Access: Download
+Links:
+
+Data: https://ucdp.uu.se/downloads/
+Codebook: https://ucdp.uu.se/downloads/extsup/ESD/ucdp-esd-181.pdf
+
 ---
 
 ## Economic Ties Layer
