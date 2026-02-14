@@ -1,14 +1,8 @@
-# Data files (too large / not ours to share)
-#data/raw/
-#*.csv
-#*.xlsx
-#*.xls
-#*.dta
-#*.sav
+# Raw data files (too large for git)
+data/raw/**
 
-# Keep processed data readme
-!data/README.md
-!data/processed/.gitkeep
+# Keep folder structure
+!data/raw/.gitkeep
 
 # Python
 __pycache__/

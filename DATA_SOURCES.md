@@ -7,14 +7,13 @@ This document contains all datasets used in the Neo-Colonial Networks and Journa
 ## Target Variable (Outcome)
 
 ### Committee to Protect Journalists (CPJ)
-- **What**: Journalist killings, imprisonments, and missing persons
-- **Coverage**: Global, 1992–present
-- **Unit**: Incident-level (aggregate to country-year)
-- **Access**: API + download
+- **What**: Journalist killings
+- **Coverage**: Global, 1992–2026
+- **Unit**: Incident-level (aggregated to country-year)
+- **Access**: Download
+- **Processed file**: `target_journalist_killings.csv`
 - **Links**:
-  - Database: https://cpj.org/data/ (got it here)
-  - API documentation: https://cpj.org/data-api/
-  - Methodology: https://cpj.org/data-methodology/
+  - Database: https://cpj.org/data/ -> downloaded
 
 ---
 
@@ -22,137 +21,100 @@ This document contains all datasets used in the Neo-Colonial Networks and Journa
 
 ### SIPRI Arms Transfers Database
 - **What**: International transfers of major conventional weapons
-- **Coverage**: Global, 1950–2024
-- **Unit**: Supplier-recipient-year (USD TIV values)
+- **Coverage**: Global, 1990–2024 (filtered)
+- **Unit**: Supplier-recipient-year (TIV values)
 - **Access**: Download
+- **Processed file**: `sipri_arms_flows.csv`
 - **Links**:
-  - Database: https://armstransfers.sipri.org/ (got it here)
-  - Overview: https://www.sipri.org/databases/armstransfers
-  - Also via World Bank: https://data.worldbank.org/indicator/MS.MIL.XPRT.KD
+  - Transfer Register: https://armstransfers.sipri.org/ArmsTransfer/TransferRegister -> downloaded
 
 ### Military Intervention Project (MIP)
 - **What**: US military interventions
-- **Coverage**: US only, 1776–2019
-- **Unit**: Intervention-level (200+ variables)
-- **Access**: Download
-- **Links**:
-  - Tufts CSS: https://sites.tufts.edu/css/?page_id=682 (got it here)
-  - Kaggle mirror: https://www.kaggle.com/datasets/konradb/us-military-interventions
-  - Paper: https://journals.sagepub.com/doi/10.1177/00220027221117546
-
-### Military Intervention by Powerful States (MIPS)
-- **What**: Interventions by US, UK, France, China, Russia
-- **Coverage**: Major powers, 1946–2003
+- **Coverage**: US only, 1990–2019 (filtered)
 - **Unit**: Intervention-level
 - **Access**: Download
+- **Processed file**: `mip_us_interventions.csv`
 - **Links**:
-  - Data: https://plsullivan.web.unc.edu/data/
+  - Tufts CSS: https://sites.tufts.edu/css/?page_id=682 -> downloaded
 
-UCDP External Support Dataset (ESD)
-
-What: External support (troops, weapons, training, funding) to conflict parties from state and non-state actors
-Coverage: Global, 1975–2017
-Unit: Triad-year (supporter–recipient–opponent–year)
-Access: Download
-Links:
-
-Data: https://ucdp.uu.se/downloads/
-Codebook: https://ucdp.uu.se/downloads/extsup/ESD/ucdp-esd-181.pdf
+### UCDP External Support Dataset (ESD)
+- **What**: External support (troops, weapons, training, funding) to conflict parties from state and non-state actors
+- **Coverage**: Global, 1990–2017 (filtered)
+- **Unit**: Triad-year (supporter–recipient–opponent–year)
+- **Access**: Download
+- **Processed file**: `ucdp_external_support.csv`
+- **Links**:
+  - Data: https://ucdp.uu.se/downloads/ -> downloaded
+  - Codebook: https://ucdp.uu.se/downloads/extsup/ESD/ucdp-esd-181.pdf
 
 ---
 
 ## Economic Ties Layer
 
-### OECD DAC Aid Flows
-- **What**: Bilateral Official Development Assistance (ODA)
-- **Coverage**: DAC donors to recipients, 1960–present
+### AidData Core Research Release
+- **What**: Bilateral aid flows from 96 donors
+- **Coverage**: Global, 1990–2013 (filtered)
 - **Unit**: Donor-recipient-year
-- **Access**: API + bulk download
-- **Links**:
-  - Data explorer: https://data-explorer.oecd.org/
-  - Overview: https://www.oecd.org/dac/financing-sustainable-development/development-finance-data/
-  - Also via World Bank: https://data.worldbank.org/indicator/DC.DAC.TOTL.CD
-
-### AidData
-- **What**: Aid flows including China (often missing from OECD)
-- **Coverage**: Global, varies by dataset
-- **Unit**: Project-level
 - **Access**: Download
+- **Processed file**: `aiddata_bilateral_flows.csv`
 - **Links**:
-  - Datasets: https://www.aiddata.org/datasets
+  - Datasets: https://www.aiddata.org/data/aiddata-core-research-release-level-1-3-1 -> downloaded
 
-### World Bank International Debt Statistics (IDS)
-- **What**: Bilateral debt relationships
-- **Coverage**: Global, varies
-- **Unit**: Creditor-debtor-year
+### World Bank Net Bilateral ODA
+- **What**: Total net bilateral ODA received per country (control variable, not dyadic)
+- **Coverage**: Global, 1990–2023
+- **Unit**: Recipient-country-year
 - **Access**: Download
+- **Processed file**: `oda_received_by_country.csv`
 - **Links**:
-  - Data: https://data.worldbank.org/products/ids
-  - DataBank: https://databank.worldbank.org/source/international-debt-statistics
-
-### UN Comtrade
-- **What**: Bilateral trade flows
-- **Coverage**: Global, 1962–present
-- **Unit**: Reporter-partner-year-commodity
-- **Access**: API
-- **Links**:
-  - Database: https://comtradeplus.un.org/
+  - Data: https://data.worldbank.org/indicator/DC.DAC.TOTL.CD -> downloaded
 
 ---
 
 ## Colonial History Layer
 
 ### COLDAT (Colonial Dates Dataset)
-- **What**: Aggregated colonial relationships from multiple sources
+- **What**: Colonial relationships between colonizers and colonies
 - **Coverage**: Historical (European colonial empires)
-- **Unit**: Colony-colonizer
-- **Access**: Download (got it here)
-- **Links**:
-  - Harvard Dataverse: https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/T9SDEW
-
-### ICOW Colonial History Data
-- **What**: Primary colonial ruler for each state
-- **Coverage**: COW system states, 1816–2018
-- **Unit**: State-level
+- **Unit**: Colony-colonizer dyad
 - **Access**: Download
+- **Processed file**: `coldat_colonial_ties.csv`
 - **Links**:
-  - Data: http://www.paulhensel.org/icowcol.html
-  - Also on Harvard Dataverse: https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/5EMETG
+  - Harvard Dataverse: https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/T9SDEW -> downloaded
 
 ---
 
-## Potential Control Variables
+## Processed Data Summary
 
-### V-Dem (Varieties of Democracy)
-- **What**: Democracy and governance indicators
-- **Coverage**: Global, 1789–present
-- **Links**: https://www.v-dem.net/
-
-### World Bank Development Indicators
-- **What**: GDP, population, economic indicators
-- **Coverage**: Global
-- **Links**: https://data.worldbank.org/
-
-### UCDP (Uppsala Conflict Data Program)
-- **What**: Armed conflict data
-- **Coverage**: Global, 1946–present
-- **Links**: https://ucdp.uu.se/
+| File | Source | Structure | Rows | Coverage |
+|------|--------|-----------|------|----------|
+| `target_journalist_killings.csv` | CPJ | country-year | ~1,200 | 1992–2026 |
+| `sipri_arms_flows.csv` | SIPRI | supplier-recipient-year | ~28,000 | 1990–2024 |
+| `mip_us_interventions.csv` | MIP | intervention-level | 146 | 1990–2019 |
+| `ucdp_external_support.csv` | UCDP ESD | supporter-target-year | 6,899 | 1990–2017 |
+| `aiddata_bilateral_flows.csv` | AidData | donor-recipient-year | 82,112 | 1990–2013 |
+| `oda_received_by_country.csv` | World Bank | recipient-year | 6,679 | 1990–2023 |
+| `coldat_colonial_ties.csv` | COLDAT | colony-colonizer | ~160 | Historical |
 
 ---
 
-## Data Layer Summary
+## Not Used (Documented for Reference)
 
-| Layer | Dataset | Key Variable | Temporal Coverage |
-|-------|---------|--------------|-------------------|
-| Target | CPJ | Killings, imprisonments | 1992–present |
-| Military | SIPRI | Arms transfers (USD) | 1950–2024 |
-| Military | MIP | US interventions (count) | 1776–2019 |
-| Military | MIPS | Major power interventions | 1946–2003 |
-| Economic | OECD DAC | Aid (% of GDP) | 1960–present |
-| Economic | World Bank IDS | Bilateral debt | Varies |
-| Economic | UN Comtrade | Trade flows | 1962–present |
-| Colonial | COLDAT | Colonial relationship | Historical |
-| Colonial | ICOW | Colonial ruler | Historical |
+### MIPS (Military Intervention by Powerful States)
+- **Status**: Could not locate accessible download
+- **Alternative**: UCDP ESD provides similar global coverage
+
+### OECD DAC (Bilateral ODA)
+- **Status**: Download too large 
+- **Alternative**: AidData provides dyadic aid flows
+
+### World Bank IDS (Debt Statistics)
+- **Status**: Not downloaded (time constraints)
+- **Potential use**: Future refinement of economic dependency measure
+
+### UN Comtrade (Trade Flows)
+- **Status**: Not downloaded (time constraints)
+- **Potential use**: Future refinement of economic dependency measure
 
 ---
 

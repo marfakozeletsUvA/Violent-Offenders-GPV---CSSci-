@@ -26,29 +26,33 @@ Both pathways converge on **impunity**: neo-colonial patrons don't pressure clie
 
 ## Network Architecture
 
+## Network Structure
+
 We build a **multiplex network** with three layers:
 
 ### Layer 1: Military Ties
-| Component | Data Source | Measurement |
-|-----------|-------------|-------------|
-| Arms dependency | SIPRI Arms Transfers | USD value (continuous, 1950–2024) |
-| Intervention history | MIP + MIPS | Count/binary (cumulative, static) |
+| Component | Data Source | Processed File | Measurement |
+|-----------|-------------|----------------|-------------|
+| Arms flows | SIPRI Arms Transfers | `sipri_arms_flows.csv` | TIV value (continuous, 1990–2024) |
+| US interventions | MIP | `mip_us_interventions.csv` | Binary/count (1990–2019) |
+| Global external support | UCDP ESD | `ucdp_external_support.csv` | Troops, weapons, training, funding (1990–2017) |
 
 ### Layer 2: Economic Ties
-| Component | Data Source | Measurement |
-|-----------|-------------|-------------|
-| Aid dependency | OECD DAC + AidData | Aid as % of recipient GDP |
-| Debt relationship | World Bank IDS | Bilateral debt stock |
-| Trade dependency | UN Comtrade | Export concentration % |
+| Component | Data Source | Processed File | Measurement |
+|-----------|-------------|----------------|-------------|
+| Bilateral aid flows | AidData | `aiddata_bilateral_flows.csv` | USD commitments (1990–2013) |
+| Total ODA received | World Bank | `oda_received_by_country.csv` | USD (control variable, 1990–2023) |
 
 ### Layer 3: Colonial History (Base Layer)
-| Component | Data Source | Measurement |
-|-----------|-------------|-------------|
-| Colonial relationship | COLDAT + ICOW | Binary (colonized yes/no) |
-| Recency | COLDAT + ICOW | Years since independence |
+| Component | Data Source | Processed File | Measurement |
+|-----------|-------------|----------------|-------------|
+| Colonial relationship | COLDAT | `coldat_colonial_ties.csv` | Binary (colonized yes/no) |
+| Colonial period | COLDAT | `coldat_colonial_ties.csv` | Start/end years |
 
 ### Outcome Variable
-- **CPJ Database**: Journalist killings and imprisonments (country-year level, 1992–present)
+| Variable | Data Source | Processed File | Measurement |
+|----------|-------------|----------------|-------------|
+| Journalist killings | CPJ | `target_journalist_killings.csv` | Count per country-year (1992–2026) |
 
 ## Methodology
 
