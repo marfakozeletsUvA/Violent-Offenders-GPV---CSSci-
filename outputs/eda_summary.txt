@@ -1,0 +1,34 @@
+
+============================================================
+EDA SUMMARY
+============================================================
+
+TARGET VARIABLE (CPJ Journalist Killings):
+- 763 country-years, 2,550 total killings
+- Highly right-skewed (mean=3.3, median=2)
+- Top countries: Iraq, Palestine, Mexico, Philippines, Syria
+- Modeling approach: Negative binomial regression (count data)
+
+TEMPORAL COVERAGE:
+- All datasets overlap: 1992-2013 (recommended analysis window)
+- AidData ends 2013 (binding constraint)
+- UCDP ends 2017, SIPRI/Debt/ODA extend to 2023-2024
+
+PREDICTOR DISTRIBUTIONS:
+- Arms, Aid, Debt: Log-normal → use log transforms
+- UCDP: Training most common, troops rare
+- Colonial: Britain (65), France (40), Spain (30) dominate
+
+MERGE COVERAGE (1992-2013):
+- AidData: 97%
+- ODA: 91%  
+- Debt: 80%
+- SIPRI: 74%
+- Full overlap: 60% (296 country-years)
+
+NOTES FOR MODELING:
+- UCDP low overlap (34%) is expected — only conflict countries
+- Missing SIPRI = no arms imports (can treat as zero)
+- Consider two models: full data (1992-2013) vs extended (1992-2024 without AidData)
+
+============================================================
