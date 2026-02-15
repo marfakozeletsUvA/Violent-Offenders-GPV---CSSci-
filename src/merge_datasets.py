@@ -20,7 +20,7 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.dirname(SCRIPT_DIR)
 
 # Data directories
-INPUT_DIR = os.path.join(PROJECT_ROOT, 'data', 'preprocessed')
+INPUT_DIR = os.path.join(PROJECT_ROOT, 'data', 'processed')
 OUTPUT_DIR = os.path.join(PROJECT_ROOT, 'data', 'merged')
 
 # Create output directory if it doesn't exist
@@ -255,6 +255,14 @@ def summarize_panel(panel, name):
 
 summarize_panel(panel_full, "FULL DATA (1992-2013)")
 summarize_panel(panel_extended, "EXTENDED (1992-2024)")
+
+# =============================================================================
+# FILL MISSING VALUES
+# =============================================================================
+
+# Fill missing journalist killings with 0 (absence from CPJ = no killings recorded)
+panel_full['journalist_killings'] = panel_full['journalist_killings'].fillna(0)
+panel_extended['journalist_killings'] = panel_extended['journalist_killings'].fillna(0)
 
 # =============================================================================
 # SAVE OUTPUTS
