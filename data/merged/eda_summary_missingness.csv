@@ -1,0 +1,4 @@
+Variable,Missing %,Mechanism,Reason,Handling Strategy
+bilateral_debt,77.9,MNAR,Only 10 creditors tracked by World Bank,"Keep NaN, analyze 10-creditor subset"
+bilateral_aid,17.1,MAR,Some donors not in AidData coverage,Complete case analysis or imputation
+oda_received,7.0,MAR,Developed countries dont receive ODA,Fill with 0 for donor nations
