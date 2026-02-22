@@ -3,6 +3,7 @@
 
 import pandas as pd
 import pycountry
+import unicodedata
 
 # =============================================================================
 # MANUAL MAPPINGS
@@ -41,6 +42,7 @@ manual_map = {
     "Russia": "Russian Federation",
     "Soviet Union": "Russian Federation",
     "Russia (Soviet Union)": "Russian Federation",
+    "Union of Soviet Socialist Republics (USSR)": "Russian Federation",
     
     # UCDP historical variants
     "Cambodia (Kampuchea)": "Cambodia",
@@ -103,6 +105,7 @@ manual_map = {
     "Somalia, Fed. Rep.": "Somalia",
     "Serbia and Montenegro": "Serbia",
     "Yugoslavia": "Serbia",
+    "Yugoslavia, Socialist Federal Republic of": "Serbia",
     "Czechoslovakia": "Czechia",
     "Czech Republic": "Czechia",
     "East Germany (GDR)": "Germany",
@@ -148,10 +151,24 @@ manual_map = {
     "ICE": "Iceland",
 }
 
+manual_map.update({
+    "Holy See": "Holy See",
+    "Hong Kong Special Administrative Region, People's Republic of China": "Hong Kong",
+    "Macao Special Administrative Region, People's Republic of China": "Macao",
+    "Micronesia, Federated States of": "Micronesia, Federated States of",
+    "Sint Maarten, Kingdom of the Netherlands": "Sint Maarten",
+    "São Tomé and Príncipe, Democratic Republic of": "Sao Tome and Principe",
+    "Taiwan Province of China": "Taiwan",
+    "West Bank and Gaza": "Palestine, State of",
+    "Korea, Democratic People's Republic of": "North Korea",
+})
+
 # Special cases without official ISO codes
 special_codes = {
     "Kosovo": "XKX",
     "Taiwan": "TWN",
+    "Holy See": "VAT",
+    "Sint Maarten": "SXM",
 }
 
 # =============================================================================
@@ -227,6 +244,12 @@ def clean_country_name(name):
         return None
     
     name = str(name).strip()
+
+    # Convert to string and normalize Unicode
+    name = unicodedata.normalize('NFKC', str(name))
+
+    # Replace curly quotes with straight ones
+    name = name.replace("’", "'").replace("‘", "'").replace("“", '"').replace("”", '"')
     
     # Strip "Government of" prefix (UCDP)
     if name.startswith("Government of "):
@@ -234,7 +257,16 @@ def clean_country_name(name):
     
     # Apply manual mapping
     if name in manual_map:
-        name = manual_map[name]
+        return manual_map[name]
+
+    # Remove everything after first comma (ASCII or full-width)
+    for comma in [",", "，"]:
+        if comma in name:
+            name = name.split(comma)[0]
+            break
+
+    # Final strip to remove leading/trailing spaces
+    name = name.strip()
     
     return name
 
