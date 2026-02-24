@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Flow Diagram – Neo-Colonial Networks & Journalist Violence</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Bebas+Neue&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #f0ece4;
+    --pink-hot: #e8306a;
+    --pink-mid: #d4547a;
+    --pink-light: #f0a0b8;
+    --pink-pale: #fad4df;
+    --coral: #e05a6a;
+    --dark: #1a1015;
+    --text: #2a1820;
+    --muted: #8a7080;
+    --accent: #c8284a;
+  }
+
+  body {
+    background: var(--bg);
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--text);
+    min-height: 100vh;
+    padding: 40px 30px 60px;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* Background network blob effect */
+  body::before {
+    content: '';
+    position: fixed;
+    top: -100px;
+    right: -150px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(ellipse, rgba(232,48,106,0.08) 0%, rgba(232,48,106,0.03) 50%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    bottom: -80px;
+    left: -100px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(ellipse, rgba(208,84,122,0.07) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page {
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* HEADER */
+  .header {
+    margin-bottom: 48px;
+  }
+
+  .header-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--pink-hot);
+    margin-bottom: 10px;
+  }
+
+  .header h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 6vw, 72px);
+    line-height: 0.95;
+    letter-spacing: 1px;
+    color: var(--dark);
+  }
+
+  .header h1 span {
+    color: var(--pink-hot);
+  }
+
+  .header-sub {
+    font-size: 11px;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 12px;
+  }
+
+  /* FLOW DIAGRAM */
+  .flow {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+  }
+
+  /* Stage row */
+  .stage {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 24px;
+    align-items: start;
+    position: relative;
+    margin-bottom: 0;
+  }
+
+  .stage-label {
+    padding-top: 20px;
+    text-align: right;
+    position: sticky;
+    top: 20px;
+  }
+
+  .stage-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    line-height: 1;
+    color: var(--pink-pale);
+    display: block;
+  }
+
+  .stage-name {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--pink-mid);
+    display: block;
+    margin-top: 2px;
+  }
+
+  .stage-content {
+    position: relative;
+    padding: 24px 0 0;
+  }
+
+  /* Vertical connector line */
+  .stage-content::before {
+    content: '';
+    position: absolute;
+    left: -13px;
+    top: 0;
+    bottom: -48px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--pink-light), var(--pink-pale));
+  }
+
+  .stage:last-child .stage-content::before {
+    display: none;
+  }
+
+  /* Cards */
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  .card {
+    background: white;
+    border: 1px solid rgba(232,48,106,0.15);
+    border-radius: 8px;
+    padding: 14px 18px;
+    position: relative;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    flex: 1;
+    min-width: 160px;
+  }
+
+  .card:hover {
+    border-color: var(--pink-hot);
+    box-shadow: 0 4px 20px rgba(232,48,106,0.12);
+  }
+
+  .card-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--pink-hot);
+    margin-bottom: 6px;
+  }
+
+  .card-title {
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--dark);
+    margin-bottom: 4px;
+    line-height: 1.3;
+  }
+
+  .card-desc {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* Card variants */
+  .card.hot {
+    background: var(--pink-hot);
+    border-color: var(--pink-hot);
+  }
+  .card.hot .card-tag { color: rgba(255,255,255,0.6); }
+  .card.hot .card-title { color: white; }
+  .card.hot .card-desc { color: rgba(255,255,255,0.75); }
+
+  .card.layer-military { border-left: 3px solid #e8306a; }
+  .card.layer-economic { border-left: 3px solid #d4547a; }
+  .card.layer-colonial { border-left: 3px solid #f0a0b8; }
+  .card.layer-outcome { border-left: 3px solid var(--dark); }
+
+  /* Row label within stage */
+  .row-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+    margin-top: 16px;
+  }
+  .row-label:first-child { margin-top: 0; }
+
+  /* Arrow between stages */
+  .arrow-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 24px;
+    align-items: center;
+    margin: 0;
+    height: 48px;
+  }
+
+  .arrow-spacer { }
+
+  .arrow-line {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-left: 0;
+  }
+
+  .arrow-line .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--pink-hot);
+    flex-shrink: 0;
+    margin-left: -4px;
+  }
+
+  .arrow-line .line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--pink-hot), var(--pink-pale));
+    position: relative;
+  }
+
+  .arrow-line .line::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -4px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid var(--pink-pale);
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+  }
+
+  .arrow-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--pink-mid);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* Layer legend */
+  .legend {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(232,48,106,0.15);
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+  }
+
+  .legend-dot {
+    width: 10px;
+    height: 3px;
+    border-radius: 2px;
+  }
+
+  /* Footer */
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 48px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(0,0,0,0.08);
+  }
+
+  .footer-team {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 1px;
+  }
+
+  .footer-course {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--pink-mid);
+    letter-spacing: 1px;
+    text-align: right;
+  }
+
+  /* Network scatter decoration */
+  .network-deco {
+    position: fixed;
+    top: 60px;
+    right: 40px;
+    width: 220px;
+    height: 220px;
+    opacity: 0.12;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  @media (max-width: 700px) {
+    .stage { grid-template-columns: 80px 1fr; gap: 12px; }
+    .stage-num { font-size: 32px; }
+    .network-deco { display: none; }
+    .header h1 { font-size: 36px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Decorative network SVG -->
+<svg class="network-deco" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+  <g stroke="#e8306a" stroke-width="0.8" fill="none" opacity="0.6">
+    <line x1="110" y1="110" x2="60" y2="50"/><line x1="110" y1="110" x2="160" y2="60"/>
+    <line x1="110" y1="110" x2="170" y2="140"/><line x1="110" y1="110" x2="80" y2="170"/>
+    <line x1="110" y1="110" x2="40" y2="130"/><line x1="110" y1="110" x2="130" y2="30"/>
+    <line x1="60" y1="50" x2="130" y2="30"/><line x1="60" y1="50" x2="40" y2="130"/>
+    <line x1="160" y1="60" x2="130" y2="30"/><line x1="160" y1="60" x2="170" y2="140"/>
+    <line x1="170" y1="140" x2="80" y2="170"/><line x1="80" y1="170" x2="40" y2="130"/>
+    <line x1="110" y1="110" x2="190" y2="80"/><line x1="110" y1="110" x2="30" y2="80"/>
+    <line x1="190" y1="80" x2="160" y2="60"/><line x1="30" y1="80" x2="60" y2="50"/>
+    <line x1="110" y1="110" x2="150" y2="190"/><line x1="150" y1="190" x2="80" y2="170"/>
+    <line x1="110" y1="110" x2="70" y2="20"/><line x1="70" y1="20" x2="130" y2="30"/>
+  </g>
+  <g fill="#e8306a">
+    <circle cx="110" cy="110" r="4"/><circle cx="60" cy="50" r="2.5"/><circle cx="160" cy="60" r="2.5"/>
+    <circle cx="170" cy="140" r="2.5"/><circle cx="80" cy="170" r="2.5"/><circle cx="40" cy="130" r="2"/>
+    <circle cx="130" cy="30" r="2"/><circle cx="190" cy="80" r="2"/><circle cx="30" cy="80" r="2"/>
+    <circle cx="150" cy="190" r="2"/><circle cx="70" cy="20" r="1.5"/>
+  </g>
+</svg>
+
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-label">Data & Method Pipeline · Data Flow</div>
+    <h1>NEO-COLONIAL<br>NETWORKS &amp; <span>JOURNALIST</span><br>VIOLENCE</h1>
+    <div class="header-sub">Through SNA Lens · Violent Offenders · GPV</div>
+  </div>
+
+  <!-- FLOW DIAGRAM -->
+  <div class="flow">
+
+    <!-- STAGE 1: RAW DATA SOURCES -->
+    <div class="stage">
+      <div class="stage-label">
+        <span class="stage-num">01</span>
+        <span class="stage-name">Raw Data</span>
+      </div>
+      <div class="stage-content">
+        <div class="row-label">Outcome variable</div>
+        <div class="cards">
+          <div class="card layer-outcome">
+            <div class="card-tag">CPJ</div>
+            <div class="card-title">Journalist Killings</div>
+            <div class="card-desc">Confirmed deaths + impunity status · 1992–2013</div>
+          </div>
+        </div>
+
+        <div class="row-label">Military layer</div>
+        <div class="cards">
+          <div class="card layer-military">
+            <div class="card-tag">SIPRI</div>
+            <div class="card-title">Arms Transfers</div>
+            <div class="card-desc">Directed bilateral arms trade · time-varying</div>
+          </div>
+          <div class="card layer-military">
+            <div class="card-tag">MIP</div>
+            <div class="card-title">Military Interventions</div>
+            <div class="card-desc">Intervention history · cumulative/static</div>
+          </div>
+          <div class="card layer-military">
+            <div class="card-tag">UCDP</div>
+            <div class="card-title">External Support</div>
+            <div class="card-desc">Third-party support in armed conflicts</div>
+          </div>
+        </div>
+
+        <div class="row-label">Economic layer</div>
+        <div class="cards">
+          <div class="card layer-economic">
+            <div class="card-tag">AidData</div>
+            <div class="card-title">Bilateral Aid Flows</div>
+            <div class="card-desc">Donor→recipient financial transfers · time-varying</div>
+          </div>
+          <div class="card layer-economic">
+            <div class="card-tag">World Bank</div>
+            <div class="card-title">Bilateral Debt</div>
+            <div class="card-desc">Debt stock between country pairs</div>
+          </div>
+          <div class="card layer-economic">
+            <div class="card-tag">World Bank</div>
+            <div class="card-title">ODA Statistics</div>
+            <div class="card-desc">Official development assistance flows</div>
+          </div>
+        </div>
+
+        <div class="row-label">Colonial layer</div>
+        <div class="cards">
+          <div class="card layer-colonial">
+            <div class="card-tag">COLDAT</div>
+            <div class="card-title">Colonial History</div>
+            <div class="card-desc">Historical colonizer–colony dyads · static binary + years since independence</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ARROW 1 -->
+    <div class="arrow-row">
+      <div class="arrow-spacer"></div>
+      <div class="arrow-line">
+        <div class="dot"></div>
+        <div class="line"></div>
+        <div class="arrow-label">Country standardisation (COW / ISO3) · pycountry</div>
+      </div>
+    </div>
+
+    <!-- STAGE 2: MERGED PANEL -->
+    <div class="stage">
+      <div class="stage-label">
+        <span class="stage-num">02</span>
+        <span class="stage-name">Merged Panel</span>
+      </div>
+      <div class="stage-content">
+        <div class="cards">
+          <div class="card hot">
+            <div class="card-tag">Dyadic Panel · 1992–2013</div>
+            <div class="card-title">Unified Dataset</div>
+            <div class="card-desc">~60,000 sender–recipient–year observations · 8 sources merged on COW codes</div>
+          </div>
+          <div class="card">
+            <div class="card-tag">EDA Finding</div>
+            <div class="card-title">Overdispersion Confirmed</div>
+            <div class="card-desc">Variance-to-mean ratio 16.4 → negative binomial regression required · log transforms on all continuous vars</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ARROW 2 -->
+    <div class="arrow-row">
+      <div class="arrow-spacer"></div>
+      <div class="arrow-line">
+        <div class="dot"></div>
+        <div class="line"></div>
+        <div class="arrow-label">NetworkX · multiplex construction per year</div>
+      </div>
+    </div>
+
+    <!-- STAGE 3: NETWORK CONSTRUCTION -->
+    <div class="stage">
+      <div class="stage-label">
+        <span class="stage-num">03</span>
+        <span class="stage-name">Multiplex Network</span>
+      </div>
+      <div class="stage-content">
+        <div class="row-label">Three stacked layers · countries = nodes · ties = directed weighted edges</div>
+        <div class="cards">
+          <div class="card layer-military">
+            <div class="card-tag">Layer 1 · Military</div>
+            <div class="card-title">Destabilisation Pathway</div>
+            <div class="card-desc">Arms USD value + intervention legacy → conflict, weak institutions, journalist exposure</div>
+          </div>
+          <div class="card layer-economic">
+            <div class="card-tag">Layer 2 · Economic</div>
+            <div class="card-title">Structural Violence Pathway</div>
+            <div class="card-desc">Aid + debt dependency → elite capture → journalists exposing corruption targeted</div>
+          </div>
+          <div class="card layer-colonial">
+            <div class="card-tag">Layer 3 · Colonial</div>
+            <div class="card-title">Foundation Layer</div>
+            <div class="card-desc">Historical coloniser dyads → determines which military/economic ties exist · static</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ARROW 3 -->
+    <div class="arrow-row">
+      <div class="arrow-spacer"></div>
+      <div class="arrow-line">
+        <div class="dot"></div>
+        <div class="line"></div>
+        <div class="arrow-label">Per country-year feature extraction</div>
+      </div>
+    </div>
+
+    <!-- STAGE 4: FEATURE EXTRACTION -->
+    <div class="stage">
+      <div class="stage-label">
+        <span class="stage-num">04</span>
+        <span class="stage-name">Network Features</span>
+      </div>
+      <div class="stage-content">
+        <div class="cards">
+          <div class="card">
+            <div class="card-tag">Embeddedness</div>
+            <div class="card-title">Neo-Colonial In-Degree</div>
+            <div class="card-desc">How many Global North patrons does this state have ties with?</div>
+          </div>
+          <div class="card">
+            <div class="card-tag">Dependency</div>
+            <div class="card-title">Weighted Tie Strength</div>
+            <div class="card-desc">Sum of relationship intensity per layer per year</div>
+          </div>
+          <div class="card">
+            <div class="card-tag">Structure</div>
+            <div class="card-title">Patron Concentration</div>
+            <div class="card-desc">Single dominant patron vs. diversified — different impunity implications</div>
+          </div>
+          <div class="card">
+            <div class="card-tag">History</div>
+            <div class="card-title">Colonial Continuity</div>
+            <div class="card-desc">Is the current dominant patron also the former coloniser?</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ARROW 4 -->
+    <div class="arrow-row">
+      <div class="arrow-spacer"></div>
+      <div class="arrow-line">
+        <div class="dot"></div>
+        <div class="line"></div>
+        <div class="arrow-label">Three-stage modelling approach</div>
+      </div>
+    </div>
+
+    <!-- STAGE 5: MODELLING -->
+    <div class="stage">
+      <div class="stage-label">
+        <span class="stage-num">05</span>
+        <span class="stage-name">Modelling</span>
+      </div>
+      <div class="stage-content">
+        <div class="cards">
+          <div class="card">
+            <div class="card-tag">Model 1 · Baseline</div>
+            <div class="card-title">Composite Score</div>
+            <div class="card-desc">violence ~ neo_colonial_embeddedness<br>Negative binomial regression</div>
+          </div>
+          <div class="card">
+            <div class="card-tag">Model 2 · Disaggregated</div>
+            <div class="card-title">Layer Comparison</div>
+            <div class="card-desc">violence ~ military + economic + colonial<br>Which layer drives prediction most?</div>
+          </div>
+          <div class="card">
+            <div class="card-tag">Model 3 · Full</div>
+            <div class="card-title">+ Control Variables</div>
+            <div class="card-desc">+ GDP, regime type, conflict intensity<br>Ridge / Lasso / Random Forest</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ARROW 5 -->
+    <div class="arrow-row">
+      <div class="arrow-spacer"></div>
+      <div class="arrow-line">
+        <div class="dot"></div>
+        <div class="line"></div>
+        <div class="arrow-label">Postcolonial critique of model predictions</div>
+      </div>
+    </div>
+
+    <!-- STAGE 6: BIAS AUDIT -->
+    <div class="stage">
+      <div class="stage-label">
+        <span class="stage-num">06</span>
+        <span class="stage-name">Bias Audit</span>
+      </div>
+      <div class="stage-content">
+        <div class="cards">
+          <div class="card hot">
+            <div class="card-tag">Postcolonial Bias Audit</div>
+            <div class="card-title">"Mindless Machine" Critique</div>
+            <div class="card-desc">Does the model learn that killings in neo-colonially embedded states have lower prosecution probability? If yes — it is laundering political impunity into statistical expectation.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end .flow -->
+
+  <!-- Legend -->
+  <div class="legend">
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#e8306a"></div>
+      Military layer
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#d4547a"></div>
+      Economic layer
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#f0a0b8"></div>
+      Colonial layer
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#1a1015"></div>
+      Outcome variable
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#e8306a; opacity:0.5"></div>
+      Time-varying ties
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#d4547a; opacity:0.4; border: 1px dashed #d4547a"></div>
+      Static / cumulative ties
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-team">Marfa · Kiavash · Vanessa · Julia · Sophie</div>
+    <div class="footer-course">GPV: Unequal Machines · Violent Offenders</div>
+  </div>
+
+</div>
+</body>
+</html>
