@@ -82,6 +82,7 @@ manual_map = {
     "Macedonia, FYR": "North Macedonia",
     "Micronesia, Fed. Sts.": "Micronesia, Federated States of",
     "Micronesia (Federated States of)": "Micronesia, Federated States of",
+    "Micronesia": "Micronesia, Federated States of",
     "Bosnia-Herzegovina": "Bosnia and Herzegovina",
     "Bosnia": "Bosnia and Herzegovina",
     "UK": "United Kingdom",
@@ -100,6 +101,7 @@ manual_map = {
     "Hong Kong SAR, China": "Hong Kong",
     "Macao SAR, China": "Macao",
     "Palestine": "Palestine, State of",
+    "Palestinian Authority or West Bank and Gaza Strip": "Palestine, State of",
     "West Bank and Gaza": "Palestine, State of",
     "Palestinian Adm. Areas": "Palestine, State of",
     "Somalia, Fed. Rep.": "Somalia",
@@ -117,6 +119,7 @@ manual_map = {
     "Virgin Islands (UK)": "Virgin Islands, British",
     "Wallis & Futuna": "Wallis and Futuna",
     "St. Helena": "Saint Helena, Ascension and Tristan da Cunha",
+    "Saint Helena": "Saint Helena, Ascension and Tristan da Cunha",
     "Northern Cyprus": "Cyprus",
     "Slovak Republic": "Slovakia",
     
@@ -154,13 +157,17 @@ manual_map = {
 manual_map.update({
     "Holy See": "Holy See",
     "Hong Kong Special Administrative Region, People's Republic of China": "Hong Kong",
+    "Hong Kong (China)": "Hong Kong",
     "Macao Special Administrative Region, People's Republic of China": "Macao",
+    "Macau (China)": "Macao",
     "Micronesia, Federated States of": "Micronesia, Federated States of",
     "Sint Maarten, Kingdom of the Netherlands": "Sint Maarten",
     "São Tomé and Príncipe, Democratic Republic of": "Sao Tome and Principe",
     "Taiwan Province of China": "Taiwan",
+    "Chinese Taipei": "Taiwan",
     "West Bank and Gaza": "Palestine, State of",
     "Korea, Democratic People's Republic of": "North Korea",
+    "China (People's Republic of)": "China",    
 })
 
 # Special cases without official ISO codes
