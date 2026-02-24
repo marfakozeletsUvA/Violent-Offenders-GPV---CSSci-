@@ -6,37 +6,31 @@
 
 ## Core Datasets: Journalist Violence
 
-### RSF Press Freedom Barometer
-- **URL:** https://rsf.org/en/barometer
-- **Coverage:** Global, 1995-present
-- **Contains:** Journalists killed, detained, held hostage, missing
-- **Variables:** Country, outcome type, gender, professional status, context
-- **Notes:** 30 years of global data, good for our intervention-affected countries
-
-### Mapping Media Freedom
-- **URL:** https://www.mappingmediafreedom.org/
-- **Coverage:** Europe-focused, 2014-present
-- **Contains:** Incidents of media freedom violations
-- **Variables:** Incident type (verbal/physical/legal/property), perpetrator type, context, journalist demographics
-- **Notes:** 5,000+ incidents since 2020 — may be too Europe-focused for intervention analysis
-
 ### Committee to Protect Journalists (CPJ)
 - **URL:** https://cpj.org/data/
 - **Coverage:** Global
 - **Contains:** Journalists killed database
 - **Notes:** Alternative/supplement to RSF
 
+
 ---
 
-## Conflict & Intervention Datasets
+## Colonial layer
 
-### UCDP/PRIO Armed Conflict Dataset
-- **URL:** https://ucdp.uu.se/downloads/index.html#armedconflict
-- **Coverage:** 1946-2024
-- **Contains:** Conflict-year data where at least one party is a state government
-- **Format:** CSV, Excel, Stata, R
-- **Citation:** Gleditsch et al. (2002); Davies et al. (2025)
-- **Notes:** Start here — cleanest country-year conflict data
+### COLDAT
+- **URL:** https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/T9SDEW
+- **Contains:** Historical colonial ties, start and end of colonisation
+- **Notes:** Base layer
+
+---
+
+## Military layer
+
+### SIPRI Arms Transfers Database
+- **URL:** https://www.sipri.org/databases/armstransfers
+- **Coverage:** 1950-present
+- **Contains:** International arms trade flows
+- **Notes:** Track military relationships between countries
 
 ### UCDP External Support Dataset
 - **URL:** https://ucdp.uu.se/downloads/index.html (scroll to ESD)
@@ -45,18 +39,6 @@
 - **Format:** Excel, Stata
 - **Citation:** Meier et al. (2022)
 - **Notes:** Gold for network construction — tracks triad relationships (supporter → recipient → opponent)
-
-### UCDP One-sided Violence Dataset
-- **URL:** https://ucdp.uu.se/downloads/index.html#onesided
-- **Coverage:** 1989-2024
-- **Contains:** Intentional attacks on civilians by governments and armed groups
-- **Notes:** Could be useful for context on state violence patterns
-
-### UCDP Georeferenced Event Dataset (GED)
-- **URL:** https://ucdp.uu.se/downloads/index.html#ged_global
-- **Coverage:** 1989-2024, event-level
-- **Contains:** Individual events of organized violence, geocoded
-- **Notes:** Most granular — use if we need event-level analysis
 
 ### Military Intervention Project (MIP)
 - **URL:** https://sites.tufts.edu/css/?page_id=1582
@@ -68,22 +50,35 @@
 
 ---
 
-## Colonial & Trade Ties
+### Economic layer
 
-### CEPII Colonial/Geographic Data
-- **URL:** http://www.cepii.fr/CEPII/en/bdd_modele/bdd_modele.asp
-- **Contains:** Colonial history ties, geographic distances, common language
-- **Notes:** Standard source for gravity models; colonial ties well-documented
+### AidData
+- **URL:** https://www.aiddata.org/datasets
+- **Coverage:** 1990-2013, annual
+- **Contains:** Bilateral aid flows
+- **Notes:** Dependency on financial aid from other countries
 
-### SIPRI Arms Transfers Database
-- **URL:** https://www.sipri.org/databases/armstransfers
-- **Coverage:** 1950-present
-- **Contains:** International arms trade flows
-- **Notes:** Track military relationships between countries
+### World Bank Group - Debt
+- **URL:** https://www.worldbank.org/en/programs/debt-statistics/ids
+- **Coverage:** ~1970-2024, annual
+- **Contains:** Country debt-creditor relationship and debt owned
+- **Notes:** Financial dependency by loans etc.
+
+### IMF International Trade in Goods (IMTS)
+- **URL:** https://data.imf.org/en/datasets/IMF.STA:IMTS
+- **Coverage:** 1940/50-2025, annual
+- **Contains:** International trade flows in goods and merchandise
+- **Notes:** Contains military goods as well (!)
+
+### WTO-OECD Balanced Trade in Services Dataset (BaTiS) — BPM6
+- **URL:** https://www.wto.org/english/res_e/statis_e/trade_datasets_e.htm
+- **Coverage:** 2005-2024, annual
+- **Contains:** International trade flows in services (intangible products)
+- **Notes:** Includes 200+ reporters and partners, covers 26 EBOPS 2010 categories + total services
 
 ---
 
-## Country-Level Indicators
+## Control Variables
 
 ### Fragile States Index
 - **URL:** https://fragilestatesindex.org/excel/
@@ -106,6 +101,32 @@
 - **Contains:** Annual press freedom scores
 - **Notes:** Binary (free/partly free/not free) + detailed scores
 
+### UCDP One-sided Violence Dataset
+- **URL:** https://ucdp.uu.se/downloads/index.html#onesided
+- **Coverage:** 1989-2024
+- **Contains:** Intentional attacks on civilians by governments and armed groups
+- **Notes:** Could be useful for context on state violence patterns
+
+### UCDP Georeferenced Event Dataset (GED)
+- **URL:** https://ucdp.uu.se/downloads/index.html#ged_global
+- **Coverage:** 1989-2024, event-level
+- **Contains:** Individual events of organized violence, geocoded
+- **Notes:** Most granular — use if we need event-level analysis
+
+### UCDP/PRIO Armed Conflict Dataset
+- **URL:** https://ucdp.uu.se/downloads/index.html#armedconflict
+- **Coverage:** 1946-2024
+- **Contains:** Conflict-year data where at least one party is a state government
+- **Format:** CSV, Excel, Stata, R
+- **Citation:** Gleditsch et al. (2002); Davies et al. (2025)
+- **Notes:** Start here — cleanest country-year conflict data
+
+### OECD ODA
+- **URL:** https://www.aiddata.org/datasets
+- **Coverage:** 1960-present, annual
+- **Contains:** Development assistance received
+- **Notes:** Useful to control for which countries receive aid in general
+
 ---
 
 ## Key Papers
@@ -119,18 +140,6 @@
 
 ### On UCDP Data
 - Davies, S., Pettersson, T., Sollenberg, M., & Öberg, M. (2025). "Organized violence 1989–2024." *Journal of Peace Research* 62(4).
-
----
-
-## To Do
-
-- [ ] Download RSF Barometer data
-- [ ] Get course CSV (Mapping Media Freedom?) from instructors
-- [ ] Download UCDP/PRIO Armed Conflict Dataset
-- [ ] Download UCDP External Support Dataset
-- [ ] Explore MIP on Kaggle
-- [ ] Find CEPII colonial ties data
-- [ ] Check V-Dem for press freedom variables
 
 ---
 
