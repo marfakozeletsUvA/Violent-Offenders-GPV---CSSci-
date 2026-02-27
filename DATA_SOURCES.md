@@ -2,120 +2,147 @@
 
 This document contains all datasets used in the Neo-Colonial Networks and Journalist Violence project.
 
+**Analysis window:** 1992–2024
+
 ---
 
-## Target Variable (Outcome)
+## Target Variable
 
 ### Committee to Protect Journalists (CPJ)
-- **What**: Journalist killings
-- **Coverage**: Global, 1992–2026
+- **What**: Journalist killings worldwide
+- **Coverage**: Global, 1992–present
 - **Unit**: Incident-level (aggregated to country-year)
 - **Access**: Download
 - **Processed file**: `target_journalist_killings.csv`
 - **Links**:
-  - Database: https://cpj.org/data/ -> downloaded
+  - Database: https://cpj.org/data/
+- **APA 7 citation**:
+  > Committee to Protect Journalists. (2025). *CPJ's database of attacks on the press* [Data set]. https://cpj.org/data/
 
 ---
 
 ## Military Ties Layer
 
 ### SIPRI Arms Transfers Database
-- **What**: International transfers of major conventional weapons
-- **Coverage**: Global, 1990–2024 (filtered)
-- **Unit**: Supplier-recipient-year (TIV values)
+- **What**: International transfers of major conventional weapons (trend-indicator values, TIV)
+- **Coverage**: Global, 1950–2024
+- **Unit**: Supplier-recipient-year
+- **Role**: Time-varying dyadic measure of military dependency
 - **Access**: Download
 - **Processed file**: `sipri_arms_flows.csv`
 - **Links**:
-  - Transfer Register: https://armstransfers.sipri.org/ArmsTransfer/TransferRegister -> downloaded
+  - Transfer Register: https://armstransfers.sipri.org/ArmsTransfer/TransferRegister
+  - Sources and methods: https://www.sipri.org/databases/armstransfers/sources-and-methods
+- **APA 7 citation**:
+  > Stockholm International Peace Research Institute. (2025). *SIPRI Arms Transfers Database* [Data set]. https://www.sipri.org/databases/armstransfers
 
-### Military Intervention Project (MIP)
-- **What**: US military interventions
-- **Coverage**: US only, 1990–2019 (filtered)
-- **Unit**: Intervention-level
+### UCDP Dyadic Dataset v25.1
+- **What**: Dyad-year data on armed conflicts where at least one party is a state government; records opposing actors, conflict location, intensity level, and type
+- **Coverage**: Global, 1946–2024
+- **Unit**: Dyad-year (government vs. opposition actor)
+- **Role**: Cumulative/windowed conflict presence indicator (military layer predictor)
 - **Access**: Download
-- **Processed file**: `mip_us_interventions.csv`
+- **Processed file**: *to be created*
 - **Links**:
-  - Tufts CSS: https://sites.tufts.edu/css/?page_id=682 -> downloaded
-
-### UCDP External Support Dataset (ESD)
-- **What**: External support (troops, weapons, training, funding) to conflict parties from state and non-state actors
-- **Coverage**: Global, 1990–2017 (filtered)
-- **Unit**: Triad-year (supporter–recipient–opponent–year)
-- **Access**: Download
-- **Processed file**: `ucdp_external_support.csv`
-- **Links**:
-  - Data: https://ucdp.uu.se/downloads/ -> downloaded
-  - Codebook: https://ucdp.uu.se/downloads/extsup/ESD/ucdp-esd-181.pdf
+  - Download: https://ucdp.uu.se/downloads/
+  - Codebook: https://ucdp.uu.se/downloads/dyadic/ucdp-dyadic-251.pdf
+- **APA 7 citations** (cite both):
+  > Davies, S., Pettersson, T., Sollenberg, M., & Öberg, M. (2025). Organized violence 1989–2024, and the challenges of identifying civilian victims. *Journal of Peace Research*, *62*(4).
+  >
+  > Harbom, L., Melander, E., & Wallensteen, P. (2008). Dyadic dimensions of armed conflict, 1946–2007. *Journal of Peace Research*, *45*(5), 697–710. https://doi.org/10.1177/0022343308094331
 
 ---
 
 ## Economic Ties Layer
 
-### AidData Core Research Release
-- **What**: Bilateral aid flows from 96 donors
-- **Coverage**: Global, 1990–2013 (filtered)
+### OECD DAC Bilateral ODA (DAC2A)
+- **What**: Bilateral Official Development Assistance disbursements from DAC donor countries to recipient countries
+- **Coverage**: Global, 1960–present
 - **Unit**: Donor-recipient-year
-- **Access**: Download
-- **Processed file**: `aiddata_bilateral_flows.csv`
+- **Role**: Time-varying dyadic measure of economic dependency (aid flows)
+- **Access**: Download via OECD Data Explorer
+- **Processed file**: *to be created*
 - **Links**:
-  - Datasets: https://www.aiddata.org/data/aiddata-core-research-release-level-1-3-1 -> downloaded
-
-### World Bank Net Bilateral ODA
-- **What**: Total net bilateral ODA received per country (control variable, not dyadic)
-- **Coverage**: Global, 1990–2023
-- **Unit**: Recipient-country-year
-- **Access**: Download
-- **Processed file**: `oda_received_by_country.csv`
-- **Links**:
-  - Data: https://data.worldbank.org/indicator/DC.DAC.TOTL.CD -> downloaded
+  - Data Explorer: https://data-explorer.oecd.org/
+  - Dataset: Aid (ODA) disbursements to countries and regions [DAC2a]
+  - Methodology: https://one.oecd.org/document/DCD/DAC/STAT(2020)44/FINAL/en/pdf
+- **APA 7 citation**:
+  > Organisation for Economic Co-operation and Development. (2025). *Aid (ODA) disbursements to countries and regions [DAC2a]* [Data set]. OECD Data Explorer. https://data-explorer.oecd.org/
 
 ---
 
 ## Colonial History Layer
 
 ### COLDAT (Colonial Dates Dataset)
-- **What**: Colonial relationships between colonizers and colonies
-- **Coverage**: Historical (European colonial empires)
+- **What**: Colonial relationships between European colonizers and colonies, including start/end dates of colonial rule
+- **Coverage**: Historical (European colonial empires, all currently independent states)
 - **Unit**: Colony-colonizer dyad
+- **Role**: Static binary layer used to weight military and economic ties (identifies neo-colonial patron-client channels)
 - **Access**: Download
 - **Processed file**: `coldat_colonial_ties.csv`
 - **Links**:
-  - Harvard Dataverse: https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/T9SDEW -> downloaded
+  - Harvard Dataverse: https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/T9SDEW
+  - Author page: https://www.beckerbastian.net/data
+- **APA 7 citation**:
+  > Becker, B. (2020). Introducing COLDAT: The Colonial Dates Dataset. *SOCIUM/SFB1342 Working Paper Series*, 02/2019. https://doi.org/10.7910/DVN/T9SDEW
 
 ---
 
-## Processed Data Summary
+## Control Variables
 
-| File | Source | Structure | Rows | Coverage |
-|------|--------|-----------|------|----------|
-| `target_journalist_killings.csv` | CPJ | country-year | ~1,200 | 1992–2026 |
-| `sipri_arms_flows.csv` | SIPRI | supplier-recipient-year | ~28,000 | 1990–2024 |
-| `mip_us_interventions.csv` | MIP | intervention-level | 146 | 1990–2019 |
-| `ucdp_external_support.csv` | UCDP ESD | supporter-target-year | 6,899 | 1990–2017 |
-| `aiddata_bilateral_flows.csv` | AidData | donor-recipient-year | 82,112 | 1990–2013 |
-| `oda_received_by_country.csv` | World Bank | recipient-year | 6,679 | 1990–2023 |
-| `coldat_colonial_ties.csv` | COLDAT | colony-colonizer | ~160 | Historical |
+### V-Dem (Varieties of Democracy)
+- **What**: Democracy and governance indicators (polyarchy index used as democracy score)
+- **Coverage**: Global, 1789–present
+- **Unit**: Country-year
+- **Role**: Control variable — regime type as alternative explanation for press freedom
+- **Access**: Download
+- **Processed file**: *to be created*
+- **Links**:
+  - Data: https://www.v-dem.net/data/
+  - Codebook: https://www.v-dem.net/documents/41/v-dem_codebook.pdf
+- **APA 7 citation**:
+  > Coppedge, M., Gerring, J., Knutsen, C. H., Lindberg, S. I., Teorell, J., Altman, D., Bernhard, M., Cornell, A., Fish, M. S., Gastaldi, L., Gjerløw, H., Glynn, A., God, A. G., Grahn, S., Hicken, A., Kinzelbach, K., Krusell, J., Marquardt, K. L., McMann, K., … Ziblatt, D. (2025). *V-Dem dataset v15* [Data set]. Varieties of Democracy (V-Dem) Project. https://doi.org/10.23696/vdemds25
 
----
-
-## Not Used (Documented for Reference)
-
-### MIPS (Military Intervention by Powerful States)
-- **Status**: Could not locate accessible download
-- **Alternative**: UCDP ESD provides similar global coverage
-
-### OECD DAC (Bilateral ODA)
-- **Status**: Download too large 
-- **Alternative**: AidData provides dyadic aid flows
-
-### World Bank IDS (Debt Statistics)
-- **Status**: Not downloaded (time constraints)
-- **Potential use**: Future refinement of economic dependency measure
-
-### UN Comtrade (Trade Flows)
-- **Status**: Not downloaded (time constraints)
-- **Potential use**: Future refinement of economic dependency measure
+### World Bank World Development Indicators (WDI)
+- **What**: GDP per capita (constant USD) and total population
+- **Coverage**: Global, 1960–present
+- **Unit**: Country-year
+- **Role**: Control variables — economic development and population as exposure control
+- **Access**: Download
+- **Processed file**: *to be created*
+- **Links**:
+  - GDP per capita: https://data.worldbank.org/indicator/NY.GDP.PCAP.KD
+  - Population: https://data.worldbank.org/indicator/SP.POP.TOTL
+- **APA 7 citation**:
+  > World Bank. (2025). *World Development Indicators* [Data set]. https://data.worldbank.org/
 
 ---
 
-*Last updated: February 2025*
+## Final Dataset Summary
+
+| Layer | Dataset | Structure | Coverage | Role |
+|-------|---------|-----------|----------|------|
+| Target | CPJ | Country-year | 1992–present | Journalist killings (DV) |
+| Military | SIPRI | Supplier-recipient-year | 1950–2024 | Arms transfers (time-varying, dyadic) |
+| Military | UCDP Dyadic v25.1 | Dyad-year | 1946–2024 | Armed conflict presence (cumulative) |
+| Economic | OECD DAC (DAC2A) | Donor-recipient-year | 1960–present | Bilateral aid flows (time-varying, dyadic) |
+| Colonial | COLDAT | Colony-colonizer | Historical | Colonial relationship (static, binary) |
+| Control | V-Dem | Country-year | 1789–present | Democracy score |
+| Control | World Bank WDI | Country-year | 1960–present | GDP per capita, population |
+
+---
+
+## Datasets Removed from Earlier Versions (Documented for Reference)
+
+| Dataset | Reason for removal |
+|---------|-------------------|
+| Military Intervention Project (MIP) | US-only coverage; ends 2019; replaced by UCDP Dyadic |
+| UCDP External Support Dataset (ESD) | Ends 2017; replaced by UCDP Dyadic for conflict presence |
+| AidData Core Research Release | Ends 2013 (binding constraint on analysis window); replaced by OECD DAC |
+| World Bank Bilateral Debt (IDS) | 77.9% missingness; dropped for parsimony |
+| World Bank Net Bilateral ODA | Aggregate (not dyadic); no longer needed as control since OECD DAC covers aid |
+| UN Comtrade | Trade flows don't cleanly capture asymmetric dependency |
+
+---
+
+*Last updated: February 2026*
