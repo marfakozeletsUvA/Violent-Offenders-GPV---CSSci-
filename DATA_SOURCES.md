@@ -36,20 +36,6 @@ This document contains all datasets used in the Neo-Colonial Networks and Journa
 - **APA 7 citation**:
   > Stockholm International Peace Research Institute. (2025). *SIPRI Arms Transfers Database* [Data set]. https://www.sipri.org/databases/armstransfers
 
-### UCDP Dyadic Dataset v25.1
-- **What**: Dyad-year data on armed conflicts where at least one party is a state government; records opposing actors, conflict location, intensity level, and type
-- **Coverage**: Global, 1946–2024
-- **Unit**: Dyad-year (government vs. opposition actor)
-- **Role**: Cumulative/windowed conflict presence indicator (military layer predictor)
-- **Access**: Download
-- **Processed file**: *to be created*
-- **Links**:
-  - Download: https://ucdp.uu.se/downloads/
-  - Codebook: https://ucdp.uu.se/downloads/dyadic/ucdp-dyadic-251.pdf
-- **APA 7 citations** (cite both):
-  > Davies, S., Pettersson, T., Sollenberg, M., & Öberg, M. (2025). Organized violence 1989–2024, and the challenges of identifying civilian victims. *Journal of Peace Research*, *62*(4).
-  >
-  > Harbom, L., Melander, E., & Wallensteen, P. (2008). Dyadic dimensions of armed conflict, 1946–2007. *Journal of Peace Research*, *45*(5), 697–710. https://doi.org/10.1177/0022343308094331
 
 ---
 
@@ -115,6 +101,21 @@ This document contains all datasets used in the Neo-Colonial Networks and Journa
   - Population: https://data.worldbank.org/indicator/SP.POP.TOTL
 - **APA 7 citation**:
   > World Bank. (2025). *World Development Indicators* [Data set]. https://data.worldbank.org/
+
+  ### UCDP Dyadic Dataset v25.1
+- **What**: Dyad-year data on armed conflicts where at least one party is a state government; records opposing actors, conflict location, intensity level, and type
+- **Coverage**: Global, 1946–2024
+- **Unit**: Dyad-year (government vs. opposition actor)
+- **Role**: Cumulative/windowed conflict presence indicator (military layer predictor)
+- **Access**: Download
+- **Processed file**: *to be created*
+- **Links**:
+  - Download: https://ucdp.uu.se/downloads/
+  - Codebook: https://ucdp.uu.se/downloads/dyadic/ucdp-dyadic-251.pdf
+- **APA 7 citations** (cite both):
+  > Davies, S., Pettersson, T., Sollenberg, M., & Öberg, M. (2025). Organized violence 1989–2024, and the challenges of identifying civilian victims. *Journal of Peace Research*, *62*(4).
+  >
+  > Harbom, L., Melander, E., & Wallensteen, P. (2008). Dyadic dimensions of armed conflict, 1946–2007. *Journal of Peace Research*, *45*(5), 697–710. https://doi.org/10.1177/0022343308094331
 
 ---
 
