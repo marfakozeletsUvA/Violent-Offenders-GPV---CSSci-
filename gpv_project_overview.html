@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GPV: Unequal Machines — Project Overview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:        #13090e;
+      --surface:   #1e1018;
+      --surface2:  #2a1520;
+      --border:    rgba(232,48,106,0.18);
+      --red:       #e8306a;
+      --pink:      #d4547a;
+      --blush:     #f0a0b8;
+      --muted:     #8a7080;
+      --text:      #f0e8ec;
+      --subtext:   #b89aa8;
+      --mono:      'DM Mono', monospace;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      min-height: 100vh;
+      padding: 48px 24px 80px;
+    }
+
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 32px;
+      margin-bottom: 48px;
+    }
+
+    .kicker {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      color: var(--red);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      line-height: 0.95;
+      letter-spacing: 0.02em;
+      color: var(--text);
+      margin-bottom: 18px;
+    }
+
+    h1 span {
+      color: var(--red);
+    }
+
+    .rq {
+      font-size: 1rem;
+      color: var(--subtext);
+      font-style: italic;
+      line-height: 1.6;
+      max-width: 780px;
+      border-left: 3px solid var(--red);
+      padding-left: 16px;
+      margin-top: 18px;
+    }
+
+    .team-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-top: 22px;
+      flex-wrap: wrap;
+    }
+
+    .team-pill {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--muted);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 4px 10px;
+      letter-spacing: 0.06em;
+    }
+
+    /* ── SECTION ── */
+    .section { margin-bottom: 52px; }
+
+    .section-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.45rem;
+      letter-spacing: 0.08em;
+      color: var(--red);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── PATHWAYS ── */
+    .pathways {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .pathway-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--red);
+      border-radius: 4px;
+      padding: 22px 20px;
+    }
+
+    .pathway-card.economic { border-top-color: var(--pink); }
+    .pathway-card.colonial { border-top-color: var(--blush); }
+
+    .pathway-tag {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .pathway-card.military .pathway-tag  { color: var(--red); }
+    .pathway-card.economic .pathway-tag  { color: var(--pink); }
+    .pathway-card.colonial .pathway-tag  { color: var(--blush); }
+
+    .pathway-card h3 {
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    .pathway-chain {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .pathway-chain span {
+      color: var(--subtext);
+    }
+
+    /* ── DATASET GRID ── */
+    .dataset-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .ds-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 18px 20px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .ds-layer {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      transform: rotate(180deg);
+      padding: 4px 0;
+      border-right: 2px solid;
+      padding-right: 8px;
+      align-self: stretch;
+      display: flex;
+      align-items: center;
+    }
+
+    .military-l  { color: var(--red);   border-color: var(--red); }
+    .economic-l  { color: var(--pink);  border-color: var(--pink); }
+    .colonial-l  { color: var(--blush); border-color: var(--blush); }
+    .target-l    { color: #f39c12;      border-color: #f39c12; }
+    .controls-l  { color: var(--muted); border-color: var(--muted); }
+
+    .ds-content {}
+    .ds-name {
+      font-weight: 500;
+      font-size: 0.92rem;
+      margin-bottom: 4px;
+    }
+    .ds-meta {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .ds-meta strong { color: var(--subtext); font-weight: 400; }
+
+    /* ── STATS ── */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 20px 18px;
+      text-align: center;
+    }
+
+    .stat-val {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.4rem;
+      color: var(--red);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat-val.pink  { color: var(--pink); }
+    .stat-val.blush { color: var(--blush); }
+    .stat-val.gold  { color: #f39c12; }
+
+    .stat-label {
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      line-height: 1.4;
+    }
+
+    /* ── NOTABLE FINDINGS ── */
+    .findings-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .finding {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 18px 20px;
+    }
+
+    .finding-head {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 8px;
+    }
+
+    .finding p {
+      font-size: 0.88rem;
+      color: var(--subtext);
+      line-height: 1.6;
+    }
+
+    .finding p strong { color: var(--text); font-weight: 500; }
+
+    /* ── ISSUES ── */
+    .issues-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .issue {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid;
+      border-radius: 0 4px 4px 0;
+      padding: 14px 18px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .issue.resolved   { border-left-color: #4ecca3; }
+    .issue.pending    { border-left-color: #f39c12; }
+    .issue.legacy     { border-left-color: var(--muted); }
+
+    .issue-badge {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 2px;
+      white-space: nowrap;
+      margin-top: 1px;
+      flex-shrink: 0;
+    }
+
+    .issue.resolved .issue-badge  { background: rgba(78,204,163,0.15); color: #4ecca3; }
+    .issue.pending .issue-badge   { background: rgba(243,156,18,0.15);  color: #f39c12; }
+    .issue.legacy .issue-badge    { background: rgba(138,112,128,0.15); color: var(--muted); }
+
+    .issue-text {
+      font-size: 0.875rem;
+      color: var(--subtext);
+      line-height: 1.5;
+    }
+
+    .issue-text strong { color: var(--text); font-weight: 500; }
+
+    /* ── NEO-COLONIAL SCORE ── */
+    .score-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 28px 28px;
+    }
+
+    .formula-block {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 18px 22px;
+      margin: 18px 0;
+      font-family: var(--mono);
+    }
+
+    .formula-block .formula-main {
+      font-size: 1rem;
+      color: var(--red);
+      margin-bottom: 12px;
+    }
+
+    .formula-block .formula-sub {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 2;
+    }
+
+    .formula-block .formula-sub span { color: var(--subtext); }
+
+    .income-table {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .income-pill {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 5px 12px;
+      color: var(--subtext);
+    }
+
+    .income-pill span { color: var(--red); }
+
+    .score-note {
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-style: italic;
+      margin-top: 14px;
+      line-height: 1.5;
+    }
+
+    /* ── TOP COUNTRIES BAR ── */
+    .country-bars { margin-top: 8px; }
+
+    .country-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .country-iso {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--muted);
+      width: 32px;
+      flex-shrink: 0;
+    }
+
+    .bar-wrap {
+      flex: 1;
+      background: var(--surface2);
+      border-radius: 2px;
+      height: 6px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: 2px;
+      background: var(--red);
+    }
+
+    .bar-val {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--muted);
+      width: 40px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+      margin-top: 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer-team {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+    }
+
+    .footer-course {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+    }
+
+    @media (max-width: 768px) {
+      .pathways, .dataset-grid, .stats-grid, .findings-list {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="kicker">GPV: Unequal Machines / Violent Offenders — Project Overview</div>
+    <h1>NEO-COLONIAL<br><span>EMBEDDEDNESS</span><br>& JOURNALIST KILLINGS</h1>
+    <div class="rq">
+      Does a Global South state's embeddedness in neo-colonial networks — through military dependency, economic subordination, and colonial continuity — predict journalist killings and impunity, and which relational layer drives this most?
+    </div>
+    <div class="team-row">
+      <div class="team-pill">Marfa</div>
+      <div class="team-pill">Kiavash</div>
+      <div class="team-pill">Vanessa</div>
+      <div class="team-pill">Sophie</div>
+      <div class="team-pill">Julia</div>
+    </div>
+  </div>
+
+  <!-- CAUSAL PATHWAYS -->
+  <div class="section">
+    <div class="section-label">Causal Pathways</div>
+    <div class="pathways">
+
+      <div class="pathway-card military">
+        <div class="pathway-tag">Layer 01 — Military</div>
+        <h3>Military / Destabilization</h3>
+        <div class="pathway-chain">
+          <span>Arms transfers</span> + <span>conflict presence</span><br>
+          → degrade institutions<br>
+          → journalists exposed<br>
+          → <span>killing + impunity</span>
+        </div>
+      </div>
+
+      <div class="pathway-card economic">
+        <div class="pathway-tag">Layer 02 — Economic</div>
+        <h3>Economic / Structural Violence</h3>
+        <div class="pathway-chain">
+          <span>Aid dependency</span><br>
+          → elite capture<br>
+          → journalists exposing corruption targeted<br>
+          → <span>killing + impunity</span>
+        </div>
+      </div>
+
+      <div class="pathway-card colonial">
+        <div class="pathway-tag">Layer 03 — Colonial</div>
+        <h3>Colonial Continuity</h3>
+        <div class="pathway-chain">
+          <span>Historical colonial tie</span> (static)<br>
+          → amplifies arms + aid effects<br>
+          → patrons don't pressure clients<br>
+          → <span>impunity structurally embedded</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- DATASET STACK -->
+  <div class="section">
+    <div class="section-label">Dataset Stack</div>
+    <div class="dataset-grid">
+
+      <div class="ds-card">
+        <div class="ds-layer military-l">MILITARY</div>
+        <div class="ds-content">
+          <div class="ds-name">SIPRI Arms Transfers Database</div>
+          <div class="ds-meta">
+            <strong>Coverage:</strong> 1950–2024 · bilateral TIV values<br>
+            <strong>Role:</strong> Arms transfers predictor (military layer)
+          </div>
+        </div>
+      </div>
+
+      <div class="ds-card">
+        <div class="ds-layer military-l">MILITARY ?</div>
+        <div class="ds-content">
+          <div class="ds-name">UCDP Dyadic Dataset v25.1</div>
+          <div class="ds-meta">
+            <strong>Coverage:</strong> 1946–2024<br>
+            <strong>Role:</strong> Conflict presence — cumulative + windowed.<br>
+            <strong>Note:</strong> Currently in panel as armed_conflict + conflict_intensity. Predictor vs control TBD
+          </div>
+        </div>
+      </div>
+
+      <div class="ds-card">
+        <div class="ds-layer economic-l">ECONOMIC</div>
+        <div class="ds-content">
+          <div class="ds-name">OECD DAC Bilateral ODA (DAC2A)</div>
+          <div class="ds-meta">
+            <strong>Coverage:</strong> 1992–2024 · 49 donors · 178 recipients · ~104K rows<br>
+            <strong>Role:</strong> Aid dependency predictor<br>
+            <strong>Fix:</strong> FSM duplicate resolved via groupby sum
+          </div>
+        </div>
+      </div>
+
+      <div class="ds-card">
+        <div class="ds-layer economic-l">ECONOMIC</div>
+        <div class="ds-content">
+          <div class="ds-name">World Bank IDS — Bilateral Debt</div>
+          <div class="ds-meta">
+            <strong>Coverage:</strong> Major WB IDS creditors only<br>
+            <strong>Role:</strong> Debt dependency predictor (economic layer)<br>
+            <strong>Missingness:</strong> 83.6% missing · MNAR (only tracks major creditors)
+          </div>
+        </div>
+      </div>
+
+      <div class="ds-card">
+        <div class="ds-layer economic-l">ECONOMIC</div>
+        <div class="ds-content">
+          <div class="ds-name">Neo-Colonial Economic Score <span style="font-family:var(--mono);font-size:0.68rem;color:var(--muted)">(designed, not yet implemented)</span></div>
+          <div class="ds-meta">
+            <strong>Formula:</strong> trade_dependency × income_asymmetry<br>
+            <strong>Trade source:</strong> BACI (CEPII) — preferred over IMF IMTS<br>
+            <strong>See breakdown below for full specification</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="ds-card">
+        <div class="ds-layer colonial-l">COLONIAL</div>
+        <div class="ds-content">
+          <div class="ds-name">COLDAT Colonial Dependency Dataset</div>
+          <div class="ds-meta">
+            <strong>Type:</strong> Static binary — historical colonial tie<br>
+            <strong>Role:</strong> Interaction term amplifying arms + aid effects.<br>
+            <strong>Note:</strong> Foundation layer, not a time-varying predictor
+          </div>
+        </div>
+      </div>
+
+      <div class="ds-card">
+        <div class="ds-layer target-l">TARGET</div>
+        <div class="ds-content">
+          <div class="ds-name">CPJ Journalist Killings</div>
+          <div class="ds-meta">
+            <strong>Coverage:</strong> 1992–2024 (left-binding constraint)<br>
+            <strong>Outcome:</strong> Count of killings + binary impunity (no prosecution)<br>
+            <strong>Window:</strong> Analysis window set to 1992–2024
+          </div>
+        </div>
+      </div>
+
+      <div class="ds-card">
+        <div class="ds-layer controls-l">CONTROLS</div>
+        <div class="ds-content">
+          <div class="ds-name">3 Controls Only</div>
+          <div class="ds-meta">
+            <strong>GDP per capita</strong> — log-transformed, World Bank WDI<br>
+            <strong>Democracy</strong> — V-Dem v2x_polyarchy<br>
+            <strong>Population</strong> — log-transformed, World Bank WDI
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PANEL STATS -->
+  <div class="section">
+    <div class="section-label">Panel Statistics</div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-val">115K</div>
+        <div class="stat-label">Dyadic observations<br>1992–2024</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val pink">213</div>
+        <div class="stat-label">Unique recipient<br>countries</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val blush">112</div>
+        <div class="stat-label">Unique sender<br>countries</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val gold">33</div>
+        <div class="stat-label">Years covered<br>1992 – 2024</div>
+      </div>
+    </div>
+
+    <!-- NOTABLE FINDINGS -->
+    <div class="findings-list">
+
+      <div class="finding">
+        <div class="finding-head">Target — Sparse & Overdispersed</div>
+        <p><strong>83.3% zeros</strong> in journalist_killings. Mean 0.57, max 82 in a single dyad-year. Variance/mean ratio <strong>11.6×</strong> — strongly overdispersed. Confirms Negative Binomial over Poisson.</p>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head">Top Countries by Killings (dyad-aggregated)</div>
+        <div class="country-bars">
+          <div class="country-row">
+            <div class="country-iso">IRQ</div>
+            <div class="bar-wrap"><div class="bar-fill" style="width:100%"></div></div>
+            <div class="bar-val">10,063</div>
+          </div>
+          <div class="country-row">
+            <div class="country-iso">SYR</div>
+            <div class="bar-wrap"><div class="bar-fill" style="width:64%"></div></div>
+            <div class="bar-val">6,409</div>
+          </div>
+          <div class="country-row">
+            <div class="country-iso">PHL</div>
+            <div class="bar-wrap"><div class="bar-fill" style="width:49%"></div></div>
+            <div class="bar-val">4,918</div>
+          </div>
+          <div class="country-row">
+            <div class="country-iso">MEX</div>
+            <div class="bar-wrap"><div class="bar-fill" style="width:48%"></div></div>
+            <div class="bar-val">4,833</div>
+          </div>
+          <div class="country-row">
+            <div class="country-iso">PAK</div>
+            <div class="bar-wrap"><div class="bar-fill" style="width:36%"></div></div>
+            <div class="bar-val">3,613</div>
+          </div>
+        </div>
+        <p style="margin-top:10px; font-size:0.75rem; color: var(--muted); font-style:italic;">Note: dyadic panel inflates totals — same killing counted once per sender</p>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head">Colonial Tie Coverage</div>
+        <p>Only <strong>3.8% of dyads</strong> have colonial_tie = 1, confirming it works best as a binary interaction term amplifying arms/aid effects — not a standalone predictor.</p>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head">Key Missingness</div>
+        <p><strong>bilateral_oda:</strong> 10.2% missing (MAR) · <strong>v2x_polyarchy:</strong> 5.0% (MAR, non-sovereign territories) · <strong>GDP/population:</strong> &lt;2.5% (MAR) · <strong>bilateral_debt:</strong> 83.6% missing (MNAR) — legacy column, to be dropped</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- NEO-COLONIAL ECONOMIC SCORE -->
+  <div class="section">
+    <div class="section-label">Neo-Colonial Economic Score (Designed, Not Yet Implemented)</div>
+    <div class="score-box">
+      <p style="font-size:0.9rem; color: var(--subtext); margin-bottom: 6px;">
+        A composite predictor capturing both <strong style="color:var(--text)">trade exposure</strong> and <strong style="color:var(--text)">structural asymmetry</strong> between sender and recipient — operationalizing economic neo-colonialism at the dyad level.
+      </p>
+
+      <div class="formula-block">
+        <div class="formula-main">econ_neocol_score = trade_dependency × income_asymmetry</div>
+        <div class="formula-sub">
+          <span>trade_dependency</span>   = bilateral_trade / receiver_GDP<br>
+          <span>income_asymmetry</span>   = sender_income_code − receiver_income_code
+        </div>
+      </div>
+
+      <div class="income-table">
+        <div class="income-pill">High Income <span>= 4</span></div>
+        <div class="income-pill">Upper-Middle <span>= 3</span></div>
+        <div class="income-pill">Lower-Middle <span>= 2</span></div>
+        <div class="income-pill">Low Income <span>= 1</span></div>
+      </div>
+
+      <p class="score-note">
+        Historical income classifications from <strong>World Bank OGHIST.xlsx</strong>. Trade data source pending — BACI (CEPII) preferred over IMF IMTS: better coverage (200 countries, 1995–2024), already reconciles mirror flow discrepancies. 3-year gap (1992–1994) is a documented limitation.
+      </p>
+    </div>
+  </div>
+
+  <!-- KNOWN ISSUES -->
+  <div class="section">
+    <div class="section-label">Known Issues</div>
+    <div class="issues-list">
+
+      <div class="issue resolved">
+        <div class="issue-badge">Resolved</div>
+        <div class="issue-text"><strong>FSM duplicate in OECD DAC</strong> — fixed with groupby sum, documented in <code>06_oecd_dac2_oda_fixing.ipynb</code></div>
+      </div>
+
+      <div class="issue resolved">
+        <div class="issue-badge">Resolved</div>
+        <div class="issue-text"><strong>ODA post-log-transform NaN values</strong> — fixed with stricter dropna</div>
+      </div>
+
+      <div class="issue pending">
+        <div class="issue-badge">Pending</div>
+        <div class="issue-text"><strong>Panel needs full rebuild</strong> — <code>v2_panel_dyadic_1992_2024.csv</code> still contains legacy columns (bilateral_debt, us_intervention, tid_export, tid_import, aggregate oda_received). New merge pipeline required: CPJ + SIPRI + UCDP Dyadic v25.1 + OECD DAC + COLDAT</div>
+      </div>
+
+      <div class="issue pending">
+        <div class="issue-badge">Pending</div>
+        <div class="issue-text"><strong>UCDP Dyadic v25.1 not yet downloaded or preprocessed</strong></div>
+      </div>
+
+      <div class="issue legacy">
+        <div class="issue-badge">Legacy</div>
+        <div class="issue-text"><strong>bilateral_debt column (83.6% missing, MNAR)</strong> — present in current panel, to be removed. Only major World Bank IDS creditors tracked — not suitable as predictor</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-team">Marfa · Kiavash · Vanessa · Julia · Sophie</div>
+    <div class="footer-course">GPV: Unequal Machines / Violent Offenders · CSS Graduate Research</div>
+  </div>
+
+</div>
+</body>
+</html>
