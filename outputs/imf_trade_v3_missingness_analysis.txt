@@ -1,0 +1,94 @@
+================================================================================
+MISSING USD VALUE ANALYSIS - SUMMARY REPORT
+================================================================================
+
+OVERALL STATISTICS:
+   Total transactions: 772,009
+   Missing USD values: 478 (0.06%)
+
+BY TRADE DIRECTION:
+   Imports:  53,426 rows, 42 missing (0.08%)
+   Exports:  718,583 rows, 436 missing (0.06%)
+
+================================================================================
+COUNTRIES MOST AFFECTED BY MISSING DATA
+================================================================================
+
+Countries Ranked by Involvement in Missing Transactions:
+    1. Union of Soviet Socialist Republics (USSR)               64 missing (22.78% of its transactions)
+    2. Yugoslavia, Socialist Federal Republic of                50 missing (5.88% of its transactions)
+    3. Papua New Guinea                                         42 missing (0.60% of its transactions)
+    4. Bermuda                                                  25 missing (0.30% of its transactions)
+    5. Czechoslovakia                                           23 missing (3.39% of its transactions)
+    6. Somalia                                                  20 missing (0.42% of its transactions)
+    7. Israel                                                   17 missing (0.20% of its transactions)
+    8. Iraq                                                     17 missing (0.28% of its transactions)
+    9. Macao Special Administrative Region, People's Republic   17 missing (0.32% of its transactions)
+   10. Burundi                                                  17 missing (0.49% of its transactions)
+   11. Libya                                                    16 missing (0.30% of its transactions)
+   12. Tonga                                                    15 missing (0.73% of its transactions)
+   13. Afghanistan, Islamic Republic of                         15 missing (0.33% of its transactions)
+   14. Liberia                                                  14 missing (0.30% of its transactions)
+   15. Faroe Islands                                            13 missing (0.29% of its transactions)
+
+================================================================================
+KEY INSIGHTS
+================================================================================
+
+Countries with Highest Missing Rate (min 10 missing transactions):
+   Union of Soviet Socialist Republics (USSR)         22.78% missing (64/281 transactions)
+   Yugoslavia, Socialist Federal Republic of          5.88% missing (50/851 transactions)
+   Czechoslovakia                                     3.39% missing (23/679 transactions)
+   Tonga                                              0.73% missing (15/2054 transactions)
+   Papua New Guinea                                   0.60% missing (42/7041 transactions)
+   Burundi                                            0.49% missing (17/3483 transactions)
+   Somalia                                            0.42% missing (20/4804 transactions)
+   Greenland                                          0.42% missing (13/3125 transactions)
+   Netherlands Antilles                               0.35% missing (13/3667 transactions)
+   Afghanistan, Islamic Republic of                   0.33% missing (15/4584 transactions)
+   Macao Special Administrative Region, People's Repu 0.32% missing (17/5285 transactions)
+   Liberia                                            0.30% missing (14/4619 transactions)
+   Libya                                              0.30% missing (16/5338 transactions)
+   Bermuda                                            0.30% missing (25/8375 transactions)
+   Maldives                                           0.30% missing (11/3712 transactions)
+   Faroe Islands                                      0.29% missing (13/4500 transactions)
+   Iraq                                               0.28% missing (17/6005 transactions)
+   Belize                                             0.24% missing (12/4915 transactions)
+   Israel                                             0.20% missing (17/8541 transactions)
+   Iran, Islamic Republic of                          0.16% missing (13/8328 transactions)
+
+Pattern Analysis:
+   Total unique country pairs with missing data: 474
+   Total missing transactions: 478
+   Each missing transaction is unique (no pair repeats more than once)
+   Missingness appears to be random, not systematic
+
+================================================================================
+SUMMARY OF KEY FINDINGS
+================================================================================
+
+1. Missing data is very rare:
+   Only 0.06% of all transactions have missing USD values (478 out of 772,009)
+
+2. Missing rate is similar for imports and exports:
+   Imports: 0.08% missing
+   Exports: 0.06% missing
+
+3. Three countries account for most missing values:
+   USSR: 64 missing transactions (22.8% of its transactions)
+   Yugoslavia: 50 missing transactions (5.9% of its transactions)
+   Papua New Guinea: 42 missing transactions (0.6% of its transactions)
+
+4. No country pair has more than one missing transaction:
+   All 474 unique country pairs with missing data appear only once
+   This suggests the missingness is random rather than systematic
+
+5. Recommendation:
+   Given the very low missing rate (0.06%), the simplest approach is to:
+   - Drop the 478 rows with missing USD values, or
+   - Fill missing values with 0 if appropriate for your analysis
+   - No special handling needed for specific country pairs
+
+================================================================================
+END OF REPORT
+================================================================================

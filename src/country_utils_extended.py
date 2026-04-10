@@ -167,7 +167,22 @@ manual_map.update({
     "Chinese Taipei": "Taiwan",
     "West Bank and Gaza": "Palestine, State of",
     "Korea, Democratic People's Republic of": "North Korea",
-    "China (People's Republic of)": "China",    
+    "China (People's Republic of)": "China",
+    "Channel Islands": "Channel Islands",
+    "Curaï¿½o": "Curaçao",
+    "Czechoslovakia (former)": "Czechoslovakia",
+    "Cï¿½te d'Ivoire": "Côte d'Ivoire",
+    "Faeroe Islands": "Faroe Islands",
+    "Korea, Dem. Rep.": "North Korea",
+    "Netherlands Antilles (former)": "Netherlands Antilles",
+    "Puerto Rico (U.S.)": "Puerto Rico",
+    "Serbia and Montenegro (former)": "Serbia and Montenegro",
+    "St. Martin (French part)": "Saint Martin",
+    "Sï¿½o Tomï¿½ and Prï¿½ncipe": "Sao Tome and Principe",
+    "Tï¿½rkiye": "Türkiye",
+    "USSR (former)": "Russian Federation",
+    "Virgin Islands (U.S.)": "Virgin Islands, U.S.",
+    "Yugoslavia (former)": "Serbia",
 })
 
 # Special cases without official ISO codes
@@ -176,6 +191,8 @@ special_codes = {
     "Taiwan": "TWN",
     "Holy See": "VAT",
     "Sint Maarten": "SXM",
+    "Channel Islands": "GGY",
+    "Saint Martin": "MAF",
 }
 
 # =============================================================================
