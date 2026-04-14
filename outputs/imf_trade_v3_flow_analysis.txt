@@ -1,0 +1,30 @@
+============================================================
+TRADE FLOW PATTERN ANALYSIS
+============================================================
+
+Pattern distribution:
+  2 flows: exports only (both directions): 239,747 pairs (54.1%)
+  1 flow: A→B export only: 151,664 pairs (34.2%)
+  3 flows: 36,830 pairs (8.3%)
+  2 flows: both types in A→B only: 5,909 pairs (1.3%)
+  2 flows: A→B export + B→A import: 2,839 pairs (0.6%)
+  1 flow: A→B import only: 2,787 pairs (0.6%)
+  2 flows: other combination: 2,106 pairs (0.5%)
+  all 4 flows (both directions, both types): 1,340 pairs (0.3%)
+  2 flows: imports only (both directions): 14 pairs (0.0%)
+
+
+By number of flows:
+  1 flows: 154,451 pairs (34.8%)
+  2 flows: 250,615 pairs (56.5%)
+  3 flows: 36,830 pairs (8.3%)
+  4 flows: 1,340 pairs (0.3%)
+
+============================================================
+SUMMARY
+============================================================
+Total unique year-country pairs: 443,236
+Pairs with both directions (any type): 288,785
+Pairs with complete data (all 4 flows): 1,340
+Pairs with only exports (both directions): 239,747
+Pairs with only imports (both directions): 14
