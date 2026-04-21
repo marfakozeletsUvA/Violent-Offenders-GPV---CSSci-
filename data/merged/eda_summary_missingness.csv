@@ -1,7 +1,0 @@
-Variable,Missing %,Mechanism,Reason,Strategy
-bilateral_debt,83.7,MNAR,Only major creditors tracked by World Bank IDS,Keep NaN; analyze creditor subset separately
-bilateral_oda,10.2,MAR,Only 49 DAC/partner donors in OECD DAC2,Fill 0 for DAC senders; keep NaN for non-DAC
-v2x_polyarchy,5.0,MAR,Non-sovereign territories lack V-Dem scores,List-wise deletion (low rate)
-gdp_per_capita,2.4,MAR,Small states/territories without WB data,List-wise deletion (low rate)
-population,0.6,MAR,Small states/territories without WB data,List-wise deletion (low rate)
-armed_conflict,0.6,MAR,Recipients not in controls country list,Fill 0 (no conflict recorded)
