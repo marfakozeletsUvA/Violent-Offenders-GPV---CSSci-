@@ -46,6 +46,7 @@ This document contains all datasets used in the Neo-Colonial Networks and Journa
 - **Coverage**: Global, 1960–present
 - **Unit**: Donor-recipient-year
 - **Role**: Time-varying dyadic measure of economic dependency (aid flows)
+- **Note**: Negative values (loan repayment entries, 4.1% of rows) floored at 0 — not meaningful under donor leverage framework
 - **Access**: Download via OECD Data Explorer
 - **Processed file**: *to be created*
 - **Links**:
@@ -54,6 +55,18 @@ This document contains all datasets used in the Neo-Colonial Networks and Journa
   - Methodology: https://one.oecd.org/document/DCD/DAC/STAT(2020)44/FINAL/en/pdf
 - **APA 7 citation**:
   > Organisation for Economic Co-operation and Development. (2025). *Aid (ODA) disbursements to countries and regions [DAC2a]* [Data set]. OECD Data Explorer. https://data-explorer.oecd.org/
+
+### ECI (Harvard Growth Lab — Atlas of Economic Complexity)
+- **What**: Economic Complexity Index rankings by country-year, measuring the knowledge intensity of a country's export basket
+- **Coverage**: 145 countries, 1995–2024
+- **Unit**: Country-year
+- **Role**: Used to compute complexity asymmetry component of econ_neocol_score (ECI_sender − ECI_receiver, floored at 0)
+- **Raw file**: `data/raw/economic/eci-rankings-raw.csv`, column `eci_hs92`
+- **Merge key**: iso3 + year
+- **Links**:
+  - https://atlas.cid.harvard.edu/
+- **APA 7 citation**:
+  > The Growth Lab at Harvard University. (2019). *International Trade Data (HS, 92)* [Data set]. Harvard Dataverse. https://doi.org/10.7910/DVN/T4CHWJ
 
 ---
 
@@ -77,16 +90,8 @@ This document contains all datasets used in the Neo-Colonial Networks and Journa
 ## Control Variables
 
 ### V-Dem (Varieties of Democracy)
-- **What**: Democracy and governance indicators (polyarchy index used as democracy score)
-- **Coverage**: Global, 1789–present
-- **Unit**: Country-year
-- **Role**: Control variable — regime type as alternative explanation for press freedom
-- **Access**: Download
-- **Processed file**: *to be created*
-- **Links**:
-  - Data: https://www.v-dem.net/data/
-  - Codebook: https://www.v-dem.net/documents/41/v-dem_codebook.pdf
-- **APA 7 citation**:
+- **Status**: Dropped from model — 34.1% missingness shrinks analytical sample significantly; lean control set (GDP, population, conflict) is more defensible; see Removed Datasets table below
+- **APA 7 citation** (retained for reference):
   > Coppedge, M., Gerring, J., Knutsen, C. H., Lindberg, S. I., Teorell, J., Altman, D., Bernhard, M., Cornell, A., Fish, M. S., Gastaldi, L., Gjerløw, H., Glynn, A., God, A. G., Grahn, S., Hicken, A., Kinzelbach, K., Krusell, J., Marquardt, K. L., McMann, K., … Ziblatt, D. (2025). *V-Dem dataset v15* [Data set]. Varieties of Democracy (V-Dem) Project. https://doi.org/10.23696/vdemds25
 
 ### World Bank World Development Indicators (WDI)
@@ -127,8 +132,8 @@ This document contains all datasets used in the Neo-Colonial Networks and Journa
 | Military | SIPRI | Supplier-recipient-year | 1950–2024 | Arms transfers (time-varying, dyadic) |
 | Military | UCDP Dyadic v25.1 | Dyad-year | 1946–2024 | Armed conflict presence (cumulative) |
 | Economic | OECD DAC (DAC2A) | Donor-recipient-year | 1960–present | Bilateral aid flows (time-varying, dyadic) |
+| Economic | ECI (Harvard Growth Lab) | Country-year | 1995–2024 | Complexity asymmetry in econ_neocol_score |
 | Colonial | COLDAT | Colony-colonizer | Historical | Colonial relationship (static, binary) |
-| Control | V-Dem | Country-year | 1789–present | Democracy score |
 | Control | World Bank WDI | Country-year | 1960–present | GDP per capita, population |
 
 ---
@@ -140,10 +145,11 @@ This document contains all datasets used in the Neo-Colonial Networks and Journa
 | Military Intervention Project (MIP) | US-only coverage; ends 2019; replaced by UCDP Dyadic |
 | UCDP External Support Dataset (ESD) | Ends 2017; replaced by UCDP Dyadic for conflict presence |
 | AidData Core Research Release | Ends 2013 (binding constraint on analysis window); replaced by OECD DAC |
-| World Bank Bilateral Debt (IDS) | 77.9% missingness; dropped for parsimony |
+| World Bank Bilateral Debt (IDS) | 83.6% MNAR; South-South debt structurally invisible; dropped |
+| V-Dem (v2x_polyarchy) | 34.1% missing; shrinks analytical sample; lean control set preferred |
 | World Bank Net Bilateral ODA | Aggregate (not dyadic); no longer needed as control since OECD DAC covers aid |
 | UN Comtrade | Trade flows don't cleanly capture asymmetric dependency |
 
 ---
 
-*Last updated: February 2026*
+*Last updated: April 2026*

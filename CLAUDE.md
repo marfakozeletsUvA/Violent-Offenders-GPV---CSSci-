@@ -32,7 +32,7 @@ notebooks/              # numbered sequential notebooks
 outputs/                # model outputs, figures
 ## Notebook Naming Convention
 Sequential numbered format: `07_trade_dependency_engineering.ipynb`
-Next notebook should be `08_*`.
+Notebooks currently go up to 11. Next notebook should be `12_*`.
 Always save outputs to `data/processed/` or `data/merged/` with clear names.
 Use relative paths throughout for team portability.
 
@@ -43,12 +43,10 @@ Use relative paths throughout for team portability.
 - UCDP Dyadic Dataset v25.1 → download pending
 
 ### Economic Layer
-- OECD DAC2 bilateral ODA → `data/processed/oecd_dac2_oda.csv`
-- IMF IMTS bilateral trade → `data/processed/v3_imf_trade.csv`
+- OECD DAC2 bilateral ODA → `data/processed/oecd_dac2_oda.csv` (negative values floored at 0)
 - ECI (Harvard Growth Lab) → `data/raw/economic/eci-rankings-raw.csv`
 - ECI-based neo-colonial trade score → `data/processed/econ_neocol_score.csv`
-- World Bank bilateral debt → DROPPED OR TO DROP (83.6% MNAR, South-South debt
-  structurally invisible)
+- World Bank bilateral debt → DROPPED (83.6% MNAR, South-South debt structurally invisible)
 
 ### Colonial Layer
 - COLDAT → `data/processed/coldat_colonial_ties.csv`
@@ -58,12 +56,12 @@ Use relative paths throughout for team portability.
 ### Outcome
 - CPJ journalist killings + impunity → `data/processed/target_journalist_killings.csv`
 
-### Controls (lean set of 4)
+### Controls (lean set of 3)
 - GDP per capita log-transformed (WB)
-- V-Dem v2x_polyarchy
 - UCDP/PRIO Armed Conflict binary presence
 - Population log-transformed (WB)
 - All in: `data/processed/controls/controls_merged.csv`
+- v2x_polyarchy dropped (34.1% missing, shrinks sample — see LIMITATIONS.md)
 
 ### Rejected Variables — Do Not Reintroduce
 - HDI (collinear with GDP + mediates economic pathway)
@@ -73,10 +71,11 @@ Use relative paths throughout for team portability.
 - p5_trade_engineering.csv (old income classification approach — replaced by ECI)
 
 ## Current Panel Files
-- `data/merged/panel_with_controls_1992_2024.csv` — **single source of truth** (115,640 rows × 14 cols)
+- `data/merged/panel_with_controls_1992_2024.csv` — **single source of truth** (115,640 rows × 15 cols)
   - Columns: `sender_iso3`, `recipient_iso3`, `year`, `arms_tiv`, `bilateral_oda`,
-    `econ_neocol_score`, `colonial_tie`, `journalist_killings`, `gdp_per_capita`,
+    `econ_neocol_score`, `econ_neocol_score_log`, `colonial_tie`, `journalist_killings`, `gdp_per_capita`,
     `gdp_per_capita_log`, `population`, `population_log`, `armed_conflict`, `conflict_intensity`
+  - `bilateral_oda` floored at 0 (negative values = DAC2 loan repayment entries, no theoretical meaning)
   - `bilateral_debt` not present (dropped — 83.6% MNAR)
   - `v2x_polyarchy` not present (dropped — 34.1% missing, not needed in lean control set)
 - `panel_dyadic_1992_2024.csv` — **no longer exists**, superseded by the above
@@ -94,7 +93,7 @@ econ_neocol_score = trade_dependency * complexity_asymmetry
 
 ### Data Sources
 - ECI: `data/raw/economic/eci-rankings-raw.csv`, column `eci_hs92`, merge on iso3 + year
-- bilateral_trade: sum of exports + imports per sender-receiver-year from IMF IMTS
+- bilateral_trade: sum of exports + imports per sender-receiver-year (derived from IMF IMTS; v3_imf_trade.csv no longer used directly)
 - receiver_GDP: GDP column in `data/processed/controls/controls_merged.csv`
 
 ### Logic
@@ -103,6 +102,12 @@ econ_neocol_score = trade_dependency * complexity_asymmetry
 - North-North dyads auto-zero (no asymmetry)
 - Angola-style petro-states score correctly low despite high GNI
 - Coverage: 1995-2024 (ECI starts 1995 — document 1992-1994 gap as limitation)
+
+### Log transformation
+```python
+econ_neocol_score_log = np.log1p(econ_neocol_score * 1e9)
+```
+Raw `econ_neocol_score` retained in panel. Log version added as `econ_neocol_score_log` to handle extreme right skew before modelling.
 
 ### How it fits in the pipeline
 - Dyadic variable: sender_iso3, recipient_iso3, year, econ_neocol_score

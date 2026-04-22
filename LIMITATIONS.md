@@ -106,6 +106,11 @@ ISO3 codes. Cannot be used as a directed sender-keyed edge in the ISO3
 framework without a manual name→ISO3 mapping. Used as binary
 recipient-level flag only.
 
+**bilateral_oda floored at 0**
+Negative bilateral_oda values (4.1% of rows) are DAC2 loan repayment entries.
+Floored at 0 using .clip(lower=0) — negative values have no theoretical
+meaning under the donor leverage framework.
+
 **bilateral_oda 10.2% NaN in panel**
 Structural NaNs for non-donor senders (China, arms exporters with no ODA
 records). Not random missingness — reflects the donor/non-donor split
