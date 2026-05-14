@@ -32,7 +32,8 @@ notebooks/              # numbered sequential notebooks
 outputs/                # model outputs, figures
 ## Notebook Naming Convention
 Sequential numbered format: `07_trade_dependency_engineering.ipynb`
-Notebooks currently go up to 12. Next notebook should be `13_*`.
+Completed notebooks: 11 (network construction, patched), 12 (collapse to monadic), 13 (robustness variants), 14 (final panel merge).
+Next notebook: `15_hurdle_model.ipynb` — baseline + network-augmented hurdle models.
 Always save outputs to `data/processed/` or `data/merged/` with clear names.
 Use relative paths throughout for team portability.
 
@@ -89,9 +90,47 @@ Use relative paths throughout for team portability.
   - Columns: `recipient_iso3`, `year`, `arms_tiv_total`, `oda_total`, `econ_neocol_score_total`,
     `colonial_tie_flag`, `journalist_killings`, `gdp_per_capita`, `gdp_per_capita_log`,
     `population`, `population_log`, `armed_conflict`, `conflict_intensity`
-  - `arms_tiv_total`, `oda_total`, `econ_neocol_score_total` = sum of all incoming from senders
+  - `arms_tiv_total` = sum of incoming TIV across all senders per recipient-year
+  - `oda_total` = sum of incoming ODA (USD millions) across all senders per recipient-year
+  - `econ_neocol_score_total` = log1p(sum of raw dyadic econ_neocol_score × 1e9) — raw scores
+    summed first, then scaled and log-transformed (matches dyadic `econ_neocol_score_log` convention;
+    range 0–11; 38.5% zeros reflect ECI gap 1992–1994 and non-ECI countries)
   - `colonial_tie_flag` = 1 if any sender held a colonial relationship with this recipient
   - journalist_killings: 88.7% zeros, max 82, var/mean ratio 14.7x → confirms overdispersion
+
+- `data/merged/panel_monadic_enriched_1992_2024.csv` — **robustness side-branch only** (6,358 rows × 15 cols)
+  - Built by `notebooks/13_robustness_variants.ipynb`
+  - Adds `arms_tiv_stock_5yr` (5-year rolling sum) and `econ_neocol_score_mean` (mean across senders)
+  - NOT used in `panel_final_1992_2024.csv` — for robustness model comparison only
+
+### Final modelling panel
+- `data/merged/panel_final_1992_2024.csv` — **primary modelling input** (6,358 rows × 38 cols)
+  - Built by `notebooks/14_final_panel_merge.ipynb` (inner join of monadic + network measures)
+  - Contains all baseline features, network centrality measures (pre-lagged), and additional lags
+
+  **baseline_features (8):**
+  ```python
+  baseline_features = [
+      'arms_tiv_total_log_lag1',
+      'oda_total_log_lag1',
+      'econ_neocol_score_total_lag1',
+      'colonial_tie_flag',
+      'gdp_per_capita_log',
+      'population_log',
+      'armed_conflict',
+      'conflict_intensity',
+  ]
+  ```
+
+  **network_features (16):** baseline_features plus:
+  ```python
+  network_features = baseline_features + [
+      'arms_tiv_in_strength_lag1',          'arms_tiv_pagerank_lag1',
+      'bilateral_oda_in_strength_lag1',     'bilateral_oda_pagerank_lag1',
+      'econ_neocol_score_in_strength_lag1', 'econ_neocol_score_pagerank_lag1',
+      'colonial_tie_in_strength_lag1',      'colonial_tie_pagerank_lag1',
+  ]
+  ```
 
 - Analysis window: 1992–2024 (CPJ is left binding constraint)
 - Future additions might limit time window (always warn)
@@ -125,8 +164,12 @@ Raw `econ_neocol_score` retained in panel. Log version added as `econ_neocol_sco
 
 ### How it fits in the pipeline
 - Dyadic variable: sender_iso3, recipient_iso3, year, econ_neocol_score
-- Used as edge weight on economic network layer
-- Collapsed to monadic for baseline: sum incoming scores per recipient-year
+- Used as log-transformed edge weight on economic network layer (`econ_neocol_score_log`);
+  NaN → 0 before edge construction (no edge = no measurable asymmetry, not a zero relationship)
+- Collapsed to monadic for baseline: raw scores summed per recipient-year, then log1p(sum × 1e9)
+- **Econ network 1992–1994 caveat:** ECI gap means no econ edges for those years;
+  PageRank distributes uniformly at 1/N. 1-year lag shifts this forward — `econ_neocol_score_pagerank_lag1`
+  is uniform for years 1993, 1994, 1995 in the final panel (not just 1992–1994).
 
 ## Modelling Pipeline
 
@@ -142,10 +185,12 @@ Raw `econ_neocol_score` retained in panel. Log version added as `econ_neocol_sco
    - Compare both models
 
 ### Network Layer Plan
-- Build per-layer directed networks: arms / aid / economic (econ_neocol_score as edge weight) / colonial
-- Extract node-level measures per country-year: weighted in-degree, eigenvector, PageRank
-- Weighted in-degree on economic layer = sum of incoming econ_neocol_score = baseline econ variable
-- Carry all as attributes into collapsed monadic panel
+- Build per-layer directed networks: arms / aid / economic (econ_neocol_score_log as edge weight) / colonial
+- Extract node-level measures per country-year: weighted in-strength, PageRank, dependency balance, in-concentration
+- All network measures pre-lagged by 1 year in nb11 (`_lag1` suffix in `network_measures_1992_2024.csv`)
+- Network in-strength for econ layer ≠ econ_neocol_score_total: in-strength uses log edge weights;
+  total uses log1p(sum_raw × 1e9). Both are valid but measure different things.
+- Carry all as attributes into final panel via inner join (nb14)
 
 ### COLDAT as Moderator
 - Use only as interaction term: arms_effect × colonial_tie, aid_effect × colonial_tie

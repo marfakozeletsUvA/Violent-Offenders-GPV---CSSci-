@@ -131,6 +131,43 @@ have no arms transfers. Zero treated as genuine observed zero, not missing.
 
 ---
 
+## Robustness Variants
+
+**Arms flow vs stock**
+Annual TIV flow used as primary operationalisation of arms dependency.
+5-year rolling stock (`arms_tiv_stock_5yr`) computed in `notebooks/13_robustness_variants.ipynb`
+as alternative. Pearson r = 0.87 between the two — results expected to be robust.
+The stock variant is in `data/merged/panel_monadic_enriched_1992_2024.csv`; not merged
+into the primary `panel_final_1992_2024.csv`. If nb15 uses this for a robustness run,
+read from the enriched panel directly.
+
+**Econ score aggregation: sum-then-log vs sum-of-logs**
+Primary operationalisation: raw dyadic `econ_neocol_score` values summed per recipient-year,
+then `log1p(sum × 1e9)` applied (matching the dyadic log convention). This preserves
+additivity across senders before transformation.
+Previous approach (sum of log values) is correlated but not equivalent — Pearson r = 0.38
+between the two. A mean-based alternative is also in `panel_monadic_enriched_1992_2024.csv`
+(`econ_neocol_score_mean`), but that approach has 35.6% missing (vs 0% for the sum-then-log
+approach which produces 0 for no-ECI rows) and runs on a materially smaller sample.
+Interpret mean-based results with caution if used as robustness check.
+
+**Double-lagging confirmed absent**
+Network centrality measures are pre-lagged once in `notebooks/11_network_construction.ipynb`
+(all `_lag1` columns in `network_measures_1992_2024.csv`). Flow totals (`arms_tiv_total_log`,
+`oda_total_log`, `econ_neocol_score_total`) are lagged once in `notebooks/14_final_panel_merge.ipynb`.
+No variable is lagged twice. Verified: zero row-level mismatches on all lag columns.
+
+**Uniform econ PageRank 1993–1995 in final panel**
+ECI data starts 1995. For 1992–1994, `econ_neocol_score` is NaN for all dyads → no econ
+network edges → PageRank distributes uniformly at 1/N for those years.
+The 1-year lag applied in nb11 shifts this forward by one year: `econ_neocol_score_pagerank_lag1`
+in the final panel is uniform (≈ 1/N) for years 1993, 1994, and 1995 — one extra year beyond
+the ECI gap itself. Confirmed: only 2 unique non-null values in 1992–1994 rows
+(≈ 0.00488 and 0.00478, matching 1/205 and 1/209 for the two network sizes those years).
+Flag in model interpretation: econ PageRank provides no cross-country variation for 1993–1995.
+
+---
+
 ## Modelling
 
 **Conflict as control and potential mediator**
