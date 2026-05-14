@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(conda run *)",
-      "Bash(/opt/homebrew/Caskroom/miniconda/base/envs/basecamp/bin/python *)"
+      "Bash(/opt/homebrew/Caskroom/miniconda/base/envs/basecamp/bin/python *)",
+      "Bash(/opt/homebrew/Caskroom/miniconda/base/envs/basecamp/bin/jupyter nbconvert *)"
     ]
   }
 }
