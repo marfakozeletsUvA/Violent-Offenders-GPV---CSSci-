@@ -32,7 +32,7 @@ notebooks/              # numbered sequential notebooks
 outputs/                # model outputs, figures
 ## Notebook Naming Convention
 Sequential numbered format: `07_trade_dependency_engineering.ipynb`
-Notebooks currently go up to 11. Next notebook should be `12_*`.
+Notebooks currently go up to 12. Next notebook should be `13_*`.
 Always save outputs to `data/processed/` or `data/merged/` with clear names.
 Use relative paths throughout for team portability.
 
@@ -71,14 +71,28 @@ Use relative paths throughout for team portability.
 - p5_trade_engineering.csv (old income classification approach — replaced by ECI)
 
 ## Current Panel Files
-- `data/merged/panel_with_controls_1992_2024.csv` — **single source of truth** (115,640 rows × 15 cols)
+
+### Dyadic panel (sender–recipient–year)
+- `data/merged/dyadic_panel_1992_2024_oda_capped_log.csv` — **primary dyadic source of truth** (115,640 rows × 15 cols)
   - Columns: `sender_iso3`, `recipient_iso3`, `year`, `arms_tiv`, `bilateral_oda`,
     `econ_neocol_score`, `econ_neocol_score_log`, `colonial_tie`, `journalist_killings`, `gdp_per_capita`,
     `gdp_per_capita_log`, `population`, `population_log`, `armed_conflict`, `conflict_intensity`
   - `bilateral_oda` floored at 0 (negative values = DAC2 loan repayment entries, no theoretical meaning)
   - `bilateral_debt` not present (dropped — 83.6% MNAR)
   - `v2x_polyarchy` not present (dropped — 34.1% missing, not needed in lean control set)
-- `panel_dyadic_1992_2024.csv` — **no longer exists**, superseded by the above
+- `data/merged/dyadic_panel_1992_2024_oda_capped.csv` — same panel without log transforms (intermediate)
+- `data/merged/dyadic_panel_1992_2024_pre_oda_floor.csv` — pre-floor snapshot (negative ODA values retained)
+
+### Monadic panel (recipient–year) — use for modelling
+- `data/merged/panel_monadic_1992_2024.csv` — **collapsed for baseline modelling** (6,358 rows × 13 cols)
+  - Built by `notebooks/12_collapse_monadic_panel.ipynb`
+  - Columns: `recipient_iso3`, `year`, `arms_tiv_total`, `oda_total`, `econ_neocol_score_total`,
+    `colonial_tie_flag`, `journalist_killings`, `gdp_per_capita`, `gdp_per_capita_log`,
+    `population`, `population_log`, `armed_conflict`, `conflict_intensity`
+  - `arms_tiv_total`, `oda_total`, `econ_neocol_score_total` = sum of all incoming from senders
+  - `colonial_tie_flag` = 1 if any sender held a colonial relationship with this recipient
+  - journalist_killings: 88.7% zeros, max 82, var/mean ratio 14.7x → confirms overdispersion
+
 - Analysis window: 1992–2024 (CPJ is left binding constraint)
 - Future additions might limit time window (always warn)
 
