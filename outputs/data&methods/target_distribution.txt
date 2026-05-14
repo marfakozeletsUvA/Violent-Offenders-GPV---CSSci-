@@ -1,0 +1,15 @@
+journalist_killings — Target Variable Distribution
+====================================================
+Total rows (recipient-year obs):  6,358
+Zero share:                       88.7%
+Mean:                             0.3688
+Median:                           0.0
+Max:                              82
+Variance / Mean ratio:            14.75x  (overdispersion confirmed)
+Unique recipient countries:       213
+
+Interpretation:
+  88.7% of recipient-year obs record zero journalist killings.
+  Variance/Mean = 14.7x >> 1 confirms overdispersion.
+  Combined with zero-inflation this motivates the hurdle negative binomial
+  specification over a straight Poisson or NegBin model.

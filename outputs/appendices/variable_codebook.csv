@@ -1,0 +1,14 @@
+variable_name,description,source,unit,transformation,missing_pct
+recipient_iso3,ISO 3166-1 alpha-3 country code of the recipient/target country,Panel construction (country standardisation nb02),categorical,none,0.0
+year,Calendar year of observation,Panel construction,integer (1992–2024),none,0.0
+arms_tiv_total,Sum of incoming arms transfers (TIV) from all senders to this recipient-year,SIPRI Arms Transfers Database,"Trend Indicator Value (TIV), millions",summed across senders; 0 where no transfers recorded,0.0
+oda_total,Sum of bilateral ODA received from all DAC donors in this recipient-year,OECD DAC2 (Creditor Reporting System),USD millions (constant prices),negative values (loan repayments) floored at 0; summed across senders,0.0
+econ_neocol_score_total,"Sum of incoming economic neo-colonial pressure scores from all senders. Each dyadic score = (trade_dependency) × (ECI_sender − ECI_receiver).clip(0), capturing unequal exchange weighted by trade exposure.",Harvard Growth Lab ECI (eci_hs92) + BACI/IMF bilateral trade,dimensionless (ratio × ECI difference),raw score log1p-scaled (×1e9) for modelling; summed across senders here,0.0
+colonial_tie_flag,"1 if any sender held a formal colonial relationship with this recipient (direct colony, protectorate, or mandate); 0 otherwise",COLDAT Colonial Dates Dataset,binary (0/1),max across senders (flag = 1 if any sender qualifies),0.0
+journalist_killings,Confirmed journalist killings in this recipient country-year,Committee to Protect Journalists (CPJ) Database,count (non-negative integer),"none; 88.7% zeros, max 82, overdispersion ratio ~14.7x in raw panel",0.0
+gdp_per_capita,GDP per capita in current USD for the recipient country,World Bank World Development Indicators (WDI),current USD,none (raw; log version below used in modelling),6.35
+gdp_per_capita_log,Natural log of GDP per capita; reduces right skew for modelling,World Bank WDI (derived),log(current USD),np.log(gdp_per_capita),6.35
+population,Total population of the recipient country,World Bank WDI,persons,none (raw; log version below used in modelling),4.22
+population_log,Natural log of total population,World Bank WDI (derived),log(persons),np.log(population),4.22
+armed_conflict,Binary indicator of active armed conflict (≥25 battle deaths) in recipient country-year,UCDP/PRIO Armed Conflict Dataset v25.1,binary (0/1),1 if any conflict episode active; 0 otherwise,3.7
+conflict_intensity,"Ordinal conflict intensity: 0 = no conflict, 1 = minor (25–999 deaths), 2 = war (≥1000 deaths)",UCDP/PRIO Armed Conflict Dataset v25.1,ordinal (0–2),max intensity across episodes in country-year,3.7
