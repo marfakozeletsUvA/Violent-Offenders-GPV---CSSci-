@@ -1,0 +1,5 @@
+model,sample,oda_coef,oda_p_value,nobs
+logit_any_killing,all_baseline_rows,0.18188012091273661,2.6206148413562236e-09,5765
+logit_any_killing,excluding_irq_syr,0.16501037509813113,1.2290620623684021e-07,5703
+negative_binomial_positive_counts,all_positive_rows,0.05755246650808943,0.014062922050135516,687
+negative_binomial_positive_counts,excluding_irq_syr,0.006274160244863276,0.7999656312729538,657

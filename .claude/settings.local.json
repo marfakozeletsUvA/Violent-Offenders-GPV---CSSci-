@@ -6,7 +6,9 @@
       "Bash(/opt/homebrew/Caskroom/miniconda/base/envs/basecamp/bin/jupyter nbconvert *)",
       "Bash(python *)",
       "Bash(jupyter nbconvert *)",
-      "Bash(/opt/homebrew/Caskroom/miniconda/base/envs/basecamp/bin/python3 *)"
+      "Bash(/opt/homebrew/Caskroom/miniconda/base/envs/basecamp/bin/python3 *)",
+      "Bash(python3 *)",
+      "Bash(git add *)"
     ]
   }
 }

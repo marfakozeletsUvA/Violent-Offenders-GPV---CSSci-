@@ -1,0 +1,2 @@
+model,nobs,aic,log_likelihood,pseudo_r2
+logit_any_killing,5765,3097.1559264740536,-1539.5779632370268,0.2688660516598883

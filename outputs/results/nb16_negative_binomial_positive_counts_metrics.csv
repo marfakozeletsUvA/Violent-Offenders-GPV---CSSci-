@@ -1,0 +1,2 @@
+model,nobs,aic,log_likelihood,pseudo_r2
+negative_binomial_positive_counts,687,2899.3018192699183,-1439.6509096349591,0.09835516357083751
