@@ -48,13 +48,23 @@ This document contains all datasets used in the Neo-Colonial Networks and Journa
 - **Role**: Time-varying dyadic measure of economic dependency (aid flows)
 - **Note**: Negative values (loan repayment entries, 4.1% of rows) floored at 0 — not meaningful under donor leverage framework
 - **Access**: Download via OECD Data Explorer
-- **Processed file**: *to be created*
+- **Processed file**: `data/processed/oecd_dac2_oda.csv`
 - **Links**:
   - Data Explorer: https://data-explorer.oecd.org/
   - Dataset: Aid (ODA) disbursements to countries and regions [DAC2a]
   - Methodology: https://one.oecd.org/document/DCD/DAC/STAT(2020)44/FINAL/en/pdf
 - **APA 7 citation**:
   > Organisation for Economic Co-operation and Development. (2025). *Aid (ODA) disbursements to countries and regions [DAC2a]* [Data set]. OECD Data Explorer. https://data-explorer.oecd.org/
+
+### IMF Direction of Trade Statistics (DOTS)
+- **What**: Bilateral trade flows (exports + imports) between country pairs
+- **Coverage**: Global, multi-decade
+- **Unit**: Country-pair-year
+- **Role**: Source for bilateral_trade values used in `econ_neocol_score` construction (trade_dependency = bilateral_trade / receiver_GDP)
+- **Note**: Raw IMF DOTS data was processed once into `data/processed/v3_imf_trade.csv`; this intermediate file is used by `notebooks/08_econ_neocol_score.ipynb`. The raw IMF DOTS source does not need to be re-downloaded for the current pipeline.
+- **Processed file**: `data/processed/v3_imf_trade.csv` (intermediate — do not use directly for modelling)
+- **APA 7 citation**:
+  > International Monetary Fund. (2025). *Direction of Trade Statistics* [Data set]. IMF Data. https://data.imf.org/?sk=9d6028d4-f14a-464c-a2f2-59b2cd424b85
 
 ### ECI (Harvard Growth Lab — Atlas of Economic Complexity)
 - **What**: Economic Complexity Index rankings by country-year, measuring the knowledge intensity of a country's export basket
@@ -100,20 +110,21 @@ This document contains all datasets used in the Neo-Colonial Networks and Journa
 - **Unit**: Country-year
 - **Role**: Control variables — economic development and population as exposure control
 - **Access**: Download
-- **Processed file**: *to be created*
+- **Processed file**: `data/processed/controls/controls_merged.csv` (merged with UCDP conflict data)
+- **Raw files**: `data/raw/controls/gdp-control-raw.csv`, `data/raw/controls/pop-worldbank-control-raw.csv`
 - **Links**:
   - GDP per capita: https://data.worldbank.org/indicator/NY.GDP.PCAP.KD
   - Population: https://data.worldbank.org/indicator/SP.POP.TOTL
 - **APA 7 citation**:
   > World Bank. (2025). *World Development Indicators* [Data set]. https://data.worldbank.org/
 
-  ### UCDP Dyadic Dataset v25.1
+### UCDP Dyadic Dataset v25.1
 - **What**: Dyad-year data on armed conflicts where at least one party is a state government; records opposing actors, conflict location, intensity level, and type
 - **Coverage**: Global, 1946–2024
 - **Unit**: Dyad-year (government vs. opposition actor)
 - **Role**: Cumulative/windowed conflict presence indicator (military layer predictor)
 - **Access**: Download
-- **Processed file**: *to be created*
+- **Processed file**: `data/raw/controls/ucdp-control-raw.csv` (merged into `data/processed/controls/controls_merged.csv`)
 - **Links**:
   - Download: https://ucdp.uu.se/downloads/
   - Codebook: https://ucdp.uu.se/downloads/dyadic/ucdp-dyadic-251.pdf
@@ -130,8 +141,9 @@ This document contains all datasets used in the Neo-Colonial Networks and Journa
 |-------|---------|-----------|----------|------|
 | Target | CPJ | Country-year | 1992–present | Journalist killings (DV) |
 | Military | SIPRI | Supplier-recipient-year | 1950–2024 | Arms transfers (time-varying, dyadic) |
-| Military | UCDP Dyadic v25.1 | Dyad-year | 1946–2024 | Armed conflict presence (cumulative) |
+| Military | UCDP Dyadic v25.1 | Dyad-year | 1946–2024 | Armed conflict presence (control variable) |
 | Economic | OECD DAC (DAC2A) | Donor-recipient-year | 1960–present | Bilateral aid flows (time-varying, dyadic) |
+| Economic | IMF DOTS | Country-pair-year | Multi-decade | Bilateral trade flows for econ_neocol_score |
 | Economic | ECI (Harvard Growth Lab) | Country-year | 1995–2024 | Complexity asymmetry in econ_neocol_score |
 | Colonial | COLDAT | Colony-colonizer | Historical | Colonial relationship (static, binary) |
 | Control | World Bank WDI | Country-year | 1960–present | GDP per capita, population |
@@ -152,4 +164,4 @@ This document contains all datasets used in the Neo-Colonial Networks and Journa
 
 ---
 
-*Last updated: April 2026*
+*Last updated: May 2026*

@@ -32,8 +32,28 @@ notebooks/              # numbered sequential notebooks
 outputs/                # model outputs, figures
 ## Notebook Naming Convention
 Sequential numbered format: `07_trade_dependency_engineering.ipynb`
-Completed notebooks: 11 (network construction, patched), 12 (collapse to monadic), 13 (robustness variants), 14 (final panel merge).
-Next notebook: `15_hurdle_model.ipynb` — baseline + network-augmented hurdle models.
+
+### Pipeline Sequence (nb02–nb17) — All Completed
+
+| Notebook | Status | Description |
+|----------|--------|-------------|
+| `02_country_standardization.ipynb` | Active | Cross-dataset country name standardisation to ISO3 |
+| `03_eda.ipynb` | Active | Exploratory data analysis (raw datasets) |
+| `04_eda_merged.ipynb` | Active | EDA on the merged dyadic panel (1992–2024) |
+| `05_controls_preprocessing.ipynb` | Active | Control variables preprocessing (GDP, population, UCDP conflict) |
+| `06_oecd_dac2_oda_fixing.ipynb` | Active | OECD DAC2 ODA duplicate fix and FSM correction |
+| `07_trade_dependency_engineering_DEPRECATED.ipynb` | **Deprecated** | Old income classification approach — replaced by ECI-based econ_neocol_score |
+| `08_econ_neocol_score.ipynb` | Active | Economic neo-colonial score construction (ECI × trade/GDP asymmetry) |
+| `09_transform_oda_values.ipynb` | Active | ODA negative values floor (loan repayment entries → 0) |
+| `10_final_panel_eda.ipynb` | Active | Final panel EDA; target variable distribution and missingness analysis |
+| `11_network_construction.ipynb` | Active | Network construction — 4 layers (arms, ODA, econ, colonial); pre-lagged centrality measures |
+| `12_collapse_monadic_panel.ipynb` | Active | Dyadic → monadic panel collapse (recipient-year aggregation) |
+| `13_robustness_variants.ipynb` | Active | Robustness operationalisations: 5-yr arms stock, econ score mean aggregation |
+| `14_final_panel_merge.ipynb` | Active | Final panel merge: monadic + network measures + lag transforms |
+| `15_network_diagnostics.ipynb` | Active | Network diagnostics and visualisation (pre-modelling checks) |
+| `16_baseline_hurdle_model.ipynb` | Active | Baseline hurdle model (logit + NegBin, non-robust SEs) |
+| `17_network_augmented_hurdle_model.ipynb` | Active | Network-augmented hurdle model (+ network features, interaction terms, clustered SEs) |
+
 Always save outputs to `data/processed/` or `data/merged/` with clear names.
 Use relative paths throughout for team portability.
 
@@ -41,7 +61,7 @@ Use relative paths throughout for team portability.
 
 ### Military Layer
 - SIPRI Arms Transfers → `data/processed/sipri_trade_register.csv`
-- UCDP Dyadic Dataset v25.1 → download pending
+- UCDP Dyadic Dataset v25.1 → `data/raw/controls/ucdp-control-raw.csv` (merged into `data/processed/controls/controls_merged.csv`)
 
 ### Economic Layer
 - OECD DAC2 bilateral ODA → `data/processed/oecd_dac2_oda.csv` (negative values floored at 0)
@@ -122,15 +142,27 @@ Use relative paths throughout for team portability.
   ]
   ```
 
-  **network_features (16):** baseline_features plus:
+  **network_only_features (8):** added on top of baseline_features in nb17:
   ```python
-  network_features = baseline_features + [
+  network_only_features = [
       'arms_tiv_in_strength_lag1',          'arms_tiv_pagerank_lag1',
       'bilateral_oda_in_strength_lag1',     'bilateral_oda_pagerank_lag1',
       'econ_neocol_score_in_strength_lag1', 'econ_neocol_score_pagerank_lag1',
       'colonial_tie_in_strength_lag1',      'colonial_tie_pagerank_lag1',
   ]
   ```
+  `network_features` = `baseline_features` + `network_only_features` (16 total)
+
+  **interaction_features (3, constructed in nb17 — not stored in panel_final):**
+  ```python
+  interaction_features = [
+      'arms_x_colonial',   # arms_tiv_total_log_lag1 × colonial_tie_flag
+      'oda_x_colonial',    # oda_total_log_lag1 × colonial_tie_flag
+      'econ_x_colonial',   # econ_neocol_score_total_lag1 × colonial_tie_flag
+  ]
+  ```
+  These terms are computed during model fitting in nb17 and are not stored in
+  `panel_final_1992_2024.csv`.
 
 - Analysis window: 1992–2024 (CPJ is left binding constraint)
 - Future additions might limit time window (always warn)
@@ -178,19 +210,42 @@ Raw `econ_neocol_score` retained in panel. Log version added as `econ_neocol_sco
 - Confirmed overdispersion → negative binomial appropriate
 - Zero-inflation → hurdle model preferred over straight NegBin
 
-### Two Models
-1. **Baseline hurdle model** — logistic on zeros + NegBin on non-zeros
+### Two Models (Both Completed)
+1. **Baseline hurdle model** (nb16) — logistic on zeros + NegBin on non-zeros
    - Predictors: collapsed monadic versions of all neo-colonial layers + controls
-2. **Network-augmented hurdle model** — same + network centrality measures
-   - Compare both models
+   - SE method: non-robust (standard MLE defaults)
+2. **Network-augmented hurdle model** (nb17) — baseline + network centrality + interaction terms
+   - SE method: clustered by `recipient_iso3` throughout
+   - Compare both models via AIC and coefficient stability
 
-### Network Layer Plan
-- Build per-layer directed networks: arms / aid / economic (econ_neocol_score_log as edge weight) / colonial
-- Extract node-level measures per country-year: weighted in-strength, PageRank, dependency balance, in-concentration
+### Network Layer (Completed in nb11)
+- Built per-layer directed networks: arms / ODA / economic (econ_neocol_score_log as edge weight) / colonial
+- Extracted node-level measures per country-year: weighted in-strength, out-strength, PageRank, dependency balance, in-concentration
 - All network measures pre-lagged by 1 year in nb11 (`_lag1` suffix in `network_measures_1992_2024.csv`)
 - Network in-strength for econ layer ≠ econ_neocol_score_total: in-strength uses log edge weights;
   total uses log1p(sum_raw × 1e9). Both are valid but measure different things.
-- Carry all as attributes into final panel via inner join (nb14)
+- Carried into final panel via inner join in nb14
+
+### Model Results Summary
+
+**nb16 — Baseline Hurdle Model**
+- Analytical sample: 5,765 obs (593 dropped, 9.3% — lag NaNs + missing GDP/population/conflict)
+- Logit (any killing): AUC 0.857, McFadden R² = 0.269, AIC = 3097.2
+- NegBin (count | killing > 0): pseudo-R² = 0.098, AIC = 2899.3, n = 687
+- SE method: non-robust
+
+**nb17 — Network-Augmented Hurdle Model**
+- Same analytical sample as nb16
+- Logit: AUC 0.857, McFadden R² = 0.284, AIC = 3054.1 (Δ = −43.1 vs nb16)
+- NegBin: AIC = 2863.9 (Δ = −35.4 vs nb16), overdispersion alpha = 0.41
+- SE method: clustered by `recipient_iso3`
+
+**Key findings**
+- `oda_x_colonial` significant in both components (logit p = 0.046, NegBin p = 0.003); robust to IRQ/SYR exclusion
+- `econ_neocol_score` null across all specifications (NegBin p = 0.94 in nb17; sign flip in nb17 logit is collinearity artifact — VIF 10.7 on in-strength)
+- Arms: negative coefficient in logit (stable-allies effect); near-zero in NegBin
+- Network features add AIC fit (Δ = −43 logit, −35 NegBin) but no standalone interpretable signal
+- `bilateral_oda_pagerank_lag1` shows marginal significance in NegBin (p = 0.046) — treat with caution given VIF = 10.4
 
 ### COLDAT as Moderator
 - Use only as interaction term: arms_effect × colonial_tie, aid_effect × colonial_tie

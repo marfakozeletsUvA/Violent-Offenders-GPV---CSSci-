@@ -180,6 +180,84 @@ in-degree centrality risks replicating raw bilateral variables.
 Acknowledged limitation — addressed in limitations section rather
 than causing methodology change.
 
+**SE methodology differs between nb16 and nb17**
+nb16 uses non-robust standard errors (standard logit and NegBin MLE defaults).
+nb17 uses clustered SEs clustered by `recipient_iso3` throughout. Direct coefficient
+significance comparisons between the two notebooks partly reflect this SE methodology
+change, not only the addition of network features and interaction terms. Several features
+significant in nb16 (arms_tiv, oda_total standalone, colonial_tie_flag) lose significance
+in nb17 — expected when moving from non-robust to country-clustered SEs. Report nb17
+results as primary for the full specification; treat nb16 significance levels as indicative.
+Evidence: `outputs/results/nb16_logit_clustered_se_comparison.csv`,
+`outputs/results/nb16_nb_clustered_se_comparison.csv`,
+`outputs/limitations/nb16_clustered_vs_nonrobust.png`.
+
+**VIF above 10 in nb17 for 3 features**
+Variance inflation factor analysis flags 3 features above VIF = 10 in the full network model
+(see `outputs/data&methods/vif_nb17_network_features.csv`):
+- `econ_neocol_score_in_strength_lag1`: VIF 10.70
+- `bilateral_oda_in_strength_lag1`: VIF 10.40
+- `oda_x_colonial`: VIF 10.01
+
+Standalone coefficients on these three features are unreliable in isolation. The
+`econ_neocol_score_total_lag1` sign flip in nb17 (negative in nb16, positive in nb17)
+is a collinearity artifact — do not interpret it as a substantive reversal.
+Global model fit (AIC, pseudo-R²) and the `oda_x_colonial` interaction remain interpretable
+despite these VIF flags; the oda_x_colonial interaction is robust to IRQ/SYR exclusion.
+
+**econ_neocol_score null across specifications**
+The economic neo-colonial score (ECI × trade/GDP asymmetry) is statistically null across
+all primary specifications. In nb16: logit p = 0.167 (ns), NegBin p = 0.051 (marginal
+borderline). In nb17: NegBin p = 0.94 (null); logit reaches p = 0.011 but with a sign
+reversal relative to nb16, attributable to collinearity (VIF 8.5 for total, 10.7 for
+in-strength). Robustness checks (mean aggregation via enriched panel, IRQ/SYR exclusion)
+confirm the null. This is the primary null finding of the project.
+Possible explanations: (a) economic subordination does not operate through journalist
+killings as a specific mechanism; (b) the trade × ECI asymmetry operationalisation
+misses the relevant channel (e.g. investment dependency, debt leverage); (c) insufficient
+variation in the score for Global South recipients given ECI coverage gaps (68 countries
+absent, mostly fragile and island states).
+
+**ODA baseline confound resolved in nb17**
+In nb16, the standalone ODA logit coefficient is significant (p < 0.001) and driven
+substantially by Iraq and Syria: high-ODA crisis recipients with high killing counts.
+After IRQ/SYR exclusion in nb16, ODA direction holds but p = 0.066.
+In nb17, the interaction structure (`oda_x_colonial`) absorbs the crisis-aid pattern;
+standalone ODA coefficient weakens to p = 0.066 (full sample) while `oda_x_colonial`
+remains significant (logit p = 0.046, NegBin p = 0.003) and robust to IRQ/SYR exclusion.
+Report nb17 results as primary for ODA interpretation; note nb16 ODA significance
+as a confound in the discussion. Evidence: `outputs/results/nb16_oda_irq_syr_sensitivity.csv`,
+`outputs/limitations/nb16_oda_sensitivity.png`, `outputs/limitations/nb17_oda_irq_syr_sensitivity.csv`.
+
+**Network hub-and-spoke topology limits predictive power**
+Arms layer Gini coefficient: 0.777 (highly concentrated senders). Colonial layer
+centrality CV: 0.07 (near-uniform across recipients). The hub-and-spoke topology
+means most recipient countries occupy similar periphery positions — centrality measures
+have low variance relative to the high-variance outcome. Network features improve AIC
+by ~43 (logit) and ~35 (NegBin) over baseline but add no standalone interpretable signal.
+This is a structural feature of the global arms/aid network architecture, not a modelling
+failure. Evidence: `outputs/limitations/network_centrality_variance.png`,
+`outputs/limitations/network_degree_distributions.png`, nb15 diagnostics.
+
+**Sample loss: 593 rows dropped (9.3%)**
+593 rows from the 6,358-row monadic panel are dropped when computing the analytical sample
+(see `outputs/results/nb16_sample_loss.csv`). Sources of compounded missingness:
+(1) Lag NaNs — first year per country has no lag1 features (structural; affects 1992 observations)
+(2) GDP per capita — missing for PRK, TWN, and some fragile states not in WB WDI
+(3) Population — same sources as GDP
+(4) Armed conflict — small gap in early UCDP coverage (pre-1992 edge cases)
+Analytical sample: 5,765 rows (90.7% of panel). Non-zero outcome rows: 687 (11.9%).
+
+**NegBin count component underfits low counts**
+Predicted vs. actual distribution plots (`outputs/results/nb16_predicted_vs_actual.png`,
+`outputs/results/nb17_predicted_vs_actual.png`) show the NegBin component underpredicts
+counts of 1–2 killings and overpredicts near-zero counts relative to the observed
+distribution. This is a known limitation of standard NegBin regression when the boundary
+between zero (hurdle) and count processes is not cleanly separable for low non-zero counts.
+A zero-inflated NegBin or mixture model with a separate component for sporadic low-count
+events would better fit the 1–2 killing range. Reported results use the standard hurdle
+specification.
+
 **Bayesian layer deferred**
 PyMC/Bayesian hierarchical model deprioritized — M1 Air C compilation
 fails under macOS Tahoe. Considered future extension only.
