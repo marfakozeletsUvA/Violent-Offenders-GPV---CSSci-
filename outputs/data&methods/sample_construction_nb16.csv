@@ -1,0 +1,6 @@
+stage,n,pct
+Panel rows (before dropna),6358,100.0
+After dropna (model sample),5765,90.7
+Dropped rows,593,9.3
+Zero killing rows (logit denom),5078,88.1
+Non-zero killing rows (NegBin),687,11.9
