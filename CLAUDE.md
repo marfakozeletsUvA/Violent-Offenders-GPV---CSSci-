@@ -53,6 +53,7 @@ Sequential numbered format: `07_trade_dependency_engineering.ipynb`
 | `15_network_diagnostics.ipynb` | Active | Network diagnostics and visualisation (pre-modelling checks) |
 | `16_baseline_hurdle_model.ipynb` | Active | Baseline hurdle model (logit + NegBin, non-robust SEs) |
 | `17_network_augmented_hurdle_model.ipynb` | Active | Network-augmented hurdle model (+ network features, interaction terms, clustered SEs) |
+| `19_case_study_diagnostic.ipynb` | Active | Philippines vs Iraq case study. PHL: colonial_tie=1 (ESP/USA), model predicts ~37% of killings, misses 2009 Maguindanao massacre (32 killed, event-driven). IRQ: colonial_tie=0 for USA (GBR mandate fires), model predicts ~45% through wrong channel (conflict not ODA×colonial). Shared audit finding: model sees violence not power structures. Outputs in `outputs/final_report/06_case_study/` |
 
 Always save outputs to `data/processed/` or `data/merged/` with clear names.
 Use relative paths throughout for team portability.

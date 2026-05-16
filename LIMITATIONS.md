@@ -287,3 +287,33 @@ excluding ISR 2023–2025 rows, compare coefficients and effect sizes.
 If results hold direction and significance, robustness confirmed.
 Report both sets of results in appendix.
 Flag as known leverage point in modelling section.
+
+---
+
+## Case Study Diagnostic Findings (nb19, May 2026)
+
+### Revised framing: Philippines & Iraq (replacing earlier Cameroon & Iraq plan)
+
+Two cases, same patron (USA), two different mechanisms — chosen to show which forms of US power are legible to the model and which aren't.
+
+### Philippines (PHL) — Model finds the right country, wrong event
+- Total killings 1992–2024: 155. Model predicted: 57.1. Mean annual residual: 3.06.
+- Model accounts for ~37% of actual killings — partial but real signal.
+- colonial_tie_flag = 1 (Spain 1565–1898, USA 1898–1946). ODA channel active. Model correctly identifies PHL as high-risk.
+- Dominant underprediction source: 2009 Maguindanao massacre (32 journalists killed in a single event). Panel models structurally cannot predict event-driven mass killings — a single political massacre orchestrated by a warlord with US-aligned political cover is invisible to annual aggregation.
+- Audit finding: model sees violence but not the power structure enabling it. The elite capture mechanism (local warlord, US diplomatic cover, impunity) is exactly what the theory describes but cannot be operationalised in a panel regression.
+
+### Iraq (IRQ) — Model finds the right country through the wrong channel
+- Total killings 1992–2024: 285. Model predicted: 128.3. Mean annual residual: 4.90.
+- Model accounts for ~45% of killings — higher than expected, but mechanism is wrong.
+- colonial_tie_flag = 1 for GBR only (British Mandate 1920–1932) — NOT for USA.
+- Model picks up Iraq through armed_conflict and arms_tiv predictors, not through ODA×colonial channel. It sees the symptom (conflict) not the cause (occupation and impunity).
+- The 2003 invasion, 1990–2003 sanctions, CPA economic restructuring, and Coalition Provisional Authority impunity orders (Order 17) are entirely absent from the predictor set.
+- Audit finding: the neo-colonial mechanism driving journalist killings in Iraq (military invasion → occupation → impunity structure) is structurally invisible to a model built on historical colonial ties and ODA flows.
+- Missing datasets: TIES/EUSANCT (sanctions), militarised interstate dispute data capturing occupation, post-conflict impunity indices.
+
+### Shared audit finding across both cases
+The model sees violence but not the power structures enabling it. In Philippines, it finds the right country through the right channel but cannot see political massacres. In Iraq, it finds the right country through the wrong channel and cannot see military occupation. Both gaps point to the same structural limitation: panel regression on annual bilateral flows is blind to the event-driven and institutional mechanisms through which neo-colonial power actually produces journalist deaths.
+
+### Theoretical implication
+A complete model would require: sanctions data, invasion/occupation indicators, post-conflict impunity measures, and event-level data on political massacres. The measurability of neo-colonial violence is itself politically structured — the datasets that exist (SIPRI, OECD DAC, COLDAT) were built around formal inter-state relationships, not coercive ones.
