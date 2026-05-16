@@ -11,7 +11,9 @@
       "Bash(git add *)",
       "Bash(git commit *)",
       "Bash(git push *)",
-      "Bash(grep *)"
+      "Bash(grep *)",
+      "Bash(mkdir -p outputs/final_report/06_case_study)",
+      "Bash(cp -v outputs/case_study/* outputs/final_report/06_case_study/)"
     ]
   }
 }
