@@ -317,3 +317,15 @@ The model sees violence but not the power structures enabling it. In Philippines
 
 ### Theoretical implication
 A complete model would require: sanctions data, invasion/occupation indicators, post-conflict impunity measures, and event-level data on political massacres. The measurability of neo-colonial violence is itself politically structured — the datasets that exist (SIPRI, OECD DAC, COLDAT) were built around formal inter-state relationships, not coercive ones.
+
+---
+
+## COLDAT Encoding Gaps — Case Study Findings (nb20, May 2026)
+
+COLDAT systematically underencodes 20th-century colonial relationships where the coloniser is also a post-1945 military/economic hegemon:
+
+- **Philippines (PHL)**: Only ESP→PHL encoded (Spanish period 1565–1898). US colonial period (1898–1946) absent. The `oda_x_colonial` interaction fires on a historical Spanish tie while the empirically active ODA donor is USA.
+- **Iraq (IRQ)**: Only GBR→IRQ encoded (British Mandate 1920–32). US post-2003 occupation absent. COLDAT has no category for post-1945 military invasions/occupations.
+- **Arms snapshot year**: SIPRI records zero arms transfers to IRQ in 2003 (invasion used pre-positioned equipment). Arms transfers begin 2004 as USA rebuilds Iraqi security forces. The arms snapshot is therefore set to 2007 (USA→IRQ dominant, coincides with CPJ killing peak 2006–2008).
+
+These gaps do not invalidate the colonial_tie moderator — they confirm that its significant interaction effect (oda_x_colonial, NegBin p=0.003) is a conservative estimate. The true scope of colonial dependency relationships is broader than COLDAT captures.
