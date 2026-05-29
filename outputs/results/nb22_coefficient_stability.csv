@@ -1,0 +1,9 @@
+feature,coef_full_nb16,coef_train_only,delta,sign_flip
+Arms transfers (lag 1),-0.0786,-0.1173,-0.0386,False
+ODA (lag 1),0.1819,0.2044,0.0226,False
+Econ neo-col score (lag 1),-0.0279,-0.0171,0.0107,False
+Colonial tie,0.4876,0.3698,-0.1179,False
+GDP per capita (log),0.215,0.2728,0.0577,False
+Population (log),0.5521,0.6,0.0479,False
+Armed conflict,-0.4751,-0.0977,0.3773,False
+Conflict intensity,1.5425,1.3511,-0.1914,False

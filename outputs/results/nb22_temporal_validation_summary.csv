@@ -1,0 +1,7 @@
+metric,value,sample
+In-sample AUC (nb16 full model),0.857,1992–2024
+Train AUC (temporal split),0.8503,1992–2015
+OOS AUC (temporal split),0.8576,2016–2024
+AUC degradation,-0.0073,
+NegBin OOS Spearman r,0.425,2016–2024 positives
+Sign flips (logit coefs),0.0,full vs train
