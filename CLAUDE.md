@@ -242,7 +242,7 @@ Raw `econ_neocol_score` retained in panel. Log version added as `econ_neocol_sco
 
 **nb16 — Baseline Hurdle Model**
 - Analytical sample: 5,765 obs (593 dropped, 9.3% — lag NaNs + missing GDP/population/conflict)
-- Logit (any killing): AUC 0.857, McFadden R² = 0.269, AIC = 3097.2
+- Logit (any killing): AUC 0.848, McFadden R² = 0.269, AIC = 3097.2
 - NegBin (count | killing > 0): pseudo-R² = 0.098, AIC = 2899.3, n = 687
 - SE method: non-robust
 
