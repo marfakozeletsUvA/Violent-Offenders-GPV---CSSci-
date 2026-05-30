@@ -65,6 +65,7 @@ Sequential numbered format: `11_network_construction.ipynb`
 | `21_econ_neocol_score_variance_audit.ipynb` | 03_analysis | Active | ECI distribution, clip-loss, and econ score temporal variance audit |
 | `22_temporal_train_test_validation.ipynb` | 03_analysis | Active | Temporal train/test split validation; AUC stability across time windows |
 | `nb23_oos_validation.ipynb` | 03_analysis | Active | OOS temporal validation, bootstrapped AUC CIs, four-cell AUC summary table |
+| `24_econ_neocol_score_audit.ipynb` | 03_analysis | Active | econ_neocol_score measurement audit (1995 artifact, variance, clip-induced zeros); outputs in `outputs/final_report/04_appendix/` |
 
 Always save outputs to `data/processed/` or `data/merged/` with clear names.
 Use relative paths throughout for team portability.
