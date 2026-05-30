@@ -79,7 +79,13 @@ Models: Logistic regression (binary outcome) or negative binomial (count outcome
 │   ├── raw/                 # Original datasets (DO NOT EDIT)
 │   ├── processed/           # Cleaned and merged data
 │   └── README.md            # Data documentation
-├── notebooks/               # Jupyter notebooks (analysis, exploration)
+├── notebooks/               # Jupyter notebooks, organised into three subfolders
+│   ├── 01_preprocessing/    # Raw data cleaning and transformation (nb02, nb05, nb06, nb09)
+│   ├── 02_pipeline/         # Panel construction and merging (nb11, nb12, nb14)
+│   ├── 03_analysis/         # Modelling, diagnostics, and validation (nb13, nb15–nb23)
+│   ├── generate_final_report_figures.py  # Report figure generation script
+│   ├── generate_report_outputs.py        # Limitations evidence generation script
+│   └── build_country_data.py             # Country stats JSON for web visualisation
 ├── src/                     # Python scripts (reusable functions)
 ├── docs/
 │   └── DATA_SOURCES.md      # Links to all datasets

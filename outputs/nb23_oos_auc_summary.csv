@@ -1,0 +1,5 @@
+model,split,auc,ci_lower,ci_upper,n_obs,source_nb
+Baseline (nb16),In-sample (1992–2014),0.8476,0.829,0.8653,4007,nb23
+Network (nb17),In-sample (1992–2014),0.8587,0.841,0.876,4007,nb23
+Baseline (nb16),OOS (2015–2024),0.8636,0.8356,0.8888,1758,nb23
+Network (nb17),OOS (2015–2024),0.8627,0.8345,0.8871,1758,nb23

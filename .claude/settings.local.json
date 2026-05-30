@@ -14,7 +14,10 @@
       "Bash(grep *)",
       "Bash(mkdir -p outputs/final_report/06_case_study)",
       "Bash(cp -v outputs/case_study/* outputs/final_report/06_case_study/)",
-      "Bash(conda info *)"
+      "Bash(conda info *)",
+      "Bash(conda env *)",
+      "Bash(echo \"exit_code=$?\")",
+      "Bash(git mv *)"
     ]
   }
 }

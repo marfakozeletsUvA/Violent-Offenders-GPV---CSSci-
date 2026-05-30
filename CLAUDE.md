@@ -28,32 +28,43 @@ processed/            # cleaned single-source files
 trade_dependency_engineering/  # old approach, do not use
 merged/               # joined multi-source panels
 src/                    # reusable modules
-notebooks/              # numbered sequential notebooks
+notebooks/              # numbered sequential notebooks (see subfolders below)
+  01_preprocessing/   # raw data cleaning and transformation
+  02_pipeline/        # panel construction and merging
+  03_analysis/        # modelling, diagnostics, and validation
+  *.py                # report generation scripts (remain in notebooks/ root)
 outputs/                # model outputs, figures
+
 ## Notebook Naming Convention
-Sequential numbered format: `07_trade_dependency_engineering.ipynb`
+Sequential numbered format: `11_network_construction.ipynb`
 
-### Pipeline Sequence (nb02–nb17) — All Completed
+### Notebook Folder Structure
+- `notebooks/01_preprocessing/` — raw data cleaning and transformation
+- `notebooks/02_pipeline/`      — panel construction and merging
+- `notebooks/03_analysis/`      — modelling, diagnostics, and validation
+- `.py` scripts remain in `notebooks/` root (path-resolution depends on their location)
 
-| Notebook | Status | Description |
-|----------|--------|-------------|
-| `02_country_standardization.ipynb` | Active | Cross-dataset country name standardisation to ISO3 |
-| `03_eda.ipynb` | Active | Exploratory data analysis (raw datasets) |
-| `04_eda_merged.ipynb` | Active | EDA on the merged dyadic panel (1992–2024) |
-| `05_controls_preprocessing.ipynb` | Active | Control variables preprocessing (GDP, population, UCDP conflict) |
-| `06_oecd_dac2_oda_fixing.ipynb` | Active | OECD DAC2 ODA duplicate fix and FSM correction |
-| `07_trade_dependency_engineering_DEPRECATED.ipynb` | **Deprecated** | Old income classification approach — replaced by ECI-based econ_neocol_score |
-| `08_econ_neocol_score.ipynb` | Active | Economic neo-colonial score construction (ECI × trade/GDP asymmetry) |
-| `09_transform_oda_values.ipynb` | Active | ODA negative values floor (loan repayment entries → 0) |
-| `10_final_panel_eda.ipynb` | Active | Final panel EDA; target variable distribution and missingness analysis |
-| `11_network_construction.ipynb` | Active | Network construction — 4 layers (arms, ODA, econ, colonial); pre-lagged centrality measures |
-| `12_collapse_monadic_panel.ipynb` | Active | Dyadic → monadic panel collapse (recipient-year aggregation) |
-| `13_robustness_variants.ipynb` | Active | Robustness operationalisations: 5-yr arms stock, econ score mean aggregation |
-| `14_final_panel_merge.ipynb` | Active | Final panel merge: monadic + network measures + lag transforms |
-| `15_network_diagnostics.ipynb` | Active | Network diagnostics and visualisation (pre-modelling checks) |
-| `16_baseline_hurdle_model.ipynb` | Active | Baseline hurdle model (logit + NegBin, non-robust SEs) |
-| `17_network_augmented_hurdle_model.ipynb` | Active | Network-augmented hurdle model (+ network features, interaction terms, clustered SEs) |
-| `19_case_study_diagnostic.ipynb` | Active | Philippines vs Iraq case study. PHL: colonial_tie=1 (ESP/USA), model predicts ~37% of killings, misses 2009 Maguindanao massacre (32 killed, event-driven). IRQ: colonial_tie=0 for USA (GBR mandate fires), model predicts ~45% through wrong channel (conflict not ODA×colonial). Shared audit finding: model sees violence not power structures. Outputs in `outputs/final_report/06_case_study/` |
+### Pipeline Sequence — All Completed
+
+| Notebook | Folder | Status | Description |
+|----------|--------|--------|-------------|
+| `02_country_standardization.ipynb` | 01_preprocessing | Active | Cross-dataset country name standardisation to ISO3 |
+| `05_controls_preprocessing.ipynb` | 01_preprocessing | Active | Control variables preprocessing (GDP, population, UCDP conflict) |
+| `06_oecd_dac2_oda_fixing.ipynb` | 01_preprocessing | Active | OECD DAC2 ODA duplicate fix and FSM correction |
+| `09_transform_oda_values.ipynb` | 01_preprocessing | Active | ODA negative values floor (loan repayment entries → 0) |
+| `11_network_construction.ipynb` | 02_pipeline | Active | Network construction — 4 layers (arms, ODA, econ, colonial); pre-lagged centrality measures |
+| `12_collapse_monadic_panel.ipynb` | 02_pipeline | Active | Dyadic → monadic panel collapse (recipient-year aggregation) |
+| `14_final_panel_merge.ipynb` | 02_pipeline | Active | Final panel merge: monadic + network measures + lag transforms |
+| `13_robustness_variants.ipynb` | 03_analysis | Active | Robustness operationalisations: 5-yr arms stock, econ score mean aggregation |
+| `15_network_diagnostics.ipynb` | 03_analysis | Active | Network diagnostics and visualisation (pre-modelling checks) |
+| `16_baseline_hurdle_model.ipynb` | 03_analysis | Active | Baseline hurdle model (logit + NegBin, non-robust SEs) |
+| `17_network_augmented_hurdle_model.ipynb` | 03_analysis | Active | Network-augmented hurdle model (+ network features, interaction terms, clustered SEs) |
+| `18_econ_neocol_score_diagnostic.ipynb` | 03_analysis | Active | Econ neo-colonial score diagnostic (variance, structural mismatch, top recipients) |
+| `19_case_study_diagnostic.ipynb` | 03_analysis | Active | Philippines vs Iraq case study. PHL: colonial_tie=1 (ESP/USA), model predicts ~37% of killings, misses 2009 Maguindanao massacre (32 killed, event-driven). IRQ: colonial_tie=0 for USA (GBR mandate fires), model predicts ~45% through wrong channel (conflict not ODA×colonial). Shared audit finding: model sees violence not power structures. Outputs in `outputs/final_report/06_case_study/` |
+| `20_gephi_export.ipynb` | 03_analysis | Active | Gephi-compatible edge/node export for network visualisation |
+| `21_econ_neocol_score_variance_audit.ipynb` | 03_analysis | Active | ECI distribution, clip-loss, and econ score temporal variance audit |
+| `22_temporal_train_test_validation.ipynb` | 03_analysis | Active | Temporal train/test split validation; AUC stability across time windows |
+| `nb23_oos_validation.ipynb` | 03_analysis | Active | OOS temporal validation, bootstrapped AUC CIs, four-cell AUC summary table |
 
 Always save outputs to `data/processed/` or `data/merged/` with clear names.
 Use relative paths throughout for team portability.
@@ -107,7 +118,7 @@ Use relative paths throughout for team portability.
 
 ### Monadic panel (recipient–year) — use for modelling
 - `data/merged/panel_monadic_1992_2024.csv` — **collapsed for baseline modelling** (6,358 rows × 13 cols)
-  - Built by `notebooks/12_collapse_monadic_panel.ipynb`
+  - Built by `notebooks/02_pipeline/12_collapse_monadic_panel.ipynb`
   - Columns: `recipient_iso3`, `year`, `arms_tiv_total`, `oda_total`, `econ_neocol_score_total`,
     `colonial_tie_flag`, `journalist_killings`, `gdp_per_capita`, `gdp_per_capita_log`,
     `population`, `population_log`, `armed_conflict`, `conflict_intensity`
@@ -120,13 +131,13 @@ Use relative paths throughout for team portability.
   - journalist_killings: 88.7% zeros, max 82, var/mean ratio 14.7x → confirms overdispersion
 
 - `data/merged/panel_monadic_enriched_1992_2024.csv` — **robustness side-branch only** (6,358 rows × 15 cols)
-  - Built by `notebooks/13_robustness_variants.ipynb`
+  - Built by `notebooks/03_analysis/13_robustness_variants.ipynb`
   - Adds `arms_tiv_stock_5yr` (5-year rolling sum) and `econ_neocol_score_mean` (mean across senders)
   - NOT used in `panel_final_1992_2024.csv` — for robustness model comparison only
 
 ### Final modelling panel
 - `data/merged/panel_final_1992_2024.csv` — **primary modelling input** (6,358 rows × 38 cols)
-  - Built by `notebooks/14_final_panel_merge.ipynb` (inner join of monadic + network measures)
+  - Built by `notebooks/02_pipeline/14_final_panel_merge.ipynb` (inner join of monadic + network measures)
   - Contains all baseline features, network centrality measures (pre-lagged), and additional lags
 
   **baseline_features (8):**
@@ -285,5 +296,5 @@ Raw `econ_neocol_score` retained in panel. Log version added as `econ_neocol_sco
 
 ## Deprecated
 The following files are kept for reference only. Do not use in analysis or modelling.
-- `notebooks/07_trade_dependency_engineering_DEPRECATED.ipynb` — old income classification approach, replaced by ECI-based econ_neocol_score
 - `data/processed/deprecated/` — dropped variables (worldbank_bilateral_debt.csv, wb_income_classification.csv, trade_dependency_engineering/p1–p5)
+- `data/processed/trade_dependency_engineering/` — old income classification approach, replaced by ECI-based econ_neocol_score

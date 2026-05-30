@@ -135,7 +135,7 @@ have no arms transfers. Zero treated as genuine observed zero, not missing.
 
 **Arms flow vs stock**
 Annual TIV flow used as primary operationalisation of arms dependency.
-5-year rolling stock (`arms_tiv_stock_5yr`) computed in `notebooks/13_robustness_variants.ipynb`
+5-year rolling stock (`arms_tiv_stock_5yr`) computed in `notebooks/03_analysis/13_robustness_variants.ipynb`
 as alternative. Pearson r = 0.87 between the two — results expected to be robust.
 The stock variant is in `data/merged/panel_monadic_enriched_1992_2024.csv`; not merged
 into the primary `panel_final_1992_2024.csv`. If nb15 uses this for a robustness run,
@@ -152,9 +152,9 @@ approach which produces 0 for no-ECI rows) and runs on a materially smaller samp
 Interpret mean-based results with caution if used as robustness check.
 
 **Double-lagging confirmed absent**
-Network centrality measures are pre-lagged once in `notebooks/11_network_construction.ipynb`
+Network centrality measures are pre-lagged once in `notebooks/02_pipeline/11_network_construction.ipynb`
 (all `_lag1` columns in `network_measures_1992_2024.csv`). Flow totals (`arms_tiv_total_log`,
-`oda_total_log`, `econ_neocol_score_total`) are lagged once in `notebooks/14_final_panel_merge.ipynb`.
+`oda_total_log`, `econ_neocol_score_total`) are lagged once in `notebooks/02_pipeline/14_final_panel_merge.ipynb`.
 No variable is lagged twice. Verified: zero row-level mismatches on all lag columns.
 
 **Uniform econ PageRank 1993–1995 in final panel**

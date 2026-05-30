@@ -13,7 +13,7 @@ The economic neo-colonial score is missing for 30.42% of dyad-year rows
 in the dyadic panel.
 
 **Evidence.**
-Verified in `notebooks/10_final_panel_eda.ipynb` (missingness bar chart cell):
+Verified in `notebooks/03_analysis/15_network_diagnostics.ipynb` (missingness bar chart cell):
 `econ_neocol_score` is the highest-missing variable at 30.42% of
 115,640 dyad-year rows. Two structural sources explain this:
 
@@ -38,7 +38,7 @@ reported in the robustness section.
 Bilateral ODA records are absent for 10.2% of dyad-year rows.
 
 **Evidence.**
-From `notebooks/10_final_panel_eda.ipynb`: `bilateral_oda` missing for
+From `notebooks/03_analysis/15_network_diagnostics.ipynb`: `bilateral_oda` missing for
 10.2% of rows. OECD DAC2 only covers DAC-member donor flows;
 non-DAC senders (China, Gulf states, Russia, emerging South-South donors) have
 no ODA record regardless of actual aid flows.
@@ -80,7 +80,7 @@ In collapsing from dyadic to monadic panel, incoming econ_neocol_score is
 *summed* across all senders rather than averaged.
 
 **Evidence.**
-Implemented in `notebooks/12_collapse_monadic_panel.ipynb`. The sum reflects
+Implemented in `notebooks/02_pipeline/12_collapse_monadic_panel.ipynb`. The sum reflects
 total incoming economic pressure; the mean would reflect average intensity per
 sender relationship. Robustness checks using the mean are documented in
 `notebooks/13_*` (network augmentation notebook).
@@ -101,7 +101,7 @@ Only 3.8% of dyad-year observations have `colonial_tie = 1`,
 making the variable too sparse for use as a standalone predictor.
 
 **Evidence.**
-From `notebooks/10_final_panel_eda.ipynb`: `colonial_tie = 1` in 3.8%
+From `notebooks/03_analysis/15_network_diagnostics.ipynb`: `colonial_tie = 1` in 3.8%
 of 115,640 dyadic rows. COLDAT encodes direct colonial relationships (colony,
 protectorate, mandate); informal empire and indirect colonial influence are
 not captured.
@@ -120,7 +120,7 @@ pathways. Standalone colonial_tie coefficients are not reported.
 World Bank bilateral debt data was excluded from the final panel.
 
 **Evidence.**
-Missingness audit in `notebooks/10_final_panel_eda.ipynb` and confirmed in
+Missingness audit in `notebooks/03_analysis/15_network_diagnostics.ipynb` and confirmed in
 CLAUDE.md: 83.6% of dyad-year rows lack bilateral debt records. The missingness
 is structurally non-random — non-Western creditors (China's Belt and Road loans,
 Gulf sovereign lending) are systematically absent from World Bank reporting.
@@ -141,7 +141,7 @@ The V-Dem electoral democracy index (v2x_polyarchy) was excluded from the
 control set.
 
 **Evidence.**
-From `notebooks/10_final_panel_eda.ipynb` and CLAUDE.md: 34.1% missing in the
+From `notebooks/03_analysis/15_network_diagnostics.ipynb` and CLAUDE.md: 34.1% missing in the
 merged panel, concentrated in small states and early years. Including it would
 reduce the analytic sample by approximately one-third.
 
@@ -164,7 +164,7 @@ aid, technical assistance, debt relief — into a single flow variable.
 **Evidence.**
 OECD DAC2 provides disbursement totals by donor-recipient-year. Sector-level
 disaggregation (DAC5) was not incorporated due to complexity and additional
-missingness in sector codes. See `notebooks/06_oecd_dac2_oda_fixing.ipynb` for
+missingness in sector codes. See `notebooks/01_preprocessing/06_oecd_dac2_oda_fixing.ipynb` for
 the processing pipeline.
 
 **Implication.**
@@ -184,7 +184,7 @@ structure dominated by a small number of powerful sender nodes (USA, UK, France,
 China in arms; OECD members in ODA).
 
 **Evidence.**
-Documented in `notebooks/12_collapse_monadic_panel.ipynb` and flagged in CLAUDE.md.
+Documented in `notebooks/02_pipeline/12_collapse_monadic_panel.ipynb` and flagged in CLAUDE.md.
 Centrality measures (PageRank, eigenvector) show low variance across recipient
 nodes because most recipients share a similar periphery position relative to
 dominant senders.
