@@ -1,7 +1,5 @@
 # Violence Against Journalists
 
-> GPV: Unequal Machines Grand Challenge
-
 ## Research Question
 
 Do neo-colonial ties—military dependency, economic relationships, and colonial history—predict violence against journalists? And does the structure of these relationships help explain patterns of impunity?
@@ -145,10 +143,44 @@ git push
 - Julia
 - Sophie
 
+## Reproducing the Analysis
+
+Run notebooks in the following order. All paths are relative; run each notebook from its own directory (or use the `conda run -n everest-ml jupyter nbconvert --to notebook --execute` pattern). **Do not re-run nb02** (archival).
+
+### Preprocessing (`notebooks/01_preprocessing/`)
+1. `02_country_standardization.ipynb` — cross-dataset country name standardisation to ISO3 (**archival — do not re-run**)
+2. `05_controls_preprocessing.ipynb` — control variables (GDP, population, UCDP conflict)
+3. `06_oecd_dac2_oda_fixing.ipynb` — OECD DAC2 ODA duplicate fix and FSM correction
+4. `09_transform_oda_values.ipynb` — ODA negative-values floor (loan repayment entries → 0)
+
+### Pipeline (`notebooks/02_pipeline/`)
+5. `11_network_construction.ipynb` — four-layer network (arms, ODA, econ, colonial); pre-lagged centrality measures
+6. `12_collapse_monadic_panel.ipynb` — dyadic → monadic panel collapse (recipient-year aggregation)
+7. `13_robustness_variants.ipynb` — robustness operationalisations (5-yr arms stock, econ score mean)
+8. `14_final_panel_merge.ipynb` — final panel merge: monadic + network measures + lag transforms
+
+### Analysis (`notebooks/03_analysis/`)
+9. `15_network_diagnostics.ipynb` — network diagnostics and visualisation (pre-modelling checks)
+10. `16_baseline_hurdle_model.ipynb` — baseline hurdle model (logit + NegBin) — **main results**
+11. `17_network_augmented_hurdle_model.ipynb` — network-augmented hurdle model — **main results**
+12. `18_econ_neocol_score_diagnostic.ipynb` — econ_neocol_score construction diagnostics
+13. `19_case_study_diagnostic.ipynb` — Philippines vs Iraq case study
+14. `20_gephi_export.ipynb` — Gephi-compatible edge/node export
+15. `21_econ_neocol_score_variance_audit.ipynb` — ECI distribution, clip-loss, and econ score temporal variance
+16. `22_temporal_train_test_validation.ipynb` — temporal train/test split validation; AUC stability
+17. `23_oos_validation.ipynb` — OOS temporal validation, bootstrapped AUC CIs, four-cell AUC summary
+18. `24_econ_neocol_score_audit.ipynb` — econ_neocol_score measurement audit (audit only, does not modify pipeline)
+
+### Report figures (`notebooks/`)
+19. `generate_final_report_figures.py` — regenerate all figures in `outputs/final_report/`; run after all notebooks above
+
+```bash
+# From repo root:
+cd notebooks
+conda run -n everest-ml python generate_final_report_figures.py
+```
+
 ## Quick Links
 
 - [Data Sources](docs/DATA_SOURCES.md)
-
----
-
-*Last updated: February 2025*
+- [Limitations](LIMITATIONS.md)

@@ -121,7 +121,7 @@ World Bank bilateral debt data was excluded from the final panel.
 
 **Evidence.**
 Missingness audit in `notebooks/03_analysis/15_network_diagnostics.ipynb` and confirmed in
-CLAUDE.md: 83.6% of dyad-year rows lack bilateral debt records. The missingness
+LIMITATIONS.md: 83.6% of dyad-year rows lack bilateral debt records. The missingness
 is structurally non-random — non-Western creditors (China's Belt and Road loans,
 Gulf sovereign lending) are systematically absent from World Bank reporting.
 
@@ -141,7 +141,7 @@ The V-Dem electoral democracy index (v2x_polyarchy) was excluded from the
 control set.
 
 **Evidence.**
-From `notebooks/03_analysis/15_network_diagnostics.ipynb` and CLAUDE.md: 34.1% missing in the
+From `notebooks/03_analysis/15_network_diagnostics.ipynb` and LIMITATIONS.md: 34.1% missing in the
 merged panel, concentrated in small states and early years. Including it would
 reduce the analytic sample by approximately one-third.
 
@@ -184,7 +184,7 @@ structure dominated by a small number of powerful sender nodes (USA, UK, France,
 China in arms; OECD members in ODA).
 
 **Evidence.**
-Documented in `notebooks/02_pipeline/12_collapse_monadic_panel.ipynb` and flagged in CLAUDE.md.
+Documented in `notebooks/02_pipeline/12_collapse_monadic_panel.ipynb` and flagged in LIMITATIONS.md.
 Centrality measures (PageRank, eigenvector) show low variance across recipient
 nodes because most recipients share a similar periphery position relative to
 dominant senders.
