@@ -1,6 +1,0 @@
-stage,n,pct
-Panel rows,6358,
-After dropna,5765,
-Dropped,593,9.3%
-Non-zero rows (NegBin),687,11.9%
-Zero rows (logit),5078,88.1%

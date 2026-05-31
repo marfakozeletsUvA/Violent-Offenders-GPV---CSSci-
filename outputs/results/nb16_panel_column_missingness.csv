@@ -1,5 +1,5 @@
 column,dtype,missing_n,missing_pct
-recipient_iso3,object,0,0.0
+recipient_iso3,str,0,0.0
 year,int64,0,0.0
 arms_tiv_total,float64,0,0.0
 oda_total,float64,0,0.0

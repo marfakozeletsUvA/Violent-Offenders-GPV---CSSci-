@@ -61,7 +61,7 @@ This document contains all datasets used in the Neo-Colonial Networks and Journa
 - **Coverage**: Global, multi-decade
 - **Unit**: Country-pair-year
 - **Role**: Source for bilateral_trade values used in `econ_neocol_score` construction (trade_dependency = bilateral_trade / receiver_GDP)
-- **Note**: Raw IMF DOTS data was processed once into `data/processed/v3_imf_trade.csv`; this intermediate file is used by `notebooks/08_econ_neocol_score.ipynb`. The raw IMF DOTS source does not need to be re-downloaded for the current pipeline.
+- **Note**: Raw IMF DOTS data was processed once into `data/processed/v3_imf_trade.csv`; econ_neocol_score construction is documented in `notebooks/03_analysis/18_econ_neocol_score_diagnostic.ipynb`. The raw IMF DOTS source does not need to be re-downloaded for the current pipeline.
 - **Processed file**: `data/processed/v3_imf_trade.csv` (intermediate — do not use directly for modelling)
 - **APA 7 citation**:
   > International Monetary Fund. (2025). *Direction of Trade Statistics* [Data set]. IMF Data. https://data.imf.org/?sk=9d6028d4-f14a-464c-a2f2-59b2cd424b85

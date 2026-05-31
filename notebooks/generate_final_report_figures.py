@@ -687,7 +687,7 @@ def figa05_econ_trajectories():
 
 
 def figa06_network_top_nodes():
-    src = os.path.join(RES, 'network_top_nodes.png')
+    src = os.path.join(BASE, 'outputs', 'evaluation', 'network_top_nodes.png')
     dst = os.path.join(D04, 'figa06_network_top_nodes.png')
     shutil.copy2(src, dst)
     print(f'  copied → {os.path.relpath(dst, BASE)}')
@@ -695,7 +695,7 @@ def figa06_network_top_nodes():
 
 
 def figa07_network_trajectories():
-    src = os.path.join(BASE, 'outputs', 'results', 'key_countries_network_trajectories.png')
+    src = os.path.join(BASE, 'outputs', 'evaluation', 'key_countries_network_trajectories.png')
     dst = os.path.join(D04, 'figa07_network_trajectories.png')
     shutil.copy2(src, dst)
     print(f'  copied → {os.path.relpath(dst, BASE)}')

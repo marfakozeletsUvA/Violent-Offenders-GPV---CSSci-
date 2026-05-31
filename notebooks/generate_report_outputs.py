@@ -327,7 +327,7 @@ The economic neo-colonial score is missing for {econ_miss_dyad}% of dyad-year ro
 in the dyadic panel.
 
 **Evidence.**
-Verified in `notebooks/10_final_panel_eda.ipynb` (missingness bar chart cell):
+Verified in `notebooks/03_analysis/15_network_diagnostics.ipynb` (missingness bar chart cell):
 `econ_neocol_score` is the highest-missing variable at {econ_miss_dyad}% of
 115,640 dyad-year rows. Two structural sources explain this:
 
@@ -352,7 +352,7 @@ reported in the robustness section.
 Bilateral ODA records are absent for {oda_miss_dyad}% of dyad-year rows.
 
 **Evidence.**
-From `notebooks/10_final_panel_eda.ipynb`: `bilateral_oda` missing for
+From `notebooks/03_analysis/15_network_diagnostics.ipynb`: `bilateral_oda` missing for
 {oda_miss_dyad}% of rows. OECD DAC2 only covers DAC-member donor flows;
 non-DAC senders (China, Gulf states, Russia, emerging South-South donors) have
 no ODA record regardless of actual aid flows.
@@ -415,7 +415,7 @@ Only {colonial_share}% of dyad-year observations have `colonial_tie = 1`,
 making the variable too sparse for use as a standalone predictor.
 
 **Evidence.**
-From `notebooks/10_final_panel_eda.ipynb`: `colonial_tie = 1` in {colonial_share}%
+From `notebooks/03_analysis/15_network_diagnostics.ipynb`: `colonial_tie = 1` in {colonial_share}%
 of 115,640 dyadic rows. COLDAT encodes direct colonial relationships (colony,
 protectorate, mandate); informal empire and indirect colonial influence are
 not captured.
@@ -434,8 +434,8 @@ pathways. Standalone colonial_tie coefficients are not reported.
 World Bank bilateral debt data was excluded from the final panel.
 
 **Evidence.**
-Missingness audit in `notebooks/10_final_panel_eda.ipynb` and confirmed in
-CLAUDE.md: 83.6% of dyad-year rows lack bilateral debt records. The missingness
+Missingness audit in `notebooks/03_analysis/15_network_diagnostics.ipynb` and confirmed in
+LIMITATIONS.md: 83.6% of dyad-year rows lack bilateral debt records. The missingness
 is structurally non-random — non-Western creditors (China's Belt and Road loans,
 Gulf sovereign lending) are systematically absent from World Bank reporting.
 
@@ -455,7 +455,7 @@ The V-Dem electoral democracy index (v2x_polyarchy) was excluded from the
 control set.
 
 **Evidence.**
-From `notebooks/10_final_panel_eda.ipynb` and CLAUDE.md: 34.1% missing in the
+From `notebooks/03_analysis/15_network_diagnostics.ipynb` and LIMITATIONS.md: 34.1% missing in the
 merged panel, concentrated in small states and early years. Including it would
 reduce the analytic sample by approximately one-third.
 
@@ -498,7 +498,7 @@ structure dominated by a small number of powerful sender nodes (USA, UK, France,
 China in arms; OECD members in ODA).
 
 **Evidence.**
-Documented in `notebooks/12_collapse_monadic_panel.ipynb` and flagged in CLAUDE.md.
+Documented in `notebooks/12_collapse_monadic_panel.ipynb` and flagged in LIMITATIONS.md.
 Centrality measures (PageRank, eigenvector) show low variance across recipient
 nodes because most recipients share a similar periphery position relative to
 dominant senders.
