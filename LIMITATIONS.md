@@ -190,11 +190,11 @@ in nb17 — expected when moving from non-robust to country-clustered SEs. Repor
 results as primary for the full specification; treat nb16 significance levels as indicative.
 Evidence: `outputs/results/nb16_logit_clustered_se_comparison.csv`,
 `outputs/results/nb16_nb_clustered_se_comparison.csv`,
-`outputs/limitations/nb16_clustered_vs_nonrobust.png`.
+`outputs/final_report/04_appendix/nb16_clustered_vs_nonrobust.png`.
 
 **VIF above 10 in nb17 for 3 features**
 Variance inflation factor analysis flags 3 features above VIF = 10 in the full network model
-(see `outputs/data&methods/vif_nb17_network_features.csv`):
+(VIF computed in nb17; see nb17 diagnostics output):
 - `econ_neocol_score_in_strength_lag1`: VIF 10.70
 - `bilateral_oda_in_strength_lag1`: VIF 10.40
 - `oda_x_colonial`: VIF 10.01
@@ -227,7 +227,7 @@ standalone ODA coefficient weakens to p = 0.066 (full sample) while `oda_x_colon
 remains significant (logit p = 0.046, NegBin p = 0.003) and robust to IRQ/SYR exclusion.
 Report nb17 results as primary for ODA interpretation; note nb16 ODA significance
 as a confound in the discussion. Evidence: `outputs/results/nb16_oda_irq_syr_sensitivity.csv`,
-`outputs/limitations/nb16_oda_sensitivity.png`, `outputs/limitations/nb17_oda_irq_syr_sensitivity.csv`.
+`outputs/final_report/04_appendix/nb16_oda_sensitivity.png`, `outputs/final_report/04_appendix/nb17_oda_irq_syr_sensitivity.csv`.
 
 **Network hub-and-spoke topology limits predictive power**
 Arms layer Gini coefficient: 0.777 (highly concentrated senders). Colonial layer
@@ -236,8 +236,8 @@ means most recipient countries occupy similar periphery positions — centrality
 have low variance relative to the high-variance outcome. Network features improve AIC
 by ~43 (logit) and ~35 (NegBin) over baseline but add no standalone interpretable signal.
 This is a structural feature of the global arms/aid network architecture, not a modelling
-failure. Evidence: `outputs/limitations/network_centrality_variance.png`,
-`outputs/limitations/network_degree_distributions.png`, nb15 diagnostics.
+failure. Evidence: `outputs/final_report/04_appendix/network_centrality_variance.png`,
+`outputs/final_report/04_appendix/network_degree_distributions.png`, nb15 diagnostics.
 
 **Sample loss: 593 rows dropped (9.3%)**
 593 rows from the 6,358-row monadic panel are dropped when computing the analytical sample

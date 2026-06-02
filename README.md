@@ -78,12 +78,11 @@ Models: Logistic regression (binary outcome) or negative binomial (count outcome
 │   ├── processed/           # Cleaned and merged data
 │   └── README.md            # Data documentation
 ├── notebooks/               # Jupyter notebooks, organised into three subfolders
-│   ├── 01_preprocessing/    # Raw data cleaning and transformation (nb02, nb05, nb06, nb09)
+│   ├── 01_preprocessing/    # Raw data cleaning and transformation (nb02, nb05, nb06, nb08, nb09)
 │   ├── 02_pipeline/         # Panel construction and merging (nb11, nb12, nb14)
 │   ├── 03_analysis/         # Modelling, diagnostics, and validation (nb13, nb15–nb23)
 │   ├── generate_final_report_figures.py  # Report figure generation script
-│   ├── generate_report_outputs.py        # Limitations evidence generation script
-│   └── build_country_data.py             # Country stats JSON for web visualisation
+│   └── generate_report_outputs.py        # Limitations evidence generation script
 ├── src/                     # Python scripts (reusable functions)
 ├── docs/
 │   └── DATA_SOURCES.md      # Links to all datasets
@@ -151,28 +150,31 @@ Run notebooks in the following order. All paths are relative; run each notebook 
 1. `02_country_standardization.ipynb` — cross-dataset country name standardisation to ISO3 (**archival — do not re-run**)
 2. `05_controls_preprocessing.ipynb` — control variables (GDP, population, UCDP conflict)
 3. `06_oecd_dac2_oda_fixing.ipynb` — OECD DAC2 ODA duplicate fix and FSM correction
-4. `09_transform_oda_values.ipynb` — ODA negative-values floor (loan repayment entries → 0)
+4. `08_econ_neocol_score.ipynb` — construct directional economic neo-colonial score (ECI × trade/GDP)
+5. `09_transform_oda_values.ipynb` — ODA negative-values floor (loan repayment entries → 0)
 
 ### Pipeline (`notebooks/02_pipeline/`)
-5. `11_network_construction.ipynb` — four-layer network (arms, ODA, econ, colonial); pre-lagged centrality measures
-6. `12_collapse_monadic_panel.ipynb` — dyadic → monadic panel collapse (recipient-year aggregation)
-7. `13_robustness_variants.ipynb` — robustness operationalisations (5-yr arms stock, econ score mean)
+6. `11_network_construction.ipynb` — four-layer network (arms, ODA, econ, colonial); pre-lagged centrality measures
+7. `12_collapse_monadic_panel.ipynb` — dyadic → monadic panel collapse (recipient-year aggregation)
 8. `14_final_panel_merge.ipynb` — final panel merge: monadic + network measures + lag transforms
 
+### Robustness (`notebooks/03_analysis/`)
+9. `13_robustness_variants.ipynb` — robustness operationalisations (5-yr arms stock, econ score mean); run before analysis if enriched panel is needed
+
 ### Analysis (`notebooks/03_analysis/`)
-9. `15_network_diagnostics.ipynb` — network diagnostics and visualisation (pre-modelling checks)
-10. `16_baseline_hurdle_model.ipynb` — baseline hurdle model (logit + NegBin) — **main results**
-11. `17_network_augmented_hurdle_model.ipynb` — network-augmented hurdle model — **main results**
-12. `18_econ_neocol_score_diagnostic.ipynb` — econ_neocol_score construction diagnostics
-13. `19_case_study_diagnostic.ipynb` — Philippines vs Iraq case study
-14. `20_gephi_export.ipynb` — Gephi-compatible edge/node export
-15. `21_econ_neocol_score_variance_audit.ipynb` — ECI distribution, clip-loss, and econ score temporal variance
-16. `22_temporal_train_test_validation.ipynb` — temporal train/test split validation; AUC stability
-17. `23_oos_validation.ipynb` — OOS temporal validation, bootstrapped AUC CIs, four-cell AUC summary
-18. `24_econ_neocol_score_audit.ipynb` — econ_neocol_score measurement audit (audit only, does not modify pipeline)
+10. `15_network_diagnostics.ipynb` — network diagnostics and visualisation (pre-modelling checks)
+11. `16_baseline_hurdle_model.ipynb` — baseline hurdle model (logit + NegBin) — **main results**
+12. `17_network_augmented_hurdle_model.ipynb` — network-augmented hurdle model — **main results**
+13. `18_econ_neocol_score_diagnostic.ipynb` — econ_neocol_score construction diagnostics
+14. `19_case_study_diagnostic.ipynb` — Philippines vs Iraq case study
+15. `20_gephi_export.ipynb` — Gephi-compatible edge/node export
+16. `21_econ_neocol_score_variance_audit.ipynb` — ECI distribution, clip-loss, and econ score temporal variance
+17. `22_temporal_train_test_validation.ipynb` — temporal train/test split validation; AUC stability
+18. `23_oos_validation.ipynb` — OOS temporal validation, bootstrapped AUC CIs, four-cell AUC summary
+19. `24_econ_neocol_score_audit.ipynb` — econ_neocol_score measurement audit (audit only, does not modify pipeline)
 
 ### Report figures (`notebooks/`)
-19. `generate_final_report_figures.py` — regenerate all figures in `outputs/final_report/`; run after all notebooks above
+20. `generate_final_report_figures.py` — regenerate all figures in `outputs/final_report/`; run after all notebooks above
 
 ```bash
 # From repo root:

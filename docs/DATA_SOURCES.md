@@ -2,7 +2,7 @@
 
 > Links to datasets, documentation, and relevant papers for the Violence Against Journalists project.
 
----
+
 
 ## Core Datasets: Journalist Violence
 
@@ -13,7 +13,7 @@
 - **Notes:** Alternative/supplement to RSF
 
 
----
+
 
 ## Colonial layer
 
@@ -22,7 +22,7 @@
 - **Contains:** Historical colonial ties, start and end of colonisation
 - **Notes:** Base layer
 
----
+
 
 ## Military layer
 
@@ -48,7 +48,7 @@
 - **Kaggle mirror:** https://www.kaggle.com/datasets/konradb/us-military-interventions
 - **Notes:** US-only but very comprehensive; includes overt and covert interventions
 
----
+
 
 ### Economic layer
 
@@ -76,7 +76,7 @@
 - **Contains:** International trade flows in services (intangible products)
 - **Notes:** Includes 200+ reporters and partners, covers 26 EBOPS 2010 categories + total services
 
----
+
 
 ## Control Variables
 
@@ -127,20 +127,4 @@
 - **Contains:** Development assistance received
 - **Notes:** Useful to control for which countries receive aid in general
 
----
 
-## Key Papers
-
-### On Violence Against Journalists
-- Relly & González de Bustamante (2017). "Global and Domestic Networks Advancing Prospects for Institutional and Social Change: The Collective Action Response to Violence Against Journalists." *Journalism & Communication Monographs* 19(2): 84-152.
-  - **Notes:** Uses network framework qualitatively — we can operationalize quantitatively
-
-### On Military Intervention Data
-- Kushi, S. & Toft, M.D. (2023). "Introducing the Military Intervention Project: A New Dataset on US Military Interventions, 1776–2019." *Journal of Conflict Resolution* 67(4): 752-779.
-
-### On UCDP Data
-- Davies, S., Pettersson, T., Sollenberg, M., & Öberg, M. (2025). "Organized violence 1989–2024." *Journal of Peace Research* 62(4).
-
----
-
-*Last updated: February 2025*
